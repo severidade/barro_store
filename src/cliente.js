@@ -1,7 +1,7 @@
 import { sanityClient } from '@sanity/client';
 
 export default sanityClient({
-  projectId: 'hkoh8ax2',
+  projectId: 'knnk47g7',
   dataset: 'production',
   // as informações acima estão no arquivo sanity.cli.js
   useCdn: true, // set to `true` to fetch from edge cache
