@@ -1,13 +1,8 @@
 // Temporariamente tipando sanityClient como any
 // @ts-ignore
 import sanityClient from '../cliente.js';
-
-interface Category {
-  _id: string;
-  title: string;
-  description: string;
-  imageUrl: string;
-}
+import { Category } from '../types/Category.ts';
+import { Product } from '../types/Product.ts';
 
 async function fetchData<T>(query: string, errorMessage: string): Promise<T> {
   try {
@@ -28,4 +23,39 @@ export async function fetchCategories(): Promise<Category[]> {
   }`;
   const errorMessage = 'Ocorreu um erro ao buscar as categorias:';
   return fetchData<Category[]>(query, errorMessage);
+}
+
+export async function fetchProducts(): Promise<Product[]> {
+  const query = `*[_type == "storeProduct"] | order(productName asc) {
+    _id,
+    productName,
+    categories,
+    images,
+    price,
+    promotion,
+    installmentPayments
+  }`;
+
+  const errorMessage = 'Ocorreu um erro ao buscar os produtos:';
+
+  return fetchData<Product[]>(query, errorMessage);
+}
+
+export async function fetchProductsByCategory(categoryId: string): Promise<Product[]> {
+  const query = `
+    *[_type == "storeProduct" && references("${categoryId}")]
+    | order(productName asc) {
+      _id,
+      productName,
+      categories,
+      images,
+      price,
+      promotion,
+      installmentPayments
+    }
+  `;
+
+  const errorMessage = 'Ocorreu um erro ao buscar os produtos por categoria:';
+
+  return fetchData<Product[]>(query, errorMessage);
 }
