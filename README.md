@@ -1,8 +1,5 @@
-# Atualiza
-
-Criar a aplicação React
-Criei Base de dados Saniti
-Instalar na aplicaçao
+# Criando uma Loja Usando o Sanity.io
+![Prévia da página - Preview of the page](./barro_cover.png)
 
 
 ### Confguração do Sanity CMS

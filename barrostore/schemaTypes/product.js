@@ -5,16 +5,6 @@ export default defineType({
   title: "Produto",
   type: "document",
   fields: [
-    // {
-    //   name: 'productId', // Nomeie o campo do ID para algo exclusivo
-    //   title: 'Product ID',
-    //   type: 'slug',
-    //   validation: Rule => Rule.required(),
-    //   options: {
-    //     source: 'productName', // Fonte para gerar o ID automaticamente
-    //     maxLength: 200, // Máximo de caracteres permitidos para o ID
-    //   },
-    // },
     defineField({
       name: "productName",
       type: "string",
