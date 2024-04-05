@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import imageUrlBuilder from '@sanity/image-url';
@@ -66,7 +67,7 @@ function Products() {
     fetchAllProductsByCategory();
   }, [categoryDetails]);
 
-  console.log(productsByCategory);
+  // console.log(productsByCategory);
 
   return (
     <>
@@ -76,6 +77,7 @@ function Products() {
         {category}
       </h1>
 
+      <p>{productsByCategory && categoryDetails._id}</p>
       <h1>Produtos por Categoria</h1>
       <div className="container_products">
         {productsByCategory && productsByCategory.map((product) => (

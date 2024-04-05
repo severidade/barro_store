@@ -2,10 +2,13 @@
 import { useLocation, useNavigate, useParams, NavLink } from 'react-router-dom';
 import imageUrlBuilder from '@sanity/image-url';
 import { useEffect, useState } from 'react';
-import { fetchProductById } from '../utils/fetch';
+import { fetchProductById, fetchCategories } from '../utils/fetch';
 import sanityClient from '../cliente.js';
 
+import { formatUrl } from '../utils/formatUrl';
+
 import { Product } from '../types/Product';
+import { Category } from '../types/Category';
 
 const builder = imageUrlBuilder(sanityClient);
 
@@ -22,10 +25,8 @@ function ProductSingle() {
   const { category } = useParams();
 
   const [product, setProduct] = useState<Product | null>(null);
-
-  function handleClick() {
-    navigate(-1);
-  }
+  const [categoryList, setCategories] = useState<Category[] | null>(null);
+  const [categoryDetails, setCategoryDetails] = useState<Category | null>(null);
 
   useEffect(() => {
     async function fetchProduct() {
@@ -43,12 +44,42 @@ function ProductSingle() {
     fetchProduct();
   }, [productIdFromQuery, navigate]);
 
+  useEffect(() => {
+    async function fetchAllCategories() {
+      try {
+        const data = await fetchCategories();
+        setCategories(data);
+      } catch (error) {
+        console.error('Erro ao buscar categorias:', error);
+      }
+    }
+    fetchAllCategories();
+  }, []);
+
+  useEffect(() => {
+    if (categoryList && category) {
+      const foundCategory = categoryList.find((cat) => formatUrl(cat.title) === category);
+      if (foundCategory) {
+        setCategoryDetails(foundCategory);
+      } else {
+        // Redirecionar para a rota de erro
+        navigate('/error');
+      }
+    }
+  }, [categoryList, category, navigate]);
+
   if (!product) return <div className="loading">Loading...</div>;
 
-  return (
+  // console.log(category);
+  // console.log(categoryList);
+  // console.log(categoryDetails);
 
+  return (
     <div>
-      <h1>{product.productName}</h1>
+
+      <h1>{ categoryDetails?.title }</h1>
+      <p>{ categoryDetails?.description }</p>
+      <h2>{product.productName}</h2>
 
       <div className="product_container">
         {product.images.map((image, index) => (
@@ -78,7 +109,10 @@ function ProductSingle() {
           %
         </p>
       )}
-
+      <div className="container_cta">
+        <button> Adicionar ao carrinho </button>
+        <button> Favoritar produto</button>
+      </div>
       <NavLink to={ `/produtos/${category}` }>
         Ver mais produtos desta categoria
       </NavLink>

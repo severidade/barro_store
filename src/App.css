@@ -35,6 +35,12 @@
   max-width: 150px;
 }
 
+.container_cta{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .product_container {
   display: flex;
   width: 100;
