@@ -42,7 +42,7 @@ export async function fetchProducts(): Promise<Product[]> {
 }
 
 export async function fetchProductById(productId: string): Promise<Product | null> {
-  const query = `*[_type == "storeProduct" && _id == $productId][0] {
+  const query = `*[_type == "storeProduct" && _id == "${productId}"][0] {
     _id,
     productName,
     categories,
@@ -51,8 +51,6 @@ export async function fetchProductById(productId: string): Promise<Product | nul
     promotion,
     installmentPayments
   }`;
-
-  const params = { productId };
 
   const errorMessage = 'Ocorreu um erro ao buscar o produto:';
 
