@@ -18,6 +18,29 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
+
+.container_products{
+  background-color: violet;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card_product {
+  background-color: tomato;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 150px;
+}
+
+.container_cta{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .product_container {
   display: flex;
   width: 100;
@@ -25,10 +48,13 @@
   justify-content: center;
   align-items: center;
 }
+
 .product_image {
   width: 100px;
   height: 100px;
+  margin: 0;
 }
+
 .product_image img {
   width: 100%;
   height: 100%;

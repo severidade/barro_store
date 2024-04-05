@@ -41,6 +41,22 @@ export async function fetchProducts(): Promise<Product[]> {
   return fetchData<Product[]>(query, errorMessage);
 }
 
+export async function fetchProductById(productId: string): Promise<Product | null> {
+  const query = `*[_type == "storeProduct" && _id == "${productId}"][0] {
+    _id,
+    productName,
+    categories,
+    images,
+    price,
+    promotion,
+    installmentPayments
+  }`;
+
+  const errorMessage = 'Ocorreu um erro ao buscar o produto:';
+
+  return fetchData<Product>(query, errorMessage);
+}
+
 export async function fetchProductsByCategory(categoryId: string): Promise<Product[]> {
   const query = `
     *[_type == "storeProduct" && references("${categoryId}")]
