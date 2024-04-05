@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import imageUrlBuilder from '@sanity/image-url';
 import sanityClient from '../cliente.js';
@@ -15,7 +15,7 @@ function urlFor(source: string) {
 
 function Products() {
   const { category } = useParams(); // essa informação esta vindo da url
-  const [categoryList, setCategories] = useState<Category[] | null>(null); // estou fazendo o fatch na api e retornando todas as categorias
+  const [categoryList, setCategories] = useState<Category[] | null>(null); // estou fazendo o fetch na api retornando todas as categorias
   const [categoryDetails, setCategoryDetails] = useState<Category | null>(null); // o estado acima recupera todas as informações da categoria
 
   // const categoryId = categoryDetails._id;
@@ -34,6 +34,9 @@ function Products() {
     fetchAllCategories();
   }, []);
 
+  // Pego a lista de todas as categorias e comparo com a url vinda do useParams
+  // A primeira ocorrência retorno todas as informações da categoria
+  // Abaixo em fetchAllProductsByCategory passo somente o id da Categoria
   useEffect(() => {
     if (categoryList && category) {
       const foundCategory = categoryList.find((cat) => formatUrl(cat.title) === category);
@@ -54,6 +57,8 @@ function Products() {
     fetchAllProductsByCategory();
   }, [categoryDetails]);
 
+  console.log(productsByCategory);
+
   return (
     <>
       <h1>
@@ -62,11 +67,12 @@ function Products() {
         {category}
       </h1>
 
-      {/* <p>{ categoryDetails && categoryDetails._id}</p> */}
       <h1>Produtos por Categoria</h1>
       <div className="container_products">
         {productsByCategory && productsByCategory.map((product) => (
-          <div
+          <Link
+            // to={ `/produtos/${category}/${formatUrl(product.productName)}` }
+            to={ `/produtos/${category}/${formatUrl(product.productName)}?productId=${product._id}` }
             key={ product._id }
             className="card_product"
           >
@@ -74,13 +80,13 @@ function Products() {
               <figure className="product_image">
                 <img
                   src={ urlFor(product.images[0]).url() }
-                  alt="Imagem 1"
+                  alt={ product.productName }
                 />
               </figure>
             )}
             <h3>{product.productName}</h3>
 
-          </div>
+          </Link>
         ))}
       </div>
     </>

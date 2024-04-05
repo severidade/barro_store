@@ -6,6 +6,7 @@ import Home from './pages/Home.tsx';
 import History from './pages/History.tsx';
 import Products from './pages/Products.tsx';
 import Error from './pages/Error.tsx';
+import ProductSingle from './pages/ProductSingle.tsx';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/historia" element={ <History /> } />
         <Route path="/produtos" element={ <Products /> } />
         <Route path="/produtos/:category" element={ <Products /> } />
+        <Route path="/produtos/:category/:productSingle" element={ <ProductSingle /> } />
         <Route path="*" element={ <Error /> } />
       </Routes>
     </>
