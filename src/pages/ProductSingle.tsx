@@ -1,8 +1,17 @@
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+/* eslint-disable max-len */
+import { useLocation, useNavigate, useParams, NavLink } from 'react-router-dom';
+import imageUrlBuilder from '@sanity/image-url';
 import { useEffect, useState } from 'react';
 import { fetchProductById } from '../utils/fetch';
+import sanityClient from '../cliente.js';
 
 import { Product } from '../types/Product';
+
+const builder = imageUrlBuilder(sanityClient);
+
+function urlFor(source: string) {
+  return builder.image(source);
+}
 
 function ProductSingle() {
   const navigate = useNavigate();
@@ -14,37 +23,65 @@ function ProductSingle() {
 
   const [product, setProduct] = useState<Product | null>(null);
 
-  useEffect(() => {
-    async function fetchProduct() {
-      try {
-        // eslint-disable-next-line max-len
-        const data = productIdFromQuery ? await fetchProductById(productIdFromQuery) : null;
-        setProduct(data);
-      } catch (error) {
-        // Lida com o erro na busca dos posts para o carrossel
-      }
-    }
-    fetchProduct();
-  }, [productIdFromQuery]);
-
   function handleClick() {
     navigate(-1);
   }
 
-  console.log(category);
-  return (
-    <div>
-      <h1>
-        {product ? product.productName : ''}
-      </h1>
-      <p>
-        ID do Produto (a partir dos parâmetros de consulta):
-        {' '}
-        {productIdFromQuery}
-      </p>
+  useEffect(() => {
+    async function fetchProduct() {
+      try {
+        const data = productIdFromQuery ? await fetchProductById(productIdFromQuery) : null;
+        if (!data) {
+          navigate('/error');
+        } else {
+          setProduct(data);
+        }
+      } catch (error) {
+        console.error('Erro ao buscar produto:', error);
+      }
+    }
+    fetchProduct();
+  }, [productIdFromQuery, navigate]);
 
-      {/* esse botao é temporário */}
-      <button onClick={ handleClick }>Voltar</button>
+  if (!product) return <div className="loading">Loading...</div>;
+
+  return (
+
+    <div>
+      <h1>{product.productName}</h1>
+
+      <div className="product_container">
+        {product.images.map((image, index) => (
+          <figure key={ index } className="product_image">
+            <img
+              src={ urlFor(image).url() }
+              alt={ `Imagem ${index + 1}` }
+            />
+          </figure>
+        ))}
+      </div>
+      <p>
+        Preço:
+        {' '}
+        {product.price}
+      </p>
+      <p>
+        Promoção:
+        {' '}
+        {product.promotion && product.promotion.isPromotional ? 'Sim' : 'Não'}
+      </p>
+      {product.promotion && product.promotion.isPromotional && (
+        <p>
+          Desconto:
+          {' '}
+          {product.promotion.discount}
+          %
+        </p>
+      )}
+
+      <NavLink to={ `/produtos/${category}` }>
+        Ver mais produtos desta categoria
+      </NavLink>
     </div>
   );
 }
