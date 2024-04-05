@@ -1,8 +1,9 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import imageUrlBuilder from '@sanity/image-url';
 import sanityClient from '../cliente.js';
 import { Category } from '../types/Category';
+import { Product } from '../types/Product';
 import { fetchCategories, fetchProductsByCategory } from '../utils/fetch';
 
 import { formatUrl } from '../utils/formatUrl';
@@ -14,12 +15,17 @@ function urlFor(source: string) {
 }
 
 function Products() {
-  const { category } = useParams(); // essa informação esta vindo da url
+  const { category } = useParams();
+  const navigate = useNavigate();
+  // essa informação esta vindo da url
+
   const [categoryList, setCategories] = useState<Category[] | null>(null); // estou fazendo o fetch na api retornando todas as categorias
   const [categoryDetails, setCategoryDetails] = useState<Category | null>(null); // o estado acima recupera todas as informações da categoria
+  // 01 categoryList: Armazena a lista de todas as categorias.
+  // 02 categoryDetails: Armazena os detalhes da categoria selecionada.
 
-  // const categoryId = categoryDetails._id;
   const [productsByCategory, setProductsByCategory] = useState<Product[] | null>(null);
+  // 03 productsByCategory: Armazena os produtos da categoria selecionada.
 
   useEffect(() => {
     async function fetchAllCategories() {
@@ -27,30 +33,33 @@ function Products() {
         const data = await fetchCategories();
         setCategories(data);
       } catch (error) {
-        // Lida com o erro na busca dos posts para o carrossel
+        console.error('Erro ao buscar categorias:', error);
       }
     }
-
     fetchAllCategories();
   }, []);
 
-  // Pego a lista de todas as categorias e comparo com a url vinda do useParams
-  // A primeira ocorrência retorno todas as informações da categoria
-  // Abaixo em fetchAllProductsByCategory passo somente o id da Categoria
   useEffect(() => {
     if (categoryList && category) {
       const foundCategory = categoryList.find((cat) => formatUrl(cat.title) === category);
-      setCategoryDetails(foundCategory || null);
+      if (foundCategory) {
+        setCategoryDetails(foundCategory);
+      } else {
+        // Redirecionar para a rota de erro
+        navigate('/error');
+      }
     }
-  }, [categoryList, category]);
+  }, [categoryList, category, navigate]);
 
   useEffect(() => {
     async function fetchAllProductsByCategory() {
       try {
-        const data = await fetchProductsByCategory(categoryDetails._id);
-        setProductsByCategory(data);
+        if (categoryDetails) {
+          const data = await fetchProductsByCategory(categoryDetails._id);
+          setProductsByCategory(data);
+        }
       } catch (error) {
-        // Lida com o erro na busca dos posts para o carrossel
+        console.error('Erro ao buscar produtos por categoria:', error);
       }
     }
 
