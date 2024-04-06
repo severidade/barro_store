@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable max-len */
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -8,6 +9,8 @@ import { Product } from '../types/Product';
 import { fetchCategories, fetchProductsByCategory } from '../utils/fetch';
 
 import { formatUrl } from '../utils/formatUrl';
+
+import useFetchCategories from '../customHooks/useFetchCategories';
 
 const builder = imageUrlBuilder(sanityClient);
 
@@ -20,25 +23,14 @@ function Products() {
   const navigate = useNavigate();
   // essa informação esta vindo da url
 
-  const [categoryList, setCategories] = useState<Category[] | null>(null); // estou fazendo o fetch na api retornando todas as categorias
+  const categoryList = useFetchCategories(); // estou fazendo o fetch na api retornando todas as categorias
+
   const [categoryDetails, setCategoryDetails] = useState<Category | null>(null); // o estado acima recupera todas as informações da categoria
   // 01 categoryList: Armazena a lista de todas as categorias.
   // 02 categoryDetails: Armazena os detalhes da categoria selecionada.
 
   const [productsByCategory, setProductsByCategory] = useState<Product[] | null>(null);
   // 03 productsByCategory: Armazena os produtos da categoria selecionada.
-
-  useEffect(() => {
-    async function fetchAllCategories() {
-      try {
-        const data = await fetchCategories();
-        setCategories(data);
-      } catch (error) {
-        console.error('Erro ao buscar categorias:', error);
-      }
-    }
-    fetchAllCategories();
-  }, []);
 
   useEffect(() => {
     if (categoryList && category) {
