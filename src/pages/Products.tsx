@@ -70,14 +70,12 @@ function Products() {
   // console.log(productsByCategory);
 
   return (
-    <>
+    <div className="main">
       <h1>
         Esta é a página de produtos da categoria
         {' '}
         {category}
       </h1>
-
-      <p>{productsByCategory && categoryDetails._id}</p>
       <h1>Produtos por Categoria</h1>
       <div className="container_products">
         {productsByCategory && productsByCategory.map((product) => (
@@ -95,12 +93,12 @@ function Products() {
                 />
               </figure>
             )}
-            <h3>{product.productName}</h3>
+            <h3 className="product_link">{product.productName}</h3>
 
           </Link>
         ))}
       </div>
-    </>
+    </div>
   );
 }
 

@@ -75,12 +75,10 @@ function ProductSingle() {
   // console.log(categoryDetails);
 
   return (
-    <div>
-
+    <div className="main">
       <h1>{ categoryDetails?.title }</h1>
       <p>{ categoryDetails?.description }</p>
       <h2>{product.productName}</h2>
-
       <div className="product_container">
         {product.images.map((image, index) => (
           <figure key={ index } className="product_image">
