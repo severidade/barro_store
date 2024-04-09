@@ -29,38 +29,42 @@ body {
 }
 
 .main {
+  background: var(--light_color);
   width: 100vw;
   max-width: 100%;
-  min-height: 130vh;
-  padding-top: 50px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  gap: var(--default-gap);
-  display: flex;
-  position: relative;
-  background-color: var(--light_color);
+  min-height: 100vh;
+  padding-top: 90px;
 }
 
-.container_products{
-  /* background-color: violet; */
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  grid-auto-rows: auto;
-  grid-gap: 15px;
-  width: 100%;
-  padding: 0 10vw;
-}
-
-.card_product {
+div[class^="container"]{
   /* background-color: tomato; */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  grid-auto-rows: auto;
+  grid-gap: 20px;
+  width: 90vw;
+  margin: auto;
+  
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+
+
+
+
+/* .card_product {
+
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   max-width: 150px;
-}
+} */
 
 .container_cta{
   display: flex;
@@ -94,4 +98,20 @@ body {
   text-align: center;
   /* background-color: violet; */
   line-height: 1;
+}
+
+/* Media query para tablet */
+@media only screen and (min-width: 500px) {
+  div[class^="container"]{
+    width: 70vw;
+    /* background-color: #f7c130; */
+  }  
+}
+
+/* Media query para desktop */
+@media only screen and (min-width: 1024px) {
+  div[class^="container"]{
+    width: 30vw;
+    /* background-color: violet; */
+  }  
 }
