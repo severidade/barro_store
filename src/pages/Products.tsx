@@ -1,22 +1,15 @@
 import { useParams } from 'react-router-dom';
-
 import useFetchCategories from '../customHooks/useFetchCategories';
 import useFetchCategoryDetails from '../customHooks/useFetchCategoryDetails';
 import useFetchProductsByCategory from '../customHooks/useFetchProductsByCategory';
-
 import ProductLinks from '../components/ProductLinks';
 
 function Products() {
-  const { category } = useParams(); // retorna a categoria vindo da url
+  const { category } = useParams();
 
-  const categoryList = useFetchCategories();// 01
-  const categoryDetails = useFetchCategoryDetails(categoryList, category);// 02
+  const categoryList = useFetchCategories();
+  const categoryDetails = useFetchCategoryDetails(categoryList, category);
   const productsByCategory = useFetchProductsByCategory(categoryDetails);
-  // 01 Faz o fetch na api retornando todas as categorias
-  // 02 Filtra a lista de categorias e retorna os detalhes da categoria vinda da url.
-
-  // const [productsByCategory, setProductsByCategory] = useState<Product[] | null>(null);
-  // 03 productsByCategory: Armazena os produtos da categoria selecionada.
 
   return (
     <div className="main">
