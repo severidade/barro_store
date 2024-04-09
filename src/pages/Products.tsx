@@ -1,20 +1,10 @@
-/* eslint-disable no-underscore-dangle */
-/* eslint-disable max-len */
-import { useParams, Link, useNavigate } from 'react-router-dom';
-import imageUrlBuilder from '@sanity/image-url';
-import sanityClient from '../cliente.js';
+import { useParams } from 'react-router-dom';
 
 import useFetchCategories from '../customHooks/useFetchCategories';
 import useFetchCategoryDetails from '../customHooks/useFetchCategoryDetails';
 import useFetchProductsByCategory from '../customHooks/useFetchProductsByCategory';
 
-import { formatUrl } from '../utils/formatUrl'; // acho que vou remover
-
-const builder = imageUrlBuilder(sanityClient);
-
-function urlFor(source: string) {
-  return builder.image(source);
-}
+import ProductLinks from '../components/ProductLinks';
 
 function Products() {
   const { category } = useParams(); // retorna a categoria vindo da url
@@ -36,26 +26,14 @@ function Products() {
         {category}
       </h1>
       <h1>Produtos por Categoria</h1>
-      <div className="container_products">
-        {productsByCategory && productsByCategory.map((product) => (
-          <Link
-            to={ `/produtos/${category}/${formatUrl(product.productName)}?productId=${product._id}` }
-            key={ product._id }
-            className="card_product"
-          >
-            {product.images.length > 0 && (
-              <figure className="product_image">
-                <img
-                  src={ urlFor(product.images[0]).url() }
-                  alt={ product.productName }
-                />
-              </figure>
-            )}
-            <h3 className="product_link">{product.productName}</h3>
 
-          </Link>
-        ))}
-      </div>
+      {category && (
+        <ProductLinks
+          category={ category }
+          products={ productsByCategory || [] }
+        />
+      )}
+
     </div>
   );
 }
