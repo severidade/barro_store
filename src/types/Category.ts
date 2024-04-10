@@ -1,5 +1,5 @@
 export interface Category {
-  id: string;
+  _id: string;
   title: string;
   description: string;
   imageUrl: string;

@@ -1,39 +1,70 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+/* 
+font-family: 'Lato', sans-serif; 
+*/
+
+:root {
+  --primary_color: #421602;
+  --light_color: #ECE8DF;
+  --color-transparente: #ffffff00;
+  --color-title: #f7c130;
+  --color-cta: #ff6347;
+  --color-dark: #030c1a;
+  --default-radius: 5px;
+  --default-gap: 20px;
+  --mobile-width: 90vw;
+  --desktop-width: 50vw;
+  --image-shadow: drop-shadow(16px 16px 14px #000000);
+
+  width: 100vw;
+  max-width: 100%;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+body {
+  font-family: "lato", sans-serif;
+  color: var(--primary_color);
+  font-weight: 300;
+  font-size: 17px;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+
+.main {
+  background: var(--light_color);
+  width: 100vw;
+  max-width: 100%;
+  min-height: 100vh;
+  padding-top: 90px;
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+
+div[class^="container"]{
+  /* background-color: tomato; */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  grid-auto-rows: auto;
+  grid-gap: 20px;
+  width: 90vw;
+  margin: auto;
+  
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 
-.container_products{
-  background-color: violet;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
 
-.card_product {
-  background-color: tomato;
+
+
+/* .card_product {
+
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   max-width: 150px;
-}
+} */
 
 .container_cta{
   display: flex;
@@ -59,26 +90,28 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
-}
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  /* filter: drop-shadow(1px 1px 4px var(--primary_color)); */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.product_link{
+  height: 50px;
+  text-align: center;
+  /* background-color: violet; */
+  line-height: 1;
 }
 
-.card {
-  padding: 2em;
+/* Media query para tablet */
+@media only screen and (min-width: 500px) {
+  div[class^="container"]{
+    width: 70vw;
+    /* background-color: #f7c130; */
+  }  
 }
 
-.read-the-docs {
-  color: #888;
+/* Media query para desktop */
+@media only screen and (min-width: 1024px) {
+  div[class^="container"]{
+    width: 30vw;
+    /* background-color: violet; */
+  }  
 }

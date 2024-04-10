@@ -3,12 +3,13 @@ import { useLocation, useNavigate, useParams, NavLink } from 'react-router-dom';
 import imageUrlBuilder from '@sanity/image-url';
 import { useEffect, useState } from 'react';
 import { fetchProductById, fetchCategories } from '../utils/fetch';
-import sanityClient from '../cliente.js';
+import sanityClient from '../cliente';
 
 import { formatUrl } from '../utils/formatUrl';
 
 import { Product } from '../types/Product';
 import { Category } from '../types/Category';
+import scrollToTop from '../utils/scrollToTop';
 
 const builder = imageUrlBuilder(sanityClient);
 
@@ -75,12 +76,10 @@ function ProductSingle() {
   // console.log(categoryDetails);
 
   return (
-    <div>
-
+    <div className="main">
       <h1>{ categoryDetails?.title }</h1>
       <p>{ categoryDetails?.description }</p>
       <h2>{product.productName}</h2>
-
       <div className="product_container">
         {product.images.map((image, index) => (
           <figure key={ index } className="product_image">
@@ -113,7 +112,10 @@ function ProductSingle() {
         <button> Adicionar ao carrinho </button>
         <button> Favoritar produto</button>
       </div>
-      <NavLink to={ `/produtos/${category}` }>
+      <NavLink
+        to={ `/produtos/${category}` }
+        onClick={ scrollToTop }
+      >
         Ver mais produtos desta categoria
       </NavLink>
     </div>
