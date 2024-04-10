@@ -2,10 +2,11 @@
 // import React from 'react';
 import imageUrlBuilder from '@sanity/image-url';
 import { Link } from 'react-router-dom';
-import sanityClient from '../../cliente.js';
+import sanityClient from '../../cliente';
 import { formatUrl } from '../../utils/formatUrl';
 import { Product } from '../../types/Product';
 import styles from './ProductLinks.module.css';
+import scrollToTop from '../../utils/scrollToTop';
 
 const builder = imageUrlBuilder(sanityClient);
 
@@ -27,6 +28,7 @@ function ProductLinks({ category, products }: ProductLinksProps) {
           to={ `/produtos/${category}/${formatUrl(product.productName)}?productId=${product._id}` }
           key={ product._id }
           className={ styles.card_product }
+          onClick={ scrollToTop }
         >
           {product.images.length > 0 && (
             <figure className={ styles.container_product_link_image }>
