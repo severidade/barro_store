@@ -1,4 +1,4 @@
-import { defineField, defineType } from 'sanity'
+import { defineField, defineType } from 'sanity';
 
 export default defineType({
   name: 'pageContent',
@@ -43,5 +43,31 @@ export default defineType({
       of: [{ type: 'block' }],
       description: 'Enter the content of the page',
     }),
+    defineField({
+      name: 'isHomePage',
+      title: 'É a página inicial?',
+      type: 'boolean',
+      description: 'Marque esta opção se esta for a página inicial da aplicação',
+      validation: Rule => Rule.custom((isHomePage, { document }) => {
+        if (isHomePage) {
+          const otherHomePageCount = document._id ? 
+            document._type === 'pageContent' ?
+              document._id === 'drafts.pageContent' ?
+                0 : // Page is not yet published
+                countOf(Rule, document._id) :
+              countOf(Rule, document._id) :
+            countOf(Rule)
+          return otherHomePageCount > 1 ? 'Apenas uma página pode ser marcada como a página inicial' : true;
+        }
+        return true;
+      }),
+    }),
   ],
-})
+});
+
+function countOf(Rule, id) {
+  return Rule
+    .count()
+    .notId(id)
+    .where('isHomePage', true)
+}
