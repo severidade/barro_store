@@ -1,10 +1,7 @@
-// import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
 import imageUrlBuilder from '@sanity/image-url';
 import BlockContent from '@sanity/block-content-to-react';
-import { Page } from '../types/Page';
-import { fetchPages } from '../utils/fetch';
 import sanityClient from '../cliente';
+import useFetchPageData from '../customHooks/useFetchPageData';
 
 const builder = imageUrlBuilder(sanityClient);
 
@@ -13,27 +10,8 @@ function urlFor(source: string) {
 }
 
 function History() {
-  const page = 'historia';
-  const [pageData, setPageData] = useState<Page | null>(null); // paginas
-
-  useEffect(() => {
-    async function fetchPagesData() {
-      try {
-        const pagesData = await fetchPages();
-        const currentPage = pagesData.find((data) => data.pageSlug.current === page);
-
-        if (currentPage) {
-          setPageData(currentPage);
-        } else {
-          console.error('Página de história não encontrada na base de dados do Sanity');
-        }
-      } catch (error) {
-        console.error('Erro ao buscar as páginas:', error);
-      }
-    }
-
-    fetchPagesData();
-  }, []);
+  const page = 'historia'; // talvez isso possa vir dinamicamente com useParams
+  const pageData = useFetchPageData(page);
 
   if (!pageData) return <div className="main">Loading...</div>;
 
