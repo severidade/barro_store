@@ -83,7 +83,9 @@ export async function fetchPages(): Promise<Page[]> {
     pageSlug,
     highlightPhrase,
     "highlightImageUrl": highlightImage.asset->url,
-    pageContent
+    video,
+    pageContent,
+    footerImage
   }`;
 
   const errorMessage = 'Ocorreu um erro ao buscar as páginas:';

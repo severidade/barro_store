@@ -1,6 +1,7 @@
 import BlockContent from '@sanity/block-content-to-react';
-import { urlFor } from '../utils/buildSanityImageUrl';
+import ReactPlayer from 'react-player';
 import useFetchPageData from '../customHooks/useFetchPageData';
+import HighlightImage from '../components/HighlightImage';
 import Footer from '../components/Footer';
 
 function History() {
@@ -9,19 +10,34 @@ function History() {
 
   if (!pageData) return <div className="main">Loading...</div>;
 
+  const youtubeVideoId = pageData.video?.youtubeId;
+
   return (
     <div className="main">
+      <HighlightImage
+        imageUrl={ pageData.highlightImageUrl }
+        isHeroImage
+      />
       <div className="container_page">
         <h1>{ pageData.pageTitle}</h1>
         <p>{ pageData.highlightPhrase}</p>
-        <figure>
-          <img
-            src={ urlFor(pageData.highlightImageUrl).url() }
-            alt="Foto de destaque"
-          />
-        </figure>
+        <ReactPlayer
+          className="video_background"
+          url={ `https://www.youtube.com/watch?v=${youtubeVideoId}` }
+          playing
+          loop
+          muted
+          controls={ false }
+          speed="2"
+          width="100%"
+          height="300px"
+        />
         <BlockContent blocks={ pageData.pageContent } />
       </div>
+      <HighlightImage
+        imageUrl={ pageData.footerImage }
+        isHeroImage={ false }
+      />
       <Footer />
     </div>
   );

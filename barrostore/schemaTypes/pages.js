@@ -1,4 +1,4 @@
-import { defineField, defineType } from 'sanity'
+import { defineField, defineType } from 'sanity';
 
 export default defineType({
   name: 'pageContent',
@@ -31,16 +31,24 @@ export default defineType({
       name: 'highlightImage',
       title: 'Imagem de destaque',
       type: 'image',
-      description: 'você pode colocar uma imagem de destaque em cada página',
+      description: 'Esta imagem aparece no início da página',
       options: {
         hotspot: true,
       },
     }),
     defineField({
-      name: 'youtubeVideo',
+      name: 'video',
+      type: 'document',
       title: 'Vídeo do YouTube',
-      type: 'url',
-      description: 'Insira o link do vídeo do YouTube',
+      fields: [
+        {
+          name: 'youtubeId',
+          type: 'string',
+          title: 'ID do Vídeo',
+        }
+      ],
+      // Definir o campo de vídeo como não obrigatório
+      required: false,
     }),
     defineField({
       name: 'pageContent',
@@ -49,5 +57,14 @@ export default defineType({
       of: [{ type: 'block' }],
       description: 'Enter the content of the page',
     }),
+    defineField({
+      name: 'footerImage',
+      title: 'Imagem para ficar no rodapé da página',
+      type: 'image',
+      description: 'Você pode colocar uma imagem de destaque no rodapé da página',
+      options: {
+        hotspot: true,
+      },
+    }),
   ],
-})
+});

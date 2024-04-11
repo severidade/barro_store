@@ -7,6 +7,18 @@ export interface Page {
   };
   highlightPhrase: string;
   highlightImageUrl: string;
-  pageContent: string;
+  pageContent: Block[];
+  video?: {
+    youtubeId: string;
+  };
+  footerImage: string;
   // isHomePage: boolean;
+}
+
+interface Block {
+  _type: string;
+  children: {
+    _type: string;
+    text: string;
+  }[];
 }
