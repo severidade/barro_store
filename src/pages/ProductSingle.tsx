@@ -1,21 +1,15 @@
 /* eslint-disable max-len */
 import { useLocation, useNavigate, useParams, NavLink } from 'react-router-dom';
-import imageUrlBuilder from '@sanity/image-url';
+// import imageUrlBuilder from '@sanity/image-url';
 import { useEffect, useState } from 'react';
+import { urlFor } from '../utils/buildSanityImageUrl';
 import { fetchProductById, fetchCategories } from '../utils/fetch';
-import sanityClient from '../cliente';
 
 import { formatUrl } from '../utils/formatUrl';
 
 import { Product } from '../types/Product';
 import { Category } from '../types/Category';
 import scrollToTop from '../utils/scrollToTop';
-
-const builder = imageUrlBuilder(sanityClient);
-
-function urlFor(source: string) {
-  return builder.image(source);
-}
 
 function ProductSingle() {
   const navigate = useNavigate();
@@ -70,10 +64,6 @@ function ProductSingle() {
   }, [categoryList, category, navigate]);
 
   if (!product) return <div className="loading">Loading...</div>;
-
-  // console.log(category);
-  // console.log(categoryList);
-  // console.log(categoryDetails);
 
   return (
     <div className="main">
