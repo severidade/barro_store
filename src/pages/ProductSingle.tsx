@@ -1,16 +1,17 @@
 /* eslint-disable max-len */
 import { useLocation, useNavigate, useParams, NavLink } from 'react-router-dom';
-// import imageUrlBuilder from '@sanity/image-url';
 import { useEffect, useState } from 'react';
 import { urlFor } from '../utils/buildSanityImageUrl';
-import { fetchProductById, fetchCategories } from '../utils/fetch';
+import { fetchProductById } from '../utils/fetch';
 
 import { formatUrl } from '../utils/formatUrl';
+
+import useFetchCategories from '../customHooks/useFetchCategories';
+import Footer from '../components/Footer';
 
 import { Product } from '../types/Product';
 import { Category } from '../types/Category';
 import scrollToTop from '../utils/scrollToTop';
-import Footer from '../components/Footer';
 
 function ProductSingle() {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ function ProductSingle() {
   const { category } = useParams();
 
   const [product, setProduct] = useState<Product | null>(null);
-  const [categoryList, setCategories] = useState<Category[] | null>(null);
+  const categoryList = useFetchCategories();
   const [categoryDetails, setCategoryDetails] = useState<Category | null>(null);
 
   useEffect(() => {
@@ -39,18 +40,6 @@ function ProductSingle() {
     }
     fetchProduct();
   }, [productIdFromQuery, navigate]);
-
-  useEffect(() => {
-    async function fetchAllCategories() {
-      try {
-        const data = await fetchCategories();
-        setCategories(data);
-      } catch (error) {
-        console.error('Erro ao buscar categorias:', error);
-      }
-    }
-    fetchAllCategories();
-  }, []);
 
   useEffect(() => {
     if (categoryList && category) {
