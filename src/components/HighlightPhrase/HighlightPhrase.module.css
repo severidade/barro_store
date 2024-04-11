@@ -1,0 +1,29 @@
+.container_highlight_phrase {
+  /* background-color: tomato; */
+  display: block;
+  padding-top: var(--default-gap);
+  position: relative;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.container_highlight_phrase::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background: var(--primary_color);
+}
+
+.container_highlight_phrase::after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0;
+  height: 7px;
+  width: 25%;
+  background: var(--primary_color);
+} 
