@@ -1,6 +1,7 @@
 import BlockContent from '@sanity/block-content-to-react';
 import { urlFor } from '../utils/buildSanityImageUrl';
 import useFetchPageData from '../customHooks/useFetchPageData';
+import Footer from '../components/Footer';
 
 function History() {
   const page = 'historia'; // talvez isso possa vir dinamicamente com useParams
@@ -21,10 +22,7 @@ function History() {
       <div>
         <BlockContent blocks={ pageData.pageContent } />
       </div>
-      <footer>
-        <p>Rua das Flores, 73 - Boa Vista</p>
-        <p> Jaboticatubas | MG</p>
-      </footer>
+      <Footer />
     </div>
   );
 }

@@ -10,6 +10,7 @@ import { formatUrl } from '../utils/formatUrl';
 import { Product } from '../types/Product';
 import { Category } from '../types/Category';
 import scrollToTop from '../utils/scrollToTop';
+import Footer from '../components/Footer';
 
 function ProductSingle() {
   const navigate = useNavigate();
@@ -108,6 +109,7 @@ function ProductSingle() {
       >
         Ver mais produtos desta categoria
       </NavLink>
+      <Footer />
     </div>
   );
 }
