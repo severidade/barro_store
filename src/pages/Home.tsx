@@ -7,7 +7,7 @@ function Home() {
           <p>Vasos, Cerâmicas e Plantas</p>
           <h1>BARRO</h1>
           <ul>
-            <li>Localizacao</li>
+            <li>Localização</li>
             <li>WhatsApp</li>
             <li>Instagram</li>
           </ul>

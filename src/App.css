@@ -37,14 +37,15 @@ body {
 }
 
 div[class^="container"]{
-  /* background-color: tomato; */
+  width: 90vw;
+  margin: auto;
+}
+
+.container_products {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
   grid-auto-rows: auto;
   grid-gap: 20px;
-  width: 90vw;
-  margin: auto;
-  
 }
 
 .img {
