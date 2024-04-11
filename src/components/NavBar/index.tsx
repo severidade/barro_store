@@ -11,7 +11,6 @@ function NavBar() {
     <nav className="container_menu">
       <NavLink to="/">Home</NavLink>
       <NavLink to="/historia">História</NavLink>
-      {/* <NavLink to="/produtos">Produtos</NavLink> */}
       <div className="menu_second_level">
         {
           categoryList && categoryList.map((category) => (

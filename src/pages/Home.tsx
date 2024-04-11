@@ -6,13 +6,11 @@ function Home() {
         <div className="hero_container_logo">
           <p>Vasos, Cerâmicas e Plantas</p>
           <h1>BARRO</h1>
-          <div className="social_links">
-            <ul>
-              <li>Localizacao</li>
-              <li>WhatsApp</li>
-              <li>Instagram</li>
-            </ul>
-          </div>
+          <ul>
+            <li>Localizacao</li>
+            <li>WhatsApp</li>
+            <li>Instagram</li>
+          </ul>
         </div>
       </section>
       <section className="second_section">
