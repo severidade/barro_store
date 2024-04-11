@@ -1,13 +1,6 @@
-import imageUrlBuilder from '@sanity/image-url';
 import BlockContent from '@sanity/block-content-to-react';
-import sanityClient from '../cliente';
+import { urlFor } from '../utils/buildSanityImageUrl';
 import useFetchPageData from '../customHooks/useFetchPageData';
-
-const builder = imageUrlBuilder(sanityClient);
-
-function urlFor(source: string) {
-  return builder.image(source);
-}
 
 function History() {
   const page = 'historia'; // talvez isso possa vir dinamicamente com useParams
