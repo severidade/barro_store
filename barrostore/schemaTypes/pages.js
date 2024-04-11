@@ -37,6 +37,12 @@ export default defineType({
       },
     }),
     defineField({
+      name: 'youtubeVideo',
+      title: 'Vídeo do YouTube',
+      type: 'url',
+      description: 'Insira o link do vídeo do YouTube',
+    }),
+    defineField({
       name: 'pageContent',
       title: 'Page Content',
       type: 'array',
