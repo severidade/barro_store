@@ -9,7 +9,14 @@ function History() {
   const page = 'historia'; // talvez isso possa vir dinamicamente com useParams
   const pageData = useFetchPageData(page);
 
-  if (!pageData) return <div className="main">Loading...</div>;
+  if (!pageData) {
+    return (
+      <div className="main">
+        <div className="loading">Loading...</div>
+        <Footer />
+      </div>
+    );
+  }
 
   const youtubeVideoId = pageData.video?.youtubeId;
 
