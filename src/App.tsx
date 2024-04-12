@@ -15,7 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={ <Home /> } />
         <Route path="/historia" element={ <History /> } />
-        <Route path="/produtos" element={ <Products /> } />
+        <Route path="/produtos" element={ <Error /> } />
         <Route path="/produtos/:category" element={ <Products /> } />
         <Route path="/produtos/:category/:productSingle" element={ <ProductSingle /> } />
         <Route path="*" element={ <Error /> } />

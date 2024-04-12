@@ -1,21 +1,17 @@
 /* eslint-disable max-len */
 import { useLocation, useNavigate, useParams, NavLink } from 'react-router-dom';
-import imageUrlBuilder from '@sanity/image-url';
 import { useEffect, useState } from 'react';
-import { fetchProductById, fetchCategories } from '../utils/fetch';
-import sanityClient from '../cliente';
+import { urlFor } from '../utils/buildSanityImageUrl';
+import { fetchProductById } from '../utils/fetch';
 
 import { formatUrl } from '../utils/formatUrl';
+
+import useFetchCategories from '../customHooks/useFetchCategories';
+import Footer from '../components/Footer';
 
 import { Product } from '../types/Product';
 import { Category } from '../types/Category';
 import scrollToTop from '../utils/scrollToTop';
-
-const builder = imageUrlBuilder(sanityClient);
-
-function urlFor(source: string) {
-  return builder.image(source);
-}
 
 function ProductSingle() {
   const navigate = useNavigate();
@@ -26,7 +22,7 @@ function ProductSingle() {
   const { category } = useParams();
 
   const [product, setProduct] = useState<Product | null>(null);
-  const [categoryList, setCategories] = useState<Category[] | null>(null);
+  const categoryList = useFetchCategories();
   const [categoryDetails, setCategoryDetails] = useState<Category | null>(null);
 
   useEffect(() => {
@@ -46,18 +42,6 @@ function ProductSingle() {
   }, [productIdFromQuery, navigate]);
 
   useEffect(() => {
-    async function fetchAllCategories() {
-      try {
-        const data = await fetchCategories();
-        setCategories(data);
-      } catch (error) {
-        console.error('Erro ao buscar categorias:', error);
-      }
-    }
-    fetchAllCategories();
-  }, []);
-
-  useEffect(() => {
     if (categoryList && category) {
       const foundCategory = categoryList.find((cat) => formatUrl(cat.title) === category);
       if (foundCategory) {
@@ -70,10 +54,6 @@ function ProductSingle() {
   }, [categoryList, category, navigate]);
 
   if (!product) return <div className="loading">Loading...</div>;
-
-  // console.log(category);
-  // console.log(categoryList);
-  // console.log(categoryDetails);
 
   return (
     <div className="main">
@@ -118,6 +98,7 @@ function ProductSingle() {
       >
         Ver mais produtos desta categoria
       </NavLink>
+      <Footer />
     </div>
   );
 }

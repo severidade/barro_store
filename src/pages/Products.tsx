@@ -3,6 +3,7 @@ import useFetchCategories from '../customHooks/useFetchCategories';
 import useFetchCategoryDetails from '../customHooks/useFetchCategoryDetails';
 import useFetchProductsByCategory from '../customHooks/useFetchProductsByCategory';
 import ProductLinks from '../components/ProductLinks';
+import Footer from '../components/Footer';
 
 function Products() {
   const { category } = useParams();
@@ -26,7 +27,7 @@ function Products() {
           products={ productsByCategory || [] }
         />
       )}
-
+      <Footer />
     </div>
   );
 }
