@@ -43,9 +43,10 @@ body {
 }
 
 div[class^="container"]{
-  width: 100%;
-  padding: 0 50px;
-  margin: auto;
+  width: 70vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .container_products {
@@ -59,6 +60,7 @@ div[class^="container"]{
   display: flex;
   flex-direction: column;
   gap: var(--default-gap);
+  padding-bottom: calc(var(--default-gap) * 2);
 }
 h1 {
   font-family: 'Dahlia', sans-serif !important;
@@ -130,6 +132,10 @@ h1 {
 @media only screen and (min-width: 1024px) {
   div[class^="container"]{
     width: 30vw;
-    /* background-color: violet; */
-  }  
+  }
+
+  .container_page {
+    left: 10vw !important;
+    transform: translateX(0) !important;
+  }
 }

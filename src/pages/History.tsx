@@ -1,9 +1,9 @@
 import BlockContent from '@sanity/block-content-to-react';
-import ReactPlayer from 'react-player';
 import useFetchPageData from '../customHooks/useFetchPageData';
 import HighlightImage from '../components/HighlightImage';
 import Footer from '../components/Footer';
 import HighlightPhrase from '../components/HighlightPhrase';
+import VideoPlayer from '../components/VideoPlayer';
 
 function History() {
   const page = 'historia'; // talvez isso possa vir dinamicamente com useParams
@@ -22,17 +22,7 @@ function History() {
       <div className="container_page">
         <h1>{ pageData.pageTitle}</h1>
         <HighlightPhrase phrase={ pageData.highlightPhrase } />
-        <ReactPlayer
-          className="video_background"
-          url={ `https://www.youtube.com/watch?v=${youtubeVideoId}` }
-          playing
-          loop
-          muted
-          controls={ false }
-          speed="2"
-          width="100%"
-          height="300px"
-        />
+        {youtubeVideoId && <VideoPlayer id={ youtubeVideoId } />}
         <BlockContent blocks={ pageData.pageContent } />
       </div>
       <HighlightImage
