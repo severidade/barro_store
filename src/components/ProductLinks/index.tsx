@@ -1,18 +1,10 @@
 /* eslint-disable no-underscore-dangle */
-// import React from 'react';
-import imageUrlBuilder from '@sanity/image-url';
 import { Link } from 'react-router-dom';
-import sanityClient from '../../cliente';
+import { urlFor } from '../../utils/buildSanityImageUrl';
 import { formatUrl } from '../../utils/formatUrl';
 import { Product } from '../../types/Product';
 import styles from './ProductLinks.module.css';
 import scrollToTop from '../../utils/scrollToTop';
-
-const builder = imageUrlBuilder(sanityClient);
-
-function urlFor(source: string) {
-  return builder.image(source);
-}
 
 interface ProductLinksProps {
   category: string;

@@ -1,0 +1,25 @@
+.footer {
+  background: var(--primary_color);
+  color: var(--light_color);
+  height: var(--footer-height);
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: 400;
+}
+
+@media only screen and (min-width: 1024px) {
+  .footer {
+    position: fixed;
+    width: 100vw;
+    max-width: 100%;
+    bottom: 0;
+    left: 0;
+    flex-direction: row;
+    gap: calc(var(--default-gap)/2);
+    height: calc(var(--footer-height) / 2);
+  }
+
+}

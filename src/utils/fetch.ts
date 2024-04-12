@@ -1,8 +1,8 @@
 // Temporariamente tipando sanityClient como any
-// @ts-ignore
-import sanityClient from '../cliente.js';
+import sanityClient from '../cliente';
 import { Category } from '../types/Category.ts';
 import { Product } from '../types/Product.ts';
+import { Page } from '../types/Page.ts';
 
 async function fetchData<T>(query: string, errorMessage: string): Promise<T> {
   try {
@@ -74,4 +74,21 @@ export async function fetchProductsByCategory(categoryId: string): Promise<Produ
   const errorMessage = 'Ocorreu um erro ao buscar os produtos por categoria:';
 
   return fetchData<Product[]>(query, errorMessage);
+}
+
+export async function fetchPages(): Promise<Page[]> {
+  const query = `*[_type == "pageContent"] {
+    _id,
+    pageTitle,
+    pageSlug,
+    highlightPhrase,
+    "highlightImageUrl": highlightImage.asset->url,
+    video,
+    pageContent,
+    footerImage
+  }`;
+
+  const errorMessage = 'Ocorreu um erro ao buscar as páginas:';
+
+  return fetchData<Page[]>(query, errorMessage);
 }
