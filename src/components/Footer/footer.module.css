@@ -1,7 +1,7 @@
-.foter {
+.footer {
   background: var(--primary_color);
   color: var(--light_color);
-  height: 70px;
+  height: var(--footer-height);
   font-size: 14px;
   display: flex;
   flex-direction: column;
@@ -11,8 +11,15 @@
 }
 
 @media only screen and (min-width: 1024px) {
-  .foter {
-    width: 50vw;
+  .footer {
+    position: fixed;
+    width: 100vw;
+    max-width: 100%;
+    bottom: 0;
+    left: 0;
+    flex-direction: row;
+    gap: calc(var(--default-gap)/2);
+    height: calc(var(--footer-height) / 2);
   }
 
 }

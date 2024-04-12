@@ -1,14 +1,12 @@
 .hero_container_image {
   width: 100%;
   height: 40vh;
-  background: var(--color-title);
 }
 
 .footer_container_image {
   width: 100%;
   height: 70vh;
 }
-
 
 .hero_container_image > img,
 .footer_container_image > img{
@@ -35,7 +33,8 @@
     height: 30vw;
     position: relative;
     margin-left: 10vw;
-    padding-bottom: calc(var(--default-gap) * 2)
+    border-radius: 5px;
+    overflow: hidden;
   }
 
 }
