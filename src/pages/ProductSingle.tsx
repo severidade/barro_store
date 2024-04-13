@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import { useLocation, useNavigate, useParams, NavLink } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { urlFor } from '../utils/buildSanityImageUrl';
+// import { urlFor } from '../utils/buildSanityImageUrl';
 import { fetchProductById } from '../utils/fetch';
 
 import { formatUrl } from '../utils/formatUrl';
@@ -14,6 +14,7 @@ import { Category } from '../types/Category';
 import scrollToTop from '../utils/scrollToTop';
 import MainTitle from '../components/MainTitle';
 import ProductTitle from '../components/ProductTitle';
+import ProductCarousel from '../components/ProductCarousel';
 
 function ProductSingle() {
   const navigate = useNavigate();
@@ -66,17 +67,8 @@ function ProductSingle() {
         <MainTitle title={ title || '' } />
         <p>{ description }</p>
         <ProductTitle productName={ productName || '' } />
+        <ProductCarousel images={ product.images } />
 
-        <div className="product_container">
-          {product.images.map((image, index) => (
-            <figure key={ index } className="product_image">
-              <img
-                src={ urlFor(image).url() }
-                alt={ `Imagem ${index + 1}` }
-              />
-            </figure>
-          ))}
-        </div>
         <p>
           Preço:
           {' '}

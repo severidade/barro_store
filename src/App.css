@@ -92,11 +92,11 @@ div[class^="container"]{
   align-items: center;
 }
 
-.product_image {
+/* .product_image {
   width: 100px;
   height: 100px;
   margin: 0;
-}
+} */
 
 .product_link{
   height: 50px;
