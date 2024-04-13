@@ -13,6 +13,7 @@ import { Product } from '../types/Product';
 import { Category } from '../types/Category';
 import scrollToTop from '../utils/scrollToTop';
 import MainTitle from '../components/MainTitle';
+import ProductTitle from '../components/ProductTitle';
 
 function ProductSingle() {
   const navigate = useNavigate();
@@ -57,52 +58,54 @@ function ProductSingle() {
   if (!product) return <div className="loading">Loading...</div>;
 
   const { title, description } = categoryDetails || {};
+  const { productName } = product || {};
 
   return (
     <div className="main">
-      <MainTitle title={ title || '' } />
-      <p>{ description }</p>
+      <div className="container_page">
+        <MainTitle title={ title || '' } />
+        <p>{ description }</p>
+        <ProductTitle productName={ productName || '' } />
 
-      <h2>{product.productName}</h2>
-
-      <div className="product_container">
-        {product.images.map((image, index) => (
-          <figure key={ index } className="product_image">
-            <img
-              src={ urlFor(image).url() }
-              alt={ `Imagem ${index + 1}` }
-            />
-          </figure>
-        ))}
-      </div>
-      <p>
-        Preço:
-        {' '}
-        {product.price}
-      </p>
-      <p>
-        Promoção:
-        {' '}
-        {product.promotion && product.promotion.isPromotional ? 'Sim' : 'Não'}
-      </p>
-      {product.promotion && product.promotion.isPromotional && (
+        <div className="product_container">
+          {product.images.map((image, index) => (
+            <figure key={ index } className="product_image">
+              <img
+                src={ urlFor(image).url() }
+                alt={ `Imagem ${index + 1}` }
+              />
+            </figure>
+          ))}
+        </div>
         <p>
-          Desconto:
+          Preço:
           {' '}
-          {product.promotion.discount}
-          %
+          {product.price}
         </p>
-      )}
-      <div className="container_cta">
-        <button> Adicionar ao carrinho </button>
-        <button> Favoritar produto</button>
+        <p>
+          Promoção:
+          {' '}
+          {product.promotion && product.promotion.isPromotional ? 'Sim' : 'Não'}
+        </p>
+        {product.promotion && product.promotion.isPromotional && (
+          <p>
+            Desconto:
+            {' '}
+            {product.promotion.discount}
+            %
+          </p>
+        )}
+        <div className="container_cta">
+          <button> Adicionar ao carrinho </button>
+          <button> Favoritar produto</button>
+        </div>
+        <NavLink
+          to={ `/produtos/${category}` }
+          onClick={ scrollToTop }
+        >
+          Ver mais produtos desta categoria
+        </NavLink>
       </div>
-      <NavLink
-        to={ `/produtos/${category}` }
-        onClick={ scrollToTop }
-      >
-        Ver mais produtos desta categoria
-      </NavLink>
       <Footer />
     </div>
   );

@@ -1,0 +1,28 @@
+.product_title {
+  display: block;
+  /* background-color: tomato; */
+  padding-bottom: calc(var(--default-gap) / 2);
+  position: relative;
+  text-transform: uppercase;
+  font-size: 16px;
+}
+
+.product_title::before {
+  content: "";
+  position: absolute;
+  bottom: 3px;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background: var(--primary_color);
+}
+
+.product_title::after {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  height: 7px;
+  width: 25%;
+  background: var(--primary_color);
+} 

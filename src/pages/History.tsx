@@ -35,7 +35,6 @@ function History() {
         isHeroImage
       />
       <div className="container_page">
-
         <MainTitle title={ pageTitle || '' } />
         <HighlightPhrase phrase={ highlightPhrase } />
         {youtubeVideoId && <VideoPlayer id={ youtubeVideoId } />}
