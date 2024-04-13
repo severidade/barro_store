@@ -14,12 +14,12 @@ function Products() {
 
   return (
     <div className="main">
-      <h1>
+      {/* <h1>
         Esta é a página de produtos da categoria
         {' '}
         {category}
       </h1>
-      <h1>Produtos por Categoria</h1>
+      <h1>Produtos por Categoria</h1> */}
 
       {category && (
         <ProductLinks

@@ -4,6 +4,7 @@ import HighlightImage from '../components/HighlightImage';
 import Footer from '../components/Footer';
 import HighlightPhrase from '../components/HighlightPhrase';
 import VideoPlayer from '../components/VideoPlayer';
+import MainTitle from '../components/MainTitle';
 
 function History() {
   const page = 'historia'; // talvez isso possa vir dinamicamente com useParams
@@ -19,21 +20,29 @@ function History() {
   }
 
   const youtubeVideoId = pageData.video?.youtubeId;
+  const {
+    pageTitle,
+    highlightPhrase,
+    highlightImageUrl,
+    pageContent,
+    footerImage,
+  } = pageData || {};
 
   return (
     <div className="main">
       <HighlightImage
-        imageUrl={ pageData.highlightImageUrl }
+        imageUrl={ highlightImageUrl }
         isHeroImage
       />
       <div className="container_page">
-        <h1>{ pageData.pageTitle}</h1>
-        <HighlightPhrase phrase={ pageData.highlightPhrase } />
+
+        <MainTitle title={ pageTitle || '' } />
+        <HighlightPhrase phrase={ highlightPhrase } />
         {youtubeVideoId && <VideoPlayer id={ youtubeVideoId } />}
-        <BlockContent blocks={ pageData.pageContent } />
+        <BlockContent blocks={ pageContent } />
       </div>
       <HighlightImage
-        imageUrl={ pageData.footerImage }
+        imageUrl={ footerImage }
         isHeroImage={ false }
       />
       <Footer />

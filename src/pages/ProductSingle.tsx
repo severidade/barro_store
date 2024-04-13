@@ -12,6 +12,7 @@ import Footer from '../components/Footer';
 import { Product } from '../types/Product';
 import { Category } from '../types/Category';
 import scrollToTop from '../utils/scrollToTop';
+import MainTitle from '../components/MainTitle';
 
 function ProductSingle() {
   const navigate = useNavigate();
@@ -55,11 +56,15 @@ function ProductSingle() {
 
   if (!product) return <div className="loading">Loading...</div>;
 
+  const { title, description } = categoryDetails || {};
+
   return (
     <div className="main">
-      <h1>{ categoryDetails?.title }</h1>
-      <p>{ categoryDetails?.description }</p>
+      <MainTitle title={ title || '' } />
+      <p>{ description }</p>
+
       <h2>{product.productName}</h2>
+
       <div className="product_container">
         {product.images.map((image, index) => (
           <figure key={ index } className="product_image">
