@@ -67,7 +67,7 @@ function ProductSingle() {
         <MainTitle title={ title || '' } />
         <p>{ description }</p>
         <ProductTitle productName={ productName || '' } />
-        <ProductCarousel images={ product.images } />
+        <ProductCarousel images={ product.images } name={ productName } />
 
         <p>
           Preço:
