@@ -1,6 +1,7 @@
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import CustomPaging from './CustomPaging';
 import { urlFor } from '../../utils/buildSanityImageUrl';
 import './ProductCarousel.css';
 
@@ -17,6 +18,7 @@ function ProductCarousel({ images, name }: ProductCarouselProps) {
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: true,
+    customPaging: CustomPaging(images),
   };
 
   return (
