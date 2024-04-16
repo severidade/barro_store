@@ -15,6 +15,7 @@ import scrollToTop from '../utils/scrollToTop';
 import MainTitle from '../components/MainTitle';
 import ProductTitle from '../components/ProductTitle';
 import ProductCarousel from '../components/ProductCarousel';
+import ProductPrice from '../components/ProductPrice';
 
 function ProductSingle() {
   const navigate = useNavigate();
@@ -68,6 +69,11 @@ function ProductSingle() {
 
         <ProductTitle productName={ productName || '' } />
         <ProductCarousel images={ product.images } name={ productName } />
+        <ProductPrice
+          productPrice={ product.price }
+          isPromotional={ product.promotion.isPromotional }
+          discount={ product.promotion.discount }
+        />
         <p>
           Preço:
           {' '}
