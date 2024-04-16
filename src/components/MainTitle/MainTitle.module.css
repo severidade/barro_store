@@ -7,8 +7,8 @@
   position: relative;
 }
 
-.main_title strong {
+.main_title span {
   font-family: 'Dahlia', sans-serif !important;
-  font-size: 2.2em;
+  font-size: 2.1em;
   text-transform: capitalize;
 }

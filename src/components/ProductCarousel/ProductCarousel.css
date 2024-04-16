@@ -1,6 +1,26 @@
 .slick-slider {
   /* border: solid 2px tomato; */
   padding-bottom: 10em;
+  position: relative;
+  height: calc(40vh + 10em) ;
+}
+
+.slick-list {
+  /* background: rgba(255, 99, 71, 0.151); */
+  position: absolute;
+  width: calc(100% + 30vw);
+  top: 0;
+  left: -15vw;
+}
+
+.slick-prev,  .slick-next {
+  /* background-color: var(--color-cta); */
+  top: 20vh !important;
+  z-index: 2;
+}
+
+.slick-prev:before, .slick-next:before { 
+  color: var(--primary_color) !important;
 }
 .product_image_carousel {
   height: 40vh;

@@ -11,7 +11,7 @@ function MainTitle({ title }: MainTitleProps) {
         if (index === 0) {
           return (
             <span key={ index }>
-              <strong>{word}</strong>
+              {word}
               {' '}
             </span>
           );

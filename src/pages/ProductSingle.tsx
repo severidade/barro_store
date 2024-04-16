@@ -65,10 +65,9 @@ function ProductSingle() {
     <div className="main">
       <div className="container_page">
         <MainTitle title={ title || '' } />
-        <p>{ description }</p>
+
         <ProductTitle productName={ productName || '' } />
         <ProductCarousel images={ product.images } name={ productName } />
-
         <p>
           Preço:
           {' '}
@@ -97,6 +96,7 @@ function ProductSingle() {
         >
           Ver mais produtos desta categoria
         </NavLink>
+        <p>{ description }</p>
       </div>
       <Footer />
     </div>

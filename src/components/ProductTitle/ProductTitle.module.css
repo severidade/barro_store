@@ -7,7 +7,8 @@
 }
 
 .product_title > h2 {
-  font-size: 2em;
+  font-size: 1.4em;
+  font-weight: 700;
 }
 
 .product_title::before {
