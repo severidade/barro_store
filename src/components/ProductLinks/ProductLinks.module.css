@@ -15,10 +15,6 @@
   position: relative;
 }
 
-
-.slick-prev, .slick-next {
-  z-index: 9;
-}
 .container_product_link_image:before {
   content: "";
   position: absolute;

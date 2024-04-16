@@ -1,8 +1,9 @@
 .slick-slider {
-  /* border: solid 2px tomato; */
+  --image-height: 30vh;
+
   padding-bottom: 10em;
   position: relative;
-  height: calc(40vh + 10em) ;
+  height: calc(var(--image-height) + 10em) ;
 }
 
 .slick-list {
@@ -15,7 +16,7 @@
 
 .slick-prev,  .slick-next {
   /* background-color: var(--color-cta); */
-  top: 20vh !important;
+  top: calc(var(--image-height) /2) !important;
   z-index: 2;
 }
 
@@ -23,12 +24,8 @@
   color: var(--primary_color) !important;
 }
 .product_image_carousel {
-  height: 40vh;
+  height: var(--image-height);
   width: 100%;
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
-  /* background-color: violet; */
 }
 
 .product_image_carousel img {
@@ -48,13 +45,11 @@
   gap: var(--default-gap);
   position: absolute;
   bottom: 0;
-  /* transform: translateY(100%); */
 }
 
 .slick-dots li {
   width: 10em;
   height: 10em;
-  /* background-color: var(--color-title); */
   margin: 0;
   position: relative;
 }
