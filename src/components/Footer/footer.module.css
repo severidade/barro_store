@@ -2,12 +2,16 @@
   background: var(--primary_color);
   color: var(--light_color);
   height: var(--footer-height);
-  font-size: 14px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   font-weight: 400;
+}
+
+.footer p {
+   font-size: 1.4em;
+   line-height: 1.4;
 }
 
 @media only screen and (min-width: 1024px) {
