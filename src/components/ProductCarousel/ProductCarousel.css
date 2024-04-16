@@ -1,9 +1,14 @@
+.slick-slider {
+  /* border: solid 2px tomato; */
+  padding-bottom: 10em;
+}
 .product_image_carousel {
   height: 40vh;
   width: 100%;
   /* display: flex;
   justify-content: center;
   align-items: center; */
+  /* background-color: violet; */
 }
 
 .product_image_carousel img {
@@ -16,16 +21,19 @@
 /* Miniaturas de imagens do carrosel */
 
 .slick-dots {
-  /* background-color: violet; */
-  border-top: 1px solid var(--primary_color);
+  /* background-color: olive; */
+  border-top: 0.1em solid var(--primary_color);
   display: flex !important;
-  height: 100px;
-  gap: var(--default-gap)
+  height: 10em;
+  gap: var(--default-gap);
+  position: absolute;
+  bottom: 0;
+  /* transform: translateY(100%); */
 }
 
 .slick-dots li {
-  width: 100px;
-  height: 100px;
+  width: 10em;
+  height: 10em;
   /* background-color: var(--color-title); */
   margin: 0;
   position: relative;
@@ -36,10 +44,10 @@
   position: absolute;
   top: 0px;
   left: 50%;
-  height: 7px;
+  height: 0.7em;
   width: 0%;
   background: var(--primary_color);
-  transform: translate(-50% ,-3px);
+  transform: translate(-50% ,-0.3em);
   transition: width 0.6s ease-out;
 }
 

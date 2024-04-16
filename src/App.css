@@ -5,10 +5,6 @@
   src: url('../src/assets/font_dahlia/dahlia-medium.otf') format('opentype');
 }
 
-/* 
-font-family: 'Lato', sans-serif; 
-*/
-
 :root {
   --primary_color: #421602;
   --light_color: #ECE8DF;
@@ -17,8 +13,8 @@ font-family: 'Lato', sans-serif;
   --color-cta: #ff6347;
   --color-dark: #030c1a;
   --default-radius: 5px;
-  --default-gap: 20px;
-  --footer-height: 80px;
+  --default-gap: 2em;
+  --footer-height: 8em;
   --mobile-width: 90vw;
   --desktop-width: 50vw;
 
@@ -30,16 +26,19 @@ body {
   font-family: "lato", sans-serif;
   color: var(--primary_color);
   font-weight: 300;
-  font-size: 17px;
+  /* font-size: 17px; */
+  font-size: 62.5%;
   line-height: 1.7;
 }
+
+p { font-size: 1.6em;}
 
 .main {
   background: var(--light_color);
   width: 100vw;
   max-width: 100%;
   min-height: 100vh;
-  padding-top: 50px;
+  padding-top: 5em;
 }
 
 .loading {
@@ -60,7 +59,7 @@ div[class^="container"]{
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
   grid-auto-rows: auto;
-  grid-gap: 20px;
+  grid-gap: 2em;
 }
 
 .container_page {
@@ -69,12 +68,6 @@ div[class^="container"]{
   gap: var(--default-gap);
   padding-bottom: calc(var(--default-gap) * 2);
 }
-
-
-/* h1 {
-  font-family: 'Dahlia', sans-serif !important;
-  font-size: 60px;
-} */
 
 
 /* css para componentes */
@@ -92,11 +85,6 @@ div[class^="container"]{
   align-items: center;
 }
 
-/* .product_image {
-  width: 100px;
-  height: 100px;
-  margin: 0;
-} */
 
 .product_link{
   height: 50px;
