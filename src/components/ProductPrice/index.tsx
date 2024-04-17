@@ -1,25 +1,17 @@
-import { useState, useEffect } from 'react';
 import styles from './ProductPrice.module.css';
+import usePromotionalPrice from '../../customHooks/usePromotionalPrice';
+import ProductPayments from '../ProductPayments';
 
 interface ProductPriceProps {
   price: number;
   isPromotional: boolean;
   off: number;
+  payments: number;
 }
 
-function ProductPrice({ price, isPromotional, off }: ProductPriceProps) {
+function ProductPrice({ price, isPromotional, off, payments }: ProductPriceProps) {
   const orginalPrice = price.toFixed(2);
-
-  const [promotionalPrice, setPromotionalPrice] = useState<number | null>(null);
-
-  useEffect(() => {
-    if (isPromotional && off && !promotionalPrice) {
-      const discountedPrice = price - (price * off) / 100;
-      setPromotionalPrice(discountedPrice);
-    }
-  }, [isPromotional, off, price, promotionalPrice]);
-
-  console.log(promotionalPrice);
+  const promotionalPrice = usePromotionalPrice(price, isPromotional, off);
 
   return (
     <div
@@ -43,6 +35,13 @@ function ProductPrice({ price, isPromotional, off }: ProductPriceProps) {
           </span>
         )}
       </p>
+
+      <ProductPayments
+        price={ price }
+        isPromotional={ isPromotional || false }
+        off={ off || 0 }
+        payments={ payments || 0 }
+      />
     </div>
   );
 }
