@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import styles from './ProductPrice.module.css';
+import usePromotionalPrice from '../../customHooks/usePromotionalPrice';
 
 interface ProductPriceProps {
   price: number;
@@ -9,17 +10,7 @@ interface ProductPriceProps {
 
 function ProductPrice({ price, isPromotional, off }: ProductPriceProps) {
   const orginalPrice = price.toFixed(2);
-
-  const [promotionalPrice, setPromotionalPrice] = useState<number | null>(null);
-
-  useEffect(() => {
-    if (isPromotional && off && !promotionalPrice) {
-      const discountedPrice = price - (price * off) / 100;
-      setPromotionalPrice(discountedPrice);
-    }
-  }, [isPromotional, off, price, promotionalPrice]);
-
-  console.log(promotionalPrice);
+  const promotionalPrice = usePromotionalPrice(price, isPromotional, off);
 
   return (
     <div

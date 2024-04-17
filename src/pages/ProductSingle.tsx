@@ -79,6 +79,7 @@ function ProductSingle() {
           isPromotional={ product.promotion?.isPromotional || false }
           off={ product.promotion?.discount || 0 }
         />
+        ProductPayments
         <div className="container_cta">
           <button> Adicionar ao carrinho </button>
           <button> Favoritar produto</button>
