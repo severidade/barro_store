@@ -54,7 +54,7 @@
   border-top: 0.1em solid var(--primary_color);
   display: flex !important;
   height: 10em;
-  gap: var(--default-gap);
+  /* gap: var(--default-gap); */
   position: absolute;
   bottom: 0;
 }
