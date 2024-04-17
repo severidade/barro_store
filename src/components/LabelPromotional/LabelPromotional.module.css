@@ -1,3 +1,27 @@
 .label_promotional {
-  background: var(--color-title);
+  position: absolute;
+  height: 6.7em;
+  width: 6.7em;
+  right: var(--default-gap);
+  top: var(--default-gap);
+  background-image: url(./assets/label.svg);
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: rotate(20deg);
+  line-height: 1;
+}
+
+.off {
+  font-family: "Work Sans", sans-serif;
+  font-weight: 900;
+  font-size: 1.8em;
+}
+
+.percentage_discount  {
+  font-size: 1.8em;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 300;
 }

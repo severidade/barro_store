@@ -69,16 +69,17 @@ function ProductSingle() {
         <MainTitle title={ title || '' } />
 
         <ProductTitle productName={ productName || '' } />
-        <ProductCarousel images={ product.images } name={ productName } />
+        <div className="product-details-wrapper">
+          <ProductCarousel images={ product.images } name={ productName } />
+          { product.promotion && product.promotion.isPromotional && (
+            <LabelPromotional off={ product.promotion.discount || 0 } />
+          )}
+        </div>
         <ProductPrice
           price={ product.price }
           isPromotional={ product.promotion?.isPromotional || false }
           off={ product.promotion?.discount || 0 }
         />
-
-        { product.promotion && product.promotion.isPromotional && (
-          <LabelPromotional off={ product.promotion.discount || 0 } />
-        )}
 
         <div className="container_cta">
           <button> Adicionar ao carrinho </button>

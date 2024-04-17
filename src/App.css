@@ -95,6 +95,14 @@ div[class^="container"]{
   line-height: 1;
 }
 
+/* Estilos Para páginas */
+
+.product-details-wrapper {
+  /* background-color: #421602; */
+  position: relative;
+}
+
+
 /* Media query para tablet */
 @media only screen and (min-width: 500px) {
   div[class^="container"]{
