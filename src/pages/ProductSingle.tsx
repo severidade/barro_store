@@ -16,6 +16,7 @@ import ProductTitle from '../components/ProductTitle';
 import ProductCarousel from '../components/ProductCarousel';
 import ProductPrice from '../components/ProductPrice';
 import LabelPromotional from '../components/LabelPromotional';
+// import ProductPayments from '../components/ProductPayments';
 
 function ProductSingle() {
   const navigate = useNavigate();
@@ -78,8 +79,8 @@ function ProductSingle() {
           price={ product.price }
           isPromotional={ product.promotion?.isPromotional || false }
           off={ product.promotion?.discount || 0 }
+          payments={ product.installmentPayments || 0 }
         />
-        ProductPayments
         <div className="container_cta">
           <button> Adicionar ao carrinho </button>
           <button> Favoritar produto</button>

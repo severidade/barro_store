@@ -1,0 +1,9 @@
+.container_payments {
+  /* background-color: var(--bg-products); */
+  text-align: right;
+}
+
+.container_payments p span {
+  font-weight: 600;
+  font-size: 0.9em;
+}
