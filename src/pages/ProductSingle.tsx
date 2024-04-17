@@ -16,6 +16,7 @@ import MainTitle from '../components/MainTitle';
 import ProductTitle from '../components/ProductTitle';
 import ProductCarousel from '../components/ProductCarousel';
 import ProductPrice from '../components/ProductPrice';
+import LabelPromotional from '../components/LabelPromotional';
 
 function ProductSingle() {
   const navigate = useNavigate();
@@ -68,30 +69,18 @@ function ProductSingle() {
         <MainTitle title={ title || '' } />
 
         <ProductTitle productName={ productName || '' } />
-        <ProductCarousel images={ product.images } name={ productName } />
+        <div className="product-details-wrapper">
+          <ProductCarousel images={ product.images } name={ productName } />
+          { product.promotion && product.promotion.isPromotional && (
+            <LabelPromotional off={ product.promotion.discount || 0 } />
+          )}
+        </div>
         <ProductPrice
-          productPrice={ product.price }
-          isPromotional={ product.promotion.isPromotional }
-          discount={ product.promotion.discount }
+          price={ product.price }
+          isPromotional={ product.promotion?.isPromotional || false }
+          off={ product.promotion?.discount || 0 }
         />
-        <p>
-          Preço:
-          {' '}
-          {product.price}
-        </p>
-        <p>
-          Promoção:
-          {' '}
-          {product.promotion && product.promotion.isPromotional ? 'Sim' : 'Não'}
-        </p>
-        {product.promotion && product.promotion.isPromotional && (
-          <p>
-            Desconto:
-            {' '}
-            {product.promotion.discount}
-            %
-          </p>
-        )}
+
         <div className="container_cta">
           <button> Adicionar ao carrinho </button>
           <button> Favoritar produto</button>
