@@ -1,7 +1,6 @@
 /* eslint-disable max-len */
 import { useLocation, useNavigate, useParams, NavLink } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-// import { urlFor } from '../utils/buildSanityImageUrl';
 import { fetchProductById } from '../utils/fetch';
 
 import { formatUrl } from '../utils/formatUrl';
@@ -80,7 +79,6 @@ function ProductSingle() {
           isPromotional={ product.promotion?.isPromotional || false }
           off={ product.promotion?.discount || 0 }
         />
-
         <div className="container_cta">
           <button> Adicionar ao carrinho </button>
           <button> Favoritar produto</button>
