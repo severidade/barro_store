@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import styles from './ProductPrice.module.css';
 import usePromotionalPrice from '../../customHooks/usePromotionalPrice';
 
