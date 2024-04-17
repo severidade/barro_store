@@ -2,8 +2,8 @@
   position: absolute;
   height: 6.7em;
   width: 6.7em;
-  right: var(--default-gap);
-  top: var(--default-gap);
+  right: calc(var(--default-gap) / 2);
+  top: calc(var(--default-gap) / 2);
   background-image: url(./assets/label.svg);
   background-repeat: no-repeat;
   display: flex;
@@ -12,6 +12,7 @@
   align-items: center;
   transform: rotate(20deg);
   line-height: 1;
+  color: var(--light_color);
 }
 
 .off {
