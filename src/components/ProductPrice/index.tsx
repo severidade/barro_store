@@ -1,26 +1,47 @@
+import { useState, useEffect } from 'react';
 import styles from './ProductPrice.module.css';
 
 interface ProductPriceProps {
-  productPrice: number;
+  price: number;
   isPromotional: boolean;
-  discount: number;
+  off: number;
 }
 
-function ProductPrice({ productPrice, isPromotional, discount }: ProductPriceProps) {
-  const formattedPrice = productPrice.toFixed(2);
-  const discountProduct = discount;
+function ProductPrice({ price, isPromotional, off }: ProductPriceProps) {
+  const orginalPrice = price.toFixed(2);
 
-  // console.log(discountProduct);
+  const [promotionalPrice, setPromotionalPrice] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (isPromotional && off && !promotionalPrice) {
+      const discountedPrice = price - (price * off) / 100;
+      setPromotionalPrice(discountedPrice);
+    }
+  }, [isPromotional, off, price, promotionalPrice]);
+
+  console.log(promotionalPrice);
 
   return (
     <div
-      className={ styles.product_price }
+      className={ styles.container_product_price }
     >
       <p>
         <span className={ styles.currency_symbol }>R$ </span>
-        <span className={ `${isPromotional ? styles.promotional_price : ''}` }>
-          {formattedPrice}
-        </span>
+        {isPromotional && promotionalPrice ? (
+          <>
+            <span className={ styles.price }>
+              {promotionalPrice.toFixed(2)}
+            </span>
+            <span className={ ` ${off && styles.oldPrice} ` }>
+              {' '}
+              {orginalPrice}
+            </span>
+          </>
+        ) : (
+          <span className={ styles.price }>
+            { orginalPrice }
+          </span>
+        )}
       </p>
     </div>
   );

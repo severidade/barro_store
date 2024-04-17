@@ -70,16 +70,19 @@ function ProductSingle() {
         <ProductTitle productName={ productName || '' } />
         <ProductCarousel images={ product.images } name={ productName } />
         <ProductPrice
-          productPrice={ product.price }
-          isPromotional={ product.promotion.isPromotional }
-          discount={ product.promotion.discount }
+          price={ product.price }
+          isPromotional={ product.promotion?.isPromotional || false }
+          off={ product.promotion?.discount || 0 }
         />
-        <p>
-          Preço:
-          {' '}
-          {product.price}
-        </p>
-        <p>
+        { product.promotion && product.promotion.isPromotional && (
+          <div className="label_promotional">
+            { product.promotion.discount }
+            %
+            <strong>off</strong>
+          </div>
+        )}
+
+        {/* <p>
           Promoção:
           {' '}
           {product.promotion && product.promotion.isPromotional ? 'Sim' : 'Não'}
@@ -91,7 +94,7 @@ function ProductSingle() {
             {product.promotion.discount}
             %
           </p>
-        )}
+        )} */}
         <div className="container_cta">
           <button> Adicionar ao carrinho </button>
           <button> Favoritar produto</button>
