@@ -16,6 +16,7 @@ import MainTitle from '../components/MainTitle';
 import ProductTitle from '../components/ProductTitle';
 import ProductCarousel from '../components/ProductCarousel';
 import ProductPrice from '../components/ProductPrice';
+import LabelPromotional from '../components/LabelPromotional';
 
 function ProductSingle() {
   const navigate = useNavigate();
@@ -74,27 +75,11 @@ function ProductSingle() {
           isPromotional={ product.promotion?.isPromotional || false }
           off={ product.promotion?.discount || 0 }
         />
+
         { product.promotion && product.promotion.isPromotional && (
-          <div className="label_promotional">
-            { product.promotion.discount }
-            %
-            <strong>off</strong>
-          </div>
+          <LabelPromotional off={ product.promotion.discount || 0 } />
         )}
 
-        {/* <p>
-          Promoção:
-          {' '}
-          {product.promotion && product.promotion.isPromotional ? 'Sim' : 'Não'}
-        </p>
-        {product.promotion && product.promotion.isPromotional && (
-          <p>
-            Desconto:
-            {' '}
-            {product.promotion.discount}
-            %
-          </p>
-        )} */}
         <div className="container_cta">
           <button> Adicionar ao carrinho </button>
           <button> Favoritar produto</button>
