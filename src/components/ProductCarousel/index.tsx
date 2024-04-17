@@ -23,7 +23,7 @@ function ProductCarousel({ images, name }: ProductCarouselProps) {
 
   return (
     images.length === 1 ? (
-      <figure className="product_image_carousel">
+      <figure className="product_image_single">
         <img
           src={ urlFor(images[0]).url() }
           alt={ name }

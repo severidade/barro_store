@@ -11,6 +11,7 @@
   --primary_color: #421602;
   --light_color: #ECE8DF;
   --color-transparente: #ffffff00;
+  --bg-products: #da8324;
   --color-title: #f7c130;
   --color-cta: #ff6347;
   --color-dark: #030c1a;
@@ -97,9 +98,19 @@ div[class^="container"]{
 
 /* Estilos Para páginas */
 
+/* Single de Produto */
 .product-details-wrapper {
-  /* background-color: #421602; */
   position: relative;
+}
+
+.product-details-wrapper::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: var(--bg-products);
+  width: 100%;
+  height: 45%;
 }
 
 
