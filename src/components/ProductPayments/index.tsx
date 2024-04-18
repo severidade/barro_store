@@ -1,18 +1,15 @@
 /* eslint-disable max-len */
 import styles from './ProductPayments.module.css';
-import usePromotionalPrice from '../../customHooks/usePromotionalPrice';
 
 interface ProductProductPayments {
   price: number;
   isPromotional: boolean;
-  off: number;
+  oofPrice: number;
   payments: number;
 }
 
 // eslint-disable-next-line max-len
-function ProductPayments({ price, isPromotional, off, payments }: ProductProductPayments) {
-  const promotionalPrice = usePromotionalPrice(price, isPromotional, off);
-
+function ProductPayments({ price, isPromotional, oofPrice, payments }: ProductProductPayments) {
   return (
     <div
       className={ styles.container_payments }
@@ -20,12 +17,12 @@ function ProductPayments({ price, isPromotional, off, payments }: ProductProduct
       <p>
         ou
         {' '}
-        {isPromotional && promotionalPrice ? (
+        {isPromotional && oofPrice ? (
           <>
             <span>{`${payments}X`}</span>
             {' '}
             de
-            <span>{`R$ ${(promotionalPrice / payments).toFixed(2)}`}</span>
+            <span>{`R$ ${(oofPrice / payments).toFixed(2)}`}</span>
             {' '}
             sem juros
           </>
