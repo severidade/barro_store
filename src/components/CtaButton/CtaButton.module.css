@@ -1,0 +1,48 @@
+.addToCart, .addToFavorite {
+  width: 100%;
+  /* max-width: 300px; */
+  height: 50px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  font-size: 1.4em;
+  font-weight: 400;
+  position: relative;
+  cursor: pointer;
+  margin: auto;
+}
+
+.addToCart {
+  background-color: var(--color-cta);
+  transition: background-color 0.6s ease-out; 
+}
+
+.addToCart:hover {
+  background-color: var(--primary_color);
+  color: var(--light_color);
+}
+
+.addToCart span { position: relative; }
+
+.addToCart span::before {
+  content: "";
+  position: absolute;
+  height: 3em;
+  width: 3em;
+  top: 0;
+  left: -3em;
+  background-image: url(./assets/carrinho.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  transform: translateY(-25%);
+}
+
+.addToCart:hover span::before {
+  background-image: url(./assets/carrinho_claro.svg);
+}
+
+.addToFavorite {
+  border: 1px solid var(--primary_color);
+}
