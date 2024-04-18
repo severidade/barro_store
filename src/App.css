@@ -15,6 +15,7 @@
   --color-title: #f7c130;
   --color-cta: #FFAD01;
   --color-dark: #030c1a;
+  --teste: #ff5722;
   --default-radius: 5px;
   --default-gap: 2em;
   --footer-height: 8em;
@@ -106,8 +107,9 @@ div[class^="container"]{
   position: absolute;
   left: 0;
   top: 0;
-  background-color: var(--bg-products);
+  background-color: var(--teste);
   width: 100%;
+  border-radius: 0.5em;
   height: 45%;
 }
 
