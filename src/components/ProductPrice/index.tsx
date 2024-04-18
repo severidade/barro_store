@@ -39,7 +39,7 @@ function ProductPrice({ price, isPromotional, off, payments }: ProductPriceProps
       <ProductPayments
         price={ price }
         isPromotional={ isPromotional || false }
-        off={ off || 0 }
+        oofPrice={ promotionalPrice || 0 }
         payments={ payments || 0 }
       />
     </div>

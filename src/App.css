@@ -29,7 +29,6 @@ body {
   font-family: "lato", sans-serif;
   color: var(--primary_color);
   font-weight: 300;
-  /* font-size: 17px; */
   font-size: 62.5%;
   line-height: 1.7;
 }
@@ -97,7 +96,6 @@ div[class^="container"]{
 }
 
 /* Estilos Para páginas */
-
 /* Single de Produto */
 .product-details-wrapper {
   position: relative;
