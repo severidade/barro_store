@@ -1,22 +1,21 @@
 .product_title {
   display: block;
-  /* background-color: tomato; */
   padding-bottom: calc(var(--default-gap) / 2);
   position: relative;
   text-transform: uppercase;
 }
 
 .product_title > h2 {
-  font-size: 1.4em;
+  font-size: 1.4rem;
   font-weight: 700;
 }
 
 .product_title::before {
   content: "";
   position: absolute;
-  bottom: 0.3em;
+  bottom: 3px;
   left: 0;
-  height: 0.1em;
+  height: 1px;
   width: 100%;
   background: var(--primary_color);
 }
@@ -24,9 +23,9 @@
 .product_title::after {
   content: "";
   position: absolute;
-  bottom: 0px;
+  bottom: 0;
   left: 0;
-  height: 0.7em;
+  height: 7px;
   width: 25%;
   background: var(--primary_color);
 } 

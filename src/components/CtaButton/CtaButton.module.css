@@ -1,13 +1,12 @@
 .addToCart, .addToFavorite {
   width: 100%;
-  /* max-width: 300px; */
-  height: 50px;
-  border-radius: 5px;
+  height: 5rem;
+  border-radius: 0.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
   text-transform: uppercase;
-  font-size: 1.4em;
+  font-size: 1.6rem;
   font-weight: 400;
   position: relative;
   cursor: pointer;
@@ -29,14 +28,14 @@
 .addToCart span::before {
   content: "";
   position: absolute;
-  height: 3em;
-  width: 3em;
-  top: 0;
-  left: -3em;
+  height: 3rem;
+  width: 3rem;
+  top: 50%;
+  left: -4rem;
   background-image: url(./assets/carrinho.svg);
   background-repeat: no-repeat;
   background-position: center;
-  transform: translateY(-25%);
+  transform: translate(-25%, -50%);
 }
 
 .addToCart:hover span::before {
@@ -44,5 +43,5 @@
 }
 
 .addToFavorite {
-  border: 1px solid var(--primary_color);
+  border: 0.1px solid var(--primary_color);
 }

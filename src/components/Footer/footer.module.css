@@ -10,7 +10,7 @@
 }
 
 .footer p {
-   font-size: 1.4em;
+   font-size: 1.4rem;
    line-height: 1.4;
 }
 
@@ -23,7 +23,7 @@
     left: 0;
     flex-direction: row;
     gap: calc(var(--default-gap)/2);
-    height: calc(var(--footer-height) / 2);
+    /* height: calc(var(--footer-height) / 2); */
   }
 
 }
