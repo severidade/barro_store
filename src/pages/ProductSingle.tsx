@@ -65,37 +65,39 @@ function ProductSingle() {
   const { productName } = product || {};
 
   return (
-    <div className="main">
-      <div className="container_page">
-        <MainTitle title={ title || '' } />
+    <>
+      <div className="main">
+        <div className="container_page">
+          <MainTitle title={ title || '' } />
 
-        <ProductTitle productName={ productName || '' } />
-        <div className="product-details-wrapper">
-          <ProductCarousel images={ product.images } name={ productName } />
-          { product.promotion && product.promotion.isPromotional && (
-            <LabelPromotional off={ product.promotion.discount || 0 } />
-          )}
+          <ProductTitle productName={ productName || '' } />
+          <div className="product-details-wrapper">
+            <ProductCarousel images={ product.images } name={ productName } />
+            { product.promotion && product.promotion.isPromotional && (
+              <LabelPromotional off={ product.promotion.discount || 0 } />
+            )}
+          </div>
+          <ProductPrice
+            price={ product.price }
+            isPromotional={ product.promotion?.isPromotional || false }
+            off={ product.promotion?.discount || 0 }
+            payments={ product.installmentPayments || 0 }
+          />
+          <div className="container_cta">
+            <CtaButton typeOfButton="addToCart" title="Comprar" />
+            <CtaButton typeOfButton="addToFavorite" title="Favorito" />
+          </div>
+          <NavLink
+            to={ `/produtos/${category}` }
+            onClick={ scrollToTop }
+          >
+            Ver mais produtos desta categoria
+          </NavLink>
+          <p>{ description }</p>
         </div>
-        <ProductPrice
-          price={ product.price }
-          isPromotional={ product.promotion?.isPromotional || false }
-          off={ product.promotion?.discount || 0 }
-          payments={ product.installmentPayments || 0 }
-        />
-        <div className="container_cta">
-          <CtaButton typeOfButton="addToCart" title="Comprar" />
-          <CtaButton typeOfButton="addToFavorite" title="Favorito" />
-        </div>
-        <NavLink
-          to={ `/produtos/${category}` }
-          onClick={ scrollToTop }
-        >
-          Ver mais produtos desta categoria
-        </NavLink>
-        <p>{ description }</p>
       </div>
       <Footer />
-    </div>
+    </>
   );
 }
 

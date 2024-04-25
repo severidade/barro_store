@@ -29,23 +29,25 @@ function History() {
   } = pageData || {};
 
   return (
-    <div className="main">
-      <HighlightImage
-        imageUrl={ highlightImageUrl }
-        isHeroImage
-      />
-      <div className="container_page">
-        <MainTitle title={ pageTitle || '' } />
-        <HighlightPhrase phrase={ highlightPhrase } />
-        {youtubeVideoId && <VideoPlayer id={ youtubeVideoId } />}
-        <BlockContent blocks={ pageContent } />
+    <>
+      <div className="main">
+        <HighlightImage
+          imageUrl={ highlightImageUrl }
+          isHeroImage
+        />
+        <div className="container_page">
+          <MainTitle title={ pageTitle || '' } />
+          <HighlightPhrase phrase={ highlightPhrase } />
+          {youtubeVideoId && <VideoPlayer id={ youtubeVideoId } />}
+          <BlockContent blocks={ pageContent } />
+        </div>
+        <HighlightImage
+          imageUrl={ footerImage }
+          isHeroImage={ false }
+        />
       </div>
-      <HighlightImage
-        imageUrl={ footerImage }
-        isHeroImage={ false }
-      />
       <Footer />
-    </div>
+    </>
   );
 }
 

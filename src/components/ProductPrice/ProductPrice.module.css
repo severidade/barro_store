@@ -9,17 +9,17 @@
 .price {
   font-family: "Work Sans", sans-serif;
   font-weight: 900;
-  font-size: 2em !important;
+  font-size: 2.5rem !important;
 }
 
 .oldPrice {
   text-decoration: line-through;
-  padding-left: 0.7em;
+  padding-left: 1rem;
 }
 
 .currency_symbol {
   font-weight: 400;
-  font-size: 1.1em;
+  font-size: 2rem;
 }
 
 .promotional_price {

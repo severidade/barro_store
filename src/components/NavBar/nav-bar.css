@@ -15,6 +15,7 @@
 .container_menu a {
   color: var(--light_color);
   font-weight: 900;
+  font-size: 1rem;
 }
 
 .container_menu a.active {
