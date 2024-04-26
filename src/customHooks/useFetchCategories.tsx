@@ -22,3 +22,5 @@ function useFetchCategories(): Category[] | null {
 }
 
 export default useFetchCategories;
+
+// retorna os dados de todas as categorias

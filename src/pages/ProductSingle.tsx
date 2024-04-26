@@ -1,4 +1,6 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable max-len */
+/* eslint-disable no-underscore-dangle */
 import { useLocation, useNavigate, useParams, NavLink } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { fetchProductById } from '../utils/fetch';
@@ -10,14 +12,13 @@ import Footer from '../components/Footer';
 
 import { Product } from '../types/Product';
 import { Category } from '../types/Category';
-import scrollToTop from '../utils/scrollToTop';
 import MainTitle from '../components/MainTitle';
 import ProductTitle from '../components/ProductTitle';
 import ProductCarousel from '../components/ProductCarousel';
 import ProductPrice from '../components/ProductPrice';
 import LabelPromotional from '../components/LabelPromotional';
 import CtaButton from '../components/CtaButton';
-// import ProductPayments from '../components/ProductPayments';
+import ProductsByCategoryCarousel from '../components/ProductsByCategoryCarousel';
 
 function ProductSingle() {
   const navigate = useNavigate();
@@ -29,6 +30,7 @@ function ProductSingle() {
 
   const [product, setProduct] = useState<Product | null>(null);
   const categoryList = useFetchCategories();
+
   const [categoryDetails, setCategoryDetails] = useState<Category | null>(null);
 
   useEffect(() => {
@@ -61,9 +63,10 @@ function ProductSingle() {
 
   if (!product) return <div className="loading">Loading...</div>;
 
-  const { title, description } = categoryDetails || {};
+  const { title, description, _id } = categoryDetails || {};
   const { productName } = product || {};
 
+  console.log(`Estou em product single ${_id}`);
   return (
     <>
       <div className="main">
@@ -87,13 +90,10 @@ function ProductSingle() {
             <CtaButton typeOfButton="addToCart" title="Comprar" />
             <CtaButton typeOfButton="addToFavorite" title="Favorito" />
           </div>
-          {/* <NavLink
-            to={ `/produtos/${category}` }
-            onClick={ scrollToTop }
-          >
-            Ver mais produtos desta categoria
-          </NavLink> */}
           <p>{ description }</p>
+          {category && (
+            <ProductsByCategoryCarousel categoryId={ _id } categoryOfProduct={ category } />
+          )}
         </div>
       </div>
       <Footer />

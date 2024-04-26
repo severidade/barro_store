@@ -25,3 +25,5 @@ function useFetchCategoryDetails(categoryList: Category[] | null, category: stri
 }
 
 export default useFetchCategoryDetails;
+
+// passo a lista de categorias e uma categoria e retorno os dados dessa categoria.
