@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+/* eslint-disable no-underscore-dangle */
 import { useParams } from 'react-router-dom';
 import useFetchCategories from '../customHooks/useFetchCategories';
 import useFetchCategoryDetails from '../customHooks/useFetchCategoryDetails';
@@ -10,7 +12,8 @@ function Products() {
 
   const categoryList = useFetchCategories();
   const categoryDetails = useFetchCategoryDetails(categoryList, category);
-  const productsByCategory = useFetchProductsByCategory(categoryDetails);
+  // const productsByCategory = useFetchProductsByCategory(categoryDetails);
+  const productsByCategory = useFetchProductsByCategory(categoryDetails ? categoryDetails._id : null);
 
   return (
     <>
