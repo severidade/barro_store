@@ -12,17 +12,17 @@
   align-items: center;
   transform: rotate(20deg);
   line-height: 1;
-  color: var(--light_color);
+  color: var(--color-cta);
 }
 
 .off {
   font-family: "Work Sans", sans-serif;
   font-weight: 900;
-  font-size: 1.8rem;
+  font-size: 1.8em;
 }
 
 .percentage_discount  {
-  font-size: 1.8rem;
+  font-size: 1.8em;
   font-family: "Work Sans", sans-serif;
-  font-weight: 300;
+  font-weight: 500;
 }
