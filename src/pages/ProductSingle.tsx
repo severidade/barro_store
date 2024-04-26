@@ -87,12 +87,12 @@ function ProductSingle() {
             <CtaButton typeOfButton="addToCart" title="Comprar" />
             <CtaButton typeOfButton="addToFavorite" title="Favorito" />
           </div>
-          <NavLink
+          {/* <NavLink
             to={ `/produtos/${category}` }
             onClick={ scrollToTop }
           >
             Ver mais produtos desta categoria
-          </NavLink>
+          </NavLink> */}
           <p>{ description }</p>
         </div>
       </div>
