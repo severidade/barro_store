@@ -26,10 +26,11 @@ function ProductsByCategoryCarousel({ categoryId, categoryOfProduct, productId }
   const settings = {
     dots: false,
     infinite: true,
-    speed: 1000,
+    // speed: 1000,
     slidesToShow: 3,
     slidesToScroll: 2,
     arrows: false,
+    centerMode: true,
   };
 
   const productsByCategory = useFetchProductsByCategory(categoryId || '');
