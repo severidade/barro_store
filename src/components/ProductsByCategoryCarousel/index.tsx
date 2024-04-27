@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 import { urlFor } from '../../utils/buildSanityImageUrl';
 import { formatUrl } from '../../utils/formatUrl';
 import useFetchProductsByCategory from '../../customHooks/useFetchProductsByCategory';
-import ProductLinks from '../ProductLinks';
+// import ProductLinks from '../ProductLinks';
 import { Product } from '../../types/Product';
 import scrollToTop from '../../utils/scrollToTop';
 
@@ -25,12 +25,13 @@ interface FetchProductsByCategoryProps {
 function ProductsByCategoryCarousel({ categoryId, categoryOfProduct, productId } : FetchProductsByCategoryProps) {
   const settings = {
     dots: false,
-    infinite: true,
+    infinite: false,
     speed: 300,
     slidesToShow: 3,
     slidesToScroll: 2,
     arrows: false,
     swipe: true,
+    // centerMode: true,
   };
 
   const productsByCategory = useFetchProductsByCategory(categoryId || '');
@@ -49,10 +50,10 @@ function ProductsByCategoryCarousel({ categoryId, categoryOfProduct, productId }
       <h1>
         Veja mais produtos nesta categoria
       </h1>
-      <ProductLinks
+      {/* <ProductLinks
         category={ categoryOfProduct }
         products={ filteredProducts || [] }
-      />
+      /> */}
       <Slider { ...settings }>
         {filteredProducts.map((product) => (
           <div className="slider_item" key={ product._id }>
