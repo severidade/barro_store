@@ -66,7 +66,7 @@ function ProductSingle() {
   const { title, description, _id } = categoryDetails || {};
   const { productName } = product || {};
 
-  console.log(`Estou em product single ${_id}`);
+  console.log(`Estou em product single ${product._id}`);
   return (
     <>
       <div className="main">
@@ -92,7 +92,11 @@ function ProductSingle() {
           </div>
           <p>{ description }</p>
           {category && (
-            <ProductsByCategoryCarousel categoryId={ _id } categoryOfProduct={ category } />
+            <ProductsByCategoryCarousel
+              categoryId={ _id }
+              categoryOfProduct={ category }
+              productId={ product._id }
+            />
           )}
         </div>
       </div>

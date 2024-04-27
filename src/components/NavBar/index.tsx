@@ -7,6 +7,7 @@ import useFetchCategories from '../../customHooks/useFetchCategories';
 function NavBar() {
   const categoryList = useFetchCategories();
 
+  console.log(categoryList);
   return (
     <nav className="container_menu">
       <NavLink to="/">Home</NavLink>
