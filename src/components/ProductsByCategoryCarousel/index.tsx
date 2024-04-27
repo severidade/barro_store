@@ -1,12 +1,20 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable max-len */
 // import useFetchProductsByCategory from '../../customHooks/useFetchProductsByCategory';
 
 // import useFetchCategories from '../../customHooks/useFetchCategories';
 // import useFetchCategoryDetails from '../../customHooks/useFetchCategoryDetails';
+import Slider from 'react-slick';
 import { useEffect, useState } from 'react';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import { Link } from 'react-router-dom';
+import { urlFor } from '../../utils/buildSanityImageUrl';
+import { formatUrl } from '../../utils/formatUrl';
 import useFetchProductsByCategory from '../../customHooks/useFetchProductsByCategory';
 import ProductLinks from '../ProductLinks';
 import { Product } from '../../types/Product';
+import scrollToTop from '../../utils/scrollToTop';
 
 interface FetchProductsByCategoryProps {
   categoryId: string | undefined;
@@ -15,8 +23,16 @@ interface FetchProductsByCategoryProps {
 }
 
 function ProductsByCategoryCarousel({ categoryId, categoryOfProduct, productId } : FetchProductsByCategoryProps) {
-  const productsByCategory = useFetchProductsByCategory(categoryId || '');
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    arrows: false,
+  };
 
+  const productsByCategory = useFetchProductsByCategory(categoryId || '');
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
 
   useEffect(() => {
@@ -36,6 +52,35 @@ function ProductsByCategoryCarousel({ categoryId, categoryOfProduct, productId }
         category={ categoryOfProduct }
         products={ filteredProducts || [] }
       />
+
+      {/* <Slider { ...settings }>
+        {filteredProducts.map((product) => (
+          <div className="slider_item" key={ product._id }>
+            <p className="produto">{product.productName}</p>
+          </div>
+        ))}
+      </Slider> */}
+      <Slider { ...settings }>
+        {filteredProducts.map((product) => (
+          <div className="slider_item" key={ product._id }>
+            <Link
+              to={ `/produtos/${categoryOfProduct}/${formatUrl(product.productName)}?productId=${product._id}` }
+              key={ product._id }
+              onClick={ scrollToTop }
+              className="slider_fff"
+            >
+              <figure className="categori">
+                <img
+                  src={ urlFor(product.images[0].asset._ref).url() }
+                  alt={ product.productName }
+                />
+              </figure>
+              {product.productName}
+            </Link>
+            {/* <p className="produto">{product.productName}</p> */}
+          </div>
+        ))}
+      </Slider>
     </>
   );
 }
