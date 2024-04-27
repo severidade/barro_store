@@ -30,7 +30,7 @@ function ProductsByCategoryCarousel({ categoryId, categoryOfProduct, productId }
     slidesToShow: 3,
     slidesToScroll: 2,
     arrows: false,
-    centerMode: true,
+    swipe: true,
   };
 
   const productsByCategory = useFetchProductsByCategory(categoryId || '');
