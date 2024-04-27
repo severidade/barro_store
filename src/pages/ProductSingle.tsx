@@ -66,7 +66,6 @@ function ProductSingle() {
   const { title, description, _id } = categoryDetails || {};
   const { productName } = product || {};
 
-  console.log(`Estou em product single ${product._id}`);
   return (
     <>
       <div className="main">
