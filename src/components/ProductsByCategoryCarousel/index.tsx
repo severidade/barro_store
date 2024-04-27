@@ -26,7 +26,7 @@ function ProductsByCategoryCarousel({ categoryId, categoryOfProduct, productId }
   const settings = {
     dots: false,
     infinite: true,
-    // speed: 1000,
+    speed: 300,
     slidesToShow: 3,
     slidesToScroll: 2,
     arrows: false,
