@@ -26,9 +26,9 @@ function ProductsByCategoryCarousel({ categoryId, categoryOfProduct, productId }
   const settings = {
     dots: false,
     infinite: true,
-    speed: 500,
+    speed: 1000,
     slidesToShow: 3,
-    slidesToScroll: 1,
+    slidesToScroll: 2,
     arrows: false,
   };
 
@@ -52,14 +52,6 @@ function ProductsByCategoryCarousel({ categoryId, categoryOfProduct, productId }
         category={ categoryOfProduct }
         products={ filteredProducts || [] }
       />
-
-      {/* <Slider { ...settings }>
-        {filteredProducts.map((product) => (
-          <div className="slider_item" key={ product._id }>
-            <p className="produto">{product.productName}</p>
-          </div>
-        ))}
-      </Slider> */}
       <Slider { ...settings }>
         {filteredProducts.map((product) => (
           <div className="slider_item" key={ product._id }>
