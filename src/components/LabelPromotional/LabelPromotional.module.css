@@ -13,6 +13,7 @@
   transform: rotate(20deg);
   line-height: 1;
   color: var(--color-cta);
+  z-index: 2;
 }
 
 .off {

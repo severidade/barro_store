@@ -12,9 +12,9 @@ import { Link } from 'react-router-dom';
 import { urlFor } from '../../utils/buildSanityImageUrl';
 import { formatUrl } from '../../utils/formatUrl';
 import useFetchProductsByCategory from '../../customHooks/useFetchProductsByCategory';
-// import ProductLinks from '../ProductLinks';
 import { Product } from '../../types/Product';
 import scrollToTop from '../../utils/scrollToTop';
+import './ProductsByCategoryCarousel.css';
 
 interface FetchProductsByCategoryProps {
   categoryId: string | undefined;
@@ -28,10 +28,11 @@ function ProductsByCategoryCarousel({ categoryId, categoryOfProduct, productId }
     infinite: false,
     speed: 300,
     slidesToShow: 3,
-    slidesToScroll: 2,
+    slidesToScroll: 3,
     arrows: false,
     swipe: true,
     // centerMode: true,
+    // initialSlide: 2,
   };
 
   const productsByCategory = useFetchProductsByCategory(categoryId || '');
@@ -39,43 +40,40 @@ function ProductsByCategoryCarousel({ categoryId, categoryOfProduct, productId }
 
   useEffect(() => {
     if (productsByCategory && productId) {
-      // eslint-disable-next-line no-underscore-dangle
       const updatedProducts = productsByCategory.filter((product) => product._id !== productId);
       setFilteredProducts(updatedProducts);
     }
   }, [productsByCategory, productId]);
 
   return (
-    <>
-      <h1>
+    <div className="container_related_products">
+      <h2>
         Veja mais produtos nesta categoria
-      </h1>
-      {/* <ProductLinks
-        category={ categoryOfProduct }
-        products={ filteredProducts || [] }
-      /> */}
-      <Slider { ...settings }>
-        {filteredProducts.map((product) => (
-          <div className="slider_item" key={ product._id }>
-            <Link
-              to={ `/produtos/${categoryOfProduct}/${formatUrl(product.productName)}?productId=${product._id}` }
-              key={ product._id }
-              onClick={ scrollToTop }
-              className="slider_fff"
-            >
-              <figure className="categori">
-                <img
-                  src={ urlFor(product.images[0].asset._ref).url() }
-                  alt={ product.productName }
-                />
-              </figure>
-              {product.productName}
-            </Link>
-            {/* <p className="produto">{product.productName}</p> */}
-          </div>
-        ))}
-      </Slider>
-    </>
+      </h2>
+      <div className="related_carousel">
+        <Slider { ...settings }>
+          {filteredProducts.map((product) => (
+            <div className="item" key={ product._id }>
+              <Link
+                to={ `/produtos/${categoryOfProduct}/${formatUrl(product.productName)}?productId=${product._id}` }
+                key={ product._id }
+                onClick={ scrollToTop }
+                className="product_related_link"
+              >
+                <figure className="container_product_image">
+                  <img
+                    src={ urlFor(product.images[0].asset._ref).url() }
+                    alt={ product.productName }
+                  />
+                </figure>
+                {/* {product.productName} */}
+              </Link>
+              {/* <p className="produto">{product.productName}</p> */}
+            </div>
+          ))}
+        </Slider>
+      </div>
+    </div>
   );
 }
 
