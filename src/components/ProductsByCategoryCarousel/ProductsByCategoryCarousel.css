@@ -1,7 +1,12 @@
 .container_related_products {
   --height_related_carousel: 9rem;
 
-  border: solid 1px tomato;
+  /* border: solid 1px tomato; */
+}
+
+.container_related_products .slick-slider {
+  padding-bottom: 0;
+  height: initial !important;
 }
 
 .container_related_products h2 {
