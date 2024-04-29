@@ -4,6 +4,11 @@
   border: solid 1px tomato;
 }
 
+.container_related_products .slick-slider {
+  padding-bottom: 0;
+  height: initial !important;
+}
+
 .container_related_products h2 {
   font-size: 1.4rem;
   font-weight: 700;
