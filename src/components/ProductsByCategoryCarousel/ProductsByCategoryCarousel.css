@@ -16,6 +16,8 @@
 .related_carousel {
   height: var(--height_related_carousel);
   position: relative;
+  margin-bottom: 50px;
+  /* background-color: tomato; */
 }
 
 .related_carousel .item {
@@ -58,7 +60,7 @@
 
 .related_carousel .slick-dots li {
   width: 50px !important;
-  height: 20px !important;
+  height: 50px !important;
 }
 
 .related_carousel .slick-dots li button {
