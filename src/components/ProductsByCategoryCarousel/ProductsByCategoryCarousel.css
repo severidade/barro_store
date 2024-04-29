@@ -1,7 +1,5 @@
 .container_related_products {
   --height_related_carousel: 9rem;
-
-  /* border: solid 1px tomato; */
 }
 
 .container_related_products .slick-slider {
@@ -17,6 +15,7 @@
 
 .related_carousel {
   height: var(--height_related_carousel);
+  position: relative;
 }
 
 .related_carousel .item {
@@ -50,4 +49,34 @@
   object-fit: contain;
   position: relative;
   z-index: 1;
+}
+
+.related_carousel .slick-dots {
+  position: absolute;
+  top: var(--height_related_carousel);
+}
+
+.related_carousel .slick-dots li {
+  width: 50px !important;
+  height: 20px !important;
+}
+
+.related_carousel .slick-dots li button {
+  text-indent: -10000%;
+  width: 25%;
+  height: 9px;
+  padding: 0;
+  overflow: hidden;
+  display: block;
+  border: solid 1px var(--primary_color);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  border-radius: 5px;
+  transition: width 0.6s ease-out; 
+}
+
+.related_carousel .slick-dots li.slick-active button{
+  width: 60%;
 }

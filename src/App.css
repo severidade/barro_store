@@ -103,20 +103,7 @@ div[class^="container"]{
 
 /* Estilos Para páginas */
 /* Single de Produto */
-.product-details-wrapper {
-  position: relative;
-}
 
-.product-details-wrapper::before{
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  background-color: var(--teste);
-  width: 100%;
-  border-radius: 0.5rem;
-  height: 45%;
-}
 
 /* Media query para tablet */
 @media only screen and (min-width: 500px) {
