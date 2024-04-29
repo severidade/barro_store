@@ -24,7 +24,7 @@ interface FetchProductsByCategoryProps {
 
 function ProductsByCategoryCarousel({ categoryId, categoryOfProduct, productId } : FetchProductsByCategoryProps) {
   const settings = {
-    dots: false,
+    dots: true,
     infinite: false,
     speed: 300,
     slidesToShow: 3,

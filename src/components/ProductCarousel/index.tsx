@@ -22,24 +22,29 @@ function ProductCarousel({ images, name }: ProductCarouselProps) {
   };
 
   return (
+
     images.length === 1 ? (
-      <figure className="product_image_single">
-        <img
-          src={ urlFor(images[0]).url() }
-          alt={ name }
-        />
-      </figure>
+      <div className="product-details-wrapper">
+        <figure className="product_image_single">
+          <img
+            src={ urlFor(images[0]).url() }
+            alt={ name }
+          />
+        </figure>
+      </div>
     ) : (
-      <Slider { ...settings }>
-        {images.map((image, index) => (
-          <figure key={ index } className="product_image_carousel">
-            <img
-              src={ urlFor(image).url() }
-              alt={ `${name} ${index + 1}` }
-            />
-          </figure>
-        ))}
-      </Slider>
+      <div className="product-details-wrapper">
+        <Slider { ...settings }>
+          {images.map((image, index) => (
+            <figure key={ index } className="product_image_carousel">
+              <img
+                src={ urlFor(image).url() }
+                alt={ `${name} ${index + 1}` }
+              />
+            </figure>
+          ))}
+        </Slider>
+      </div>
     )
   );
 }

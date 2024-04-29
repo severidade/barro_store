@@ -73,12 +73,12 @@ function ProductSingle() {
           <MainTitle title={ title || '' } />
 
           <ProductTitle productName={ productName || '' } />
-          <div className="product-details-wrapper">
-            <ProductCarousel images={ product.images } name={ productName } />
-            { product.promotion && product.promotion.isPromotional && (
-              <LabelPromotional off={ product.promotion.discount || 0 } />
-            )}
-          </div>
+
+          <ProductCarousel images={ product.images } name={ productName } />
+          { product.promotion && product.promotion.isPromotional && (
+            <LabelPromotional off={ product.promotion.discount || 0 } />
+          )}
+
           <ProductPrice
             price={ product.price }
             isPromotional={ product.promotion?.isPromotional || false }
