@@ -73,11 +73,12 @@ function ProductSingle() {
           <MainTitle title={ title || '' } />
 
           <ProductTitle productName={ productName || '' } />
-
-          <ProductCarousel images={ product.images } name={ productName } />
-          { product.promotion && product.promotion.isPromotional && (
-            <LabelPromotional off={ product.promotion.discount || 0 } />
-          )}
+          <div className="container_product_image">
+            <ProductCarousel images={ product.images } name={ productName } />
+            { product.promotion && product.promotion.isPromotional && (
+              <LabelPromotional off={ product.promotion.discount || 0 } />
+            )}
+          </div>
 
           <ProductPrice
             price={ product.price }
