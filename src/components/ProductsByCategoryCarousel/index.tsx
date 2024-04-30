@@ -48,7 +48,7 @@ function ProductsByCategoryCarousel({ categoryId, categoryOfProduct, productId }
   return (
     <div className="container_related_products">
       <h2>
-        Veja mais produtos nesta categoria
+        mais produtos nesta categoria
       </h2>
       <div className="related_carousel">
         <Slider { ...settings }>
