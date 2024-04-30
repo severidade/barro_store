@@ -59,4 +59,5 @@ body.no_scroll {
   font-weight: 400;
   color: var(--color-dark);
   width: 30vw;
+  font-size: 1.4rem;
 }
