@@ -89,3 +89,10 @@
 .related_carousel .slick-dots li.slick-active::before{
   width: 70%;
 }
+
+@media only screen and (min-width: 1024px){
+  .related_carousel .slick-list {
+    /* background: tomato; */
+    width: 100%;
+  }
+}
