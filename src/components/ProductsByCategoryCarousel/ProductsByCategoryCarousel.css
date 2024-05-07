@@ -38,6 +38,11 @@
   position: relative;
 }
 
+.product_related_link.disabled {
+  background-color: tomato;
+  pointer-events: none;
+}
+
 .product_related_link::before{
   content: "";
   position: absolute;
@@ -59,7 +64,7 @@
   position: absolute;
   top: var(--height_related_carousel);
 }
-
+/* 
 .related_carousel .slick-dots li {
   width: 50px !important;
   height: 50px !important;
@@ -88,7 +93,7 @@
 
 .related_carousel .slick-dots li.slick-active::before{
   width: 70%;
-}
+} */
 
 @media only screen and (min-width: 1024px){
   .related_carousel .slick-list {
