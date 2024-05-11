@@ -100,3 +100,8 @@ Dentro da pasta do seu projeto Sanity (onde está localizado o Sanity Studio), e
     Com esta etapa, seu banco de dados local será sincronizado com o projeto na nuvem, permitindo que você faça alterações no ambiente de desenvolvimento e as publique quando estiver pronto.  
 
 </details>
+
+
+### Dependências
+
+- mobile-detect  Biblioteca javascript que permite identificar o dispositivo 

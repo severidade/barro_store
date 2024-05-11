@@ -1,9 +1,11 @@
 .container_menu {
+  --menu_height: 5rem;
+
   display: flex;
   gap: 30px;
   position: fixed;
   width: 100%;
-  height: 50px;
+  height: var(--menu_height);
   background-color: var(--primary_color);
   top: 0;
   left: 0;
@@ -23,7 +25,38 @@
   color: var(--color-title);
 }
 
-.menu_second_level {
+
+.hamburger {
+  width: 30px;
+  height: 30px;
+  background: var(--bg-products);
+}
+
+.logo { background-color:  violet;}
+
+
+.menu_items_container {
+  position: absolute;
+  left: 0;
+  top: var(--menu_height);
+  height: calc(100vh - var(--menu_height));
+  width: 30vh;
+  display: flex;
+  flex-direction: column;
+  gap: var(--default-gap);
+  background-color: var(--primary_color);
+
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  padding: 2rem;
+}
+
+.menu_items_container.open {
+  transform: translate(0);
+}
+
+.level_two_menu_container {
   display: flex;
   gap: 20px;
+  flex-direction: column;
 }
