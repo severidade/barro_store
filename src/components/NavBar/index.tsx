@@ -39,7 +39,7 @@ function NavBar() {
       const touchDiffX = touchStartX - touchCurrentX;
 
       // Se o usuário deslizar a tag nav para a esquerda em pelo menos 50 pixels, feche o menu
-      if (touchDiffX > 20) {
+      if (touchDiffX > 50) {
         setMenuOpen(false);
       }
     }
@@ -71,8 +71,8 @@ function NavBar() {
 
       <div
         className={ `menu_items_container ${menuOpen ? 'open' : ''}` }
-        onTouchStart={ handleTouchStart }
-        onTouchMove={ handleTouchMove }
+        onTouchStart={ isMobileDevice() ? handleTouchStart : undefined }
+        onTouchMove={ isMobileDevice() ? handleTouchMove : undefined }
       >
 
         <NavLink
@@ -104,4 +104,6 @@ function NavBar() {
 
 export default NavBar;
 
+// gesto de deslizar só funciona em dispositivo mobile - feito
 // menu aberto nao pode ter scrcoll
+// deslizar para a esquerda fecha menu e para a direita abre
