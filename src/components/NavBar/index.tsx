@@ -7,8 +7,10 @@ import './nav-bar.css';
 import useFetchCategories from '../../customHooks/useFetchCategories';
 
 function NavBar() {
-  const [menuOpen, setMenuOpen] = useState(false);
   const categoryList = useFetchCategories();
+
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [touchStartX, setTouchStartX] = useState(null);
 
   const isMobileDevice = () => {
     const md = new MobileDetect(window.navigator.userAgent);
@@ -24,6 +26,22 @@ function NavBar() {
   const handleMenuKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === 'Enter' || event.key === ' ') {
       toggleMenu();
+    }
+  };
+
+  const handleTouchStart = (event) => {
+    setTouchStartX(event.touches[0].clientX);
+  };
+
+  const handleTouchMove = (event) => {
+    if (menuOpen) {
+      const touchCurrentX = event.touches[0].clientX;
+      const touchDiffX = touchStartX - touchCurrentX;
+
+      // Se o usuário deslizar a tag nav para a esquerda em pelo menos 50 pixels, feche o menu
+      if (touchDiffX > 20) {
+        setMenuOpen(false);
+      }
     }
   };
 
@@ -51,7 +69,11 @@ function NavBar() {
 
       <NavLink className="level_one_menu_item" to="/*">Carrinho</NavLink>
 
-      <div className={ `menu_items_container ${menuOpen ? 'open' : ''}` }>
+      <div
+        className={ `menu_items_container ${menuOpen ? 'open' : ''}` }
+        onTouchStart={ handleTouchStart }
+        onTouchMove={ handleTouchMove }
+      >
 
         <NavLink
           className="level_one_menu_item"
@@ -81,3 +103,5 @@ function NavBar() {
 }
 
 export default NavBar;
+
+// menu aberto nao pode ter scrcoll
