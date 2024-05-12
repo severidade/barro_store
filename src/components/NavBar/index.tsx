@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import MobileDetect from 'mobile-detect';
 import { formatUrl } from '../../utils/formatUrl';
@@ -29,49 +29,24 @@ function NavBar() {
     }
   };
 
+  // Se for um dispositivo mobile o menu pode ser fechado com um slider para esquerda
   const handleTouchStart = (event) => {
-    setTouchStartX(event.touches[0].clientX);
+    if (isMobileDevice()) {
+      setTouchStartX(event.touches[0].clientX);
+    }
   };
 
   const handleTouchMove = (event) => {
-    if (menuOpen) {
+    if (isMobileDevice() && menuOpen) {
       const touchCurrentX = event.touches[0].clientX;
       const touchDiffX = touchStartX - touchCurrentX;
 
-      // Se o usuário deslizar a tag nav para a esquerda em pelo menos 50 pixels, feche o menu
+      // Quando a div menu_items_container esta aberto e é deslocado para esquerda o gesto fecha o menu.
       if (touchDiffX > 50) {
         setMenuOpen(false);
       }
     }
   };
-
-  useEffect(() => {
-    const handleBodyTouchStart = (event) => {
-      if (!menuOpen && isMobileDevice()) {
-        setTouchStartX(event.touches[0].clientX);
-      }
-    };
-
-    const handleBodyTouchMove = (event) => {
-      if (!menuOpen && isMobileDevice()) {
-        const touchCurrentX = event.touches[0].clientX;
-        const touchDiffX = touchCurrentX - touchStartX;
-
-        // Se o usuário deslizar para a direita em pelo menos 50 pixels, abra o menu
-        if (touchDiffX > 50) {
-          setMenuOpen(true);
-        }
-      }
-    };
-
-    document.body.addEventListener('touchstart', handleBodyTouchStart);
-    document.body.addEventListener('touchmove', handleBodyTouchMove);
-
-    return () => {
-      document.body.removeEventListener('touchstart', handleBodyTouchStart);
-      document.body.removeEventListener('touchmove', handleBodyTouchMove);
-    };
-  }, [menuOpen, touchStartX]);
 
   return (
     <nav className="container_menu">
