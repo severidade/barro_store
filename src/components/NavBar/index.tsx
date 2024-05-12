@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import MobileDetect from 'mobile-detect';
 import { formatUrl } from '../../utils/formatUrl';
@@ -10,7 +10,7 @@ function NavBar() {
   const categoryList = useFetchCategories();
 
   const [menuOpen, setMenuOpen] = useState(false);
-  const [touchStartX, setTouchStartX] = useState(null);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
 
   const isMobileDevice = () => {
     const md = new MobileDetect(window.navigator.userAgent);
@@ -30,14 +30,14 @@ function NavBar() {
   };
 
   // Se for um dispositivo mobile o menu pode ser fechado com um slider para esquerda
-  const handleTouchStart = (event) => {
+  const handleTouchStart = (event: any) => {
     if (isMobileDevice()) {
       setTouchStartX(event.touches[0].clientX);
     }
   };
 
-  const handleTouchMove = (event) => {
-    if (isMobileDevice() && menuOpen) {
+  const handleTouchMove = (event: any) => {
+    if (isMobileDevice() && menuOpen && touchStartX !== null) {
       const touchCurrentX = event.touches[0].clientX;
       const touchDiffX = touchStartX - touchCurrentX;
 
@@ -47,6 +47,13 @@ function NavBar() {
       }
     }
   };
+
+  //  Impedir o scroll quando o menu estiver aberto (somente em dispositivo mobile).
+  useEffect(() => {
+    if (isMobileDevice()) {
+      document.body.style.overflow = menuOpen ? 'hidden' : 'unset';
+    }
+  }, [menuOpen]);
 
   return (
     <nav className="container_menu">
@@ -108,5 +115,5 @@ function NavBar() {
 export default NavBar;
 
 // gesto de deslizar só funciona em dispositivo mobile - feito
-// menu aberto nao pode ter scrcoll
-// deslizar para a esquerda fecha menu e para a direita abre
+// em mobile quado o menu estiver aberto nao pode ter scrcoll - feito
+// deslizar para a esquerda fecha menu e para a direita abre - nao vai ser implementado
