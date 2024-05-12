@@ -10,7 +10,7 @@ function NavBar() {
   const categoryList = useFetchCategories();
 
   const [menuOpen, setMenuOpen] = useState(false);
-  const [touchStartX, setTouchStartX] = useState(null);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
 
   const isMobileDevice = () => {
     const md = new MobileDetect(window.navigator.userAgent);
@@ -30,14 +30,14 @@ function NavBar() {
   };
 
   // Se for um dispositivo mobile o menu pode ser fechado com um slider para esquerda
-  const handleTouchStart = (event) => {
+  const handleTouchStart = (event: any) => {
     if (isMobileDevice()) {
       setTouchStartX(event.touches[0].clientX);
     }
   };
 
-  const handleTouchMove = (event) => {
-    if (isMobileDevice() && menuOpen) {
+  const handleTouchMove = (event: any) => {
+    if (isMobileDevice() && menuOpen && touchStartX !== null) {
       const touchCurrentX = event.touches[0].clientX;
       const touchDiffX = touchStartX - touchCurrentX;
 
