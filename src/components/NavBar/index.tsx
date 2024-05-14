@@ -1,6 +1,7 @@
+/* eslint-disable no-underscore-dangle */
 import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import MobileDetect from 'mobile-detect';
+import { isMobileDevice } from '../../utils/isMobileDevice';
 import { formatUrl } from '../../utils/formatUrl';
 import './nav-bar.css';
 
@@ -11,13 +12,6 @@ function NavBar() {
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
-
-  const isMobileDevice = () => {
-    const md = new MobileDetect(window.navigator.userAgent);
-    return md.mobile() !== null;
-  };
-
-  console.log('Este é um dispositivo mobile?', isMobileDevice());
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -77,8 +71,6 @@ function NavBar() {
         Barro
       </NavLink>
 
-      <NavLink className="level_one_menu_item" to="/*">Carrinho</NavLink>
-
       <div
         className={ `menu_items_container ${menuOpen ? 'open' : ''}` }
         onTouchStart={ isMobileDevice() ? handleTouchStart : undefined }
@@ -107,7 +99,10 @@ function NavBar() {
           ))
         }
         </div>
+
       </div>
+
+      <NavLink className="level_one_menu_item" to="/*">Carrinho</NavLink>
     </nav>
   );
 }
