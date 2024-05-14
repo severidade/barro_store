@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-underscore-dangle */
 import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
@@ -9,8 +10,10 @@ import useFetchCategories from '../../customHooks/useFetchCategories';
 
 function NavBar() {
   const categoryList = useFetchCategories();
+  const MAX_WIDTH_MOBILE = 1024;
 
   const [menuOpen, setMenuOpen] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
 
   const toggleMenu = () => {
@@ -42,11 +45,38 @@ function NavBar() {
     }
   };
 
-  //  Impedir o scroll quando o menu estiver aberto (somente em dispositivo mobile).
+  //  impede o scroll quando o menu estiver aberto (somente em dispositivo mobile).
   useEffect(() => {
     if (isMobileDevice()) {
       document.body.style.overflow = menuOpen ? 'hidden' : 'unset';
     }
+  }, [menuOpen]);
+
+  // controla o menu
+  useEffect(() => {
+    const handleResize = () => {
+      const newWidth = window.innerWidth;
+      setWindowWidth(newWidth);
+
+      const menuContainer = document.getElementById('menu_items_container');
+
+      // Sempre que a largura da tela for redimensionada, adicione ou remova a classe 'mobile' do menuContainer
+      menuContainer?.classList.toggle('mobile', newWidth <= MAX_WIDTH_MOBILE);
+
+      // Se a largura da tela for maior que 1024 pixels e o menu estiver aberto, feche-o
+      if (newWidth > MAX_WIDTH_MOBILE && menuOpen) {
+        setMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    // Execute o manipulador de redimensionamento inicialmente
+    handleResize();
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, [menuOpen]);
 
   return (
@@ -72,9 +102,11 @@ function NavBar() {
       </NavLink>
 
       <div
-        className={ `menu_items_container ${menuOpen ? 'open' : ''}` }
-        onTouchStart={ isMobileDevice() ? handleTouchStart : undefined }
-        onTouchMove={ isMobileDevice() ? handleTouchMove : undefined }
+        // Adiciona ou remove a classe 'mobile' com base na largura da tela
+        id="menu_items_container"
+        className={ `menu_items_container ${windowWidth <= 1024 ? 'mobile' : ''} ${menuOpen ? 'open' : ''}` }
+        onTouchStart={ handleTouchStart }
+        onTouchMove={ handleTouchMove }
       >
 
         <NavLink
@@ -112,3 +144,6 @@ export default NavBar;
 // gesto de deslizar só funciona em dispositivo mobile - feito
 // em mobile quado o menu estiver aberto nao pode ter scrcoll - feito
 // deslizar para a esquerda fecha menu e para a direita abre - nao vai ser implementado
+
+// toggleMenu inicia oculto porque menu open inicial false
+// 01 Desabilitar o elemento que dispara abertura e fechamento do hamburger
