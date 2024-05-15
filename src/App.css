@@ -15,7 +15,7 @@
   --color-title: #f7c130;
   --color-cta: #FFAD01;
   --color-dark: #030c1a;
-  --teste: #D7BEA8;
+  --teste: #d2b48c;
   --default-radius: 0.5rem;
   --default-gap: 2rem;
   --footer-height: 6rem;
@@ -44,7 +44,7 @@ p { font-size: 1.6rem;}
   width: 100vw;
   max-width: 100%;
   min-height: calc(100vh - var(--footer-height));
-  padding-top: 5rem;
+  padding-top: 8rem;
   /* padding-bottom: 2rem; */
 }
 
