@@ -52,11 +52,11 @@
   /* background-color: tomato; */
 }
 
-.hamburger {
+/* .hamburger {
   width: 30px;
   height: 30px;
   background: var(--bg-products);
-}
+} */
 
 
 .menu_items_container.mobile {
@@ -74,6 +74,17 @@
   z-index: 2;
 }
 
+.menu_items_container.mobile::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary_color);
+  z-index: -1;
+}
+
 .menu_items_container.mobile::before {
   content: "";
   position: absolute;
@@ -81,9 +92,12 @@
   top: 0;
   width: 100vw;
   height: 100%;
-  background-color: black;
-  z-index: -1;
+  background-color: rgba(0, 0, 0);
+  opacity: 0.5;
+  z-index: -2;
+  transition: opacity 4s ease-in-out;
 }
+
 
 .menu_items_container.open {
   left: 0;
