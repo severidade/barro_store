@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { isMobileDevice } from '../../utils/isMobileDevice';
 import { formatUrl } from '../../utils/formatUrl';
 import './nav-bar.css';
+import './animacao_hamburger.css';
 
 import useFetchCategories from '../../customHooks/useFetchCategories';
 
@@ -88,7 +89,7 @@ function NavBar() {
   return (
     <nav className="container_menu">
 
-      <div
+      {/* <div
         className="hamburger"
         onClick={ toggleMenu }
         onKeyDown={ handleMenuKeyDown }
@@ -97,6 +98,17 @@ function NavBar() {
         aria-label="Toggle menu"
       >
         <div className=" dot" />
+      </div> */}
+
+      <div
+        className={ `hamburger ${menuOpen ? 'open' : ''}` }
+        onClick={ toggleMenu }
+        onKeyDown={ handleMenuKeyDown }
+        tabIndex={ 0 }
+        role="button"
+        aria-label="Toggle menu"
+      >
+        <div className="hamburger_animacao" />
       </div>
 
       <NavLink
