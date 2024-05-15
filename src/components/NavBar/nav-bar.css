@@ -41,10 +41,11 @@
   height: 2.5rem;
   text-indent: -999rem;
   overflow: hidden;
-  background-image: url(./assets/carrinho.svg);
+  background-image: url(./assets/carrinho_claro.svg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
+  /* background-color: tomato; */
 }
 
 .hamburger {
