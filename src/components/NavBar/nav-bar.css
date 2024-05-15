@@ -15,6 +15,10 @@
   justify-content: space-between;
 }
 
+.mascara.mobile {
+ width: ;
+}
+
 .container_menu a {
   color: var(--light_color);
   font-weight: 400;
@@ -67,6 +71,18 @@
   background-color: var(--primary_color);
   transition: left 0.7s ease-in-out;
   padding: 2rem;
+  z-index: 2;
+}
+
+.menu_items_container.mobile::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100%;
+  background-color: black;
+  z-index: -1;
 }
 
 .menu_items_container.open {
@@ -80,6 +96,16 @@
 }
 
 
+
+.mascara.mobile {
+  width: 100vw;
+  height: 100%;
+  background: tomato;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
 /* Media query para desktop */
 @media only screen and (min-width: 1024px) {
 

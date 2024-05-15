@@ -20,6 +20,12 @@ function NavBar() {
     setMenuOpen(!menuOpen);
   };
 
+  const toggleMenuHome = () => {
+    if (menuOpen) {
+      setMenuOpen(false);
+    }
+  };
+
   const handleMenuKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === 'Enter' || event.key === ' ') {
       toggleMenu();
@@ -96,6 +102,7 @@ function NavBar() {
       <NavLink
         to="/"
         className="logo"
+        onClick={ toggleMenuHome }
         // onClick={ scrollToTop }
       >
         Barro
@@ -131,7 +138,11 @@ function NavBar() {
           ))
         }
         </div>
-
+        {/* <div
+          className={ `mascara ${windowWidth <= 1024 ? 'mobile' : ''}` }
+          onTouchStart={ handleTouchStart }
+          onTouchMove={ handleTouchMove }
+        /> */}
       </div>
 
       <NavLink className="level_one_menu_item shopping_cart" to="/*">Carrinho</NavLink>
