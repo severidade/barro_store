@@ -134,7 +134,7 @@ function NavBar() {
 
       </div>
 
-      <NavLink className="level_one_menu_item" to="/*">Carrinho</NavLink>
+      <NavLink className="level_one_menu_item" to="/*">C</NavLink>
     </nav>
   );
 }
