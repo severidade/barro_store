@@ -5,6 +5,7 @@
   font-weight: 300;
   display: block;
   position: relative;
+  transform: translateY(1.3rem);
 }
 
 .main_title span {

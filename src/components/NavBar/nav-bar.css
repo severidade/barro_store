@@ -29,9 +29,23 @@
   font-family: 'Dahlia', sans-serif !important;
   font-size: 4.5rem !important;
   font-weight:500 !important;
-  color: var(--color-title) !important;
+  transform: translateY(-0.6rem);
 }
 
+.logo.active {
+  color: var(--light_color) !important;
+}
+
+.shopping_cart {
+  width: 2.5rem;
+  height: 2.5rem;
+  text-indent: -999rem;
+  overflow: hidden;
+  background-image: url(./assets/carrinho.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
 
 .hamburger {
   width: 30px;
