@@ -2,6 +2,7 @@
   /* background-color: tomato; */
   display: block;
   padding-top: var(--default-gap);
+  padding-bottom: var(--default-gap);
   position: relative;
   font-weight: 600;
   text-transform: uppercase;
