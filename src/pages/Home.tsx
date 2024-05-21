@@ -34,7 +34,8 @@ function Home() {
         <section className="hero">
           <HighlightImage
             imageUrl={ highlightImageUrl }
-            isHeroImage
+            imageType="hero"
+            // isHeroImage
           />
           <p>Vasos, Cerâmicas e Plantas</p>
           <h1>Barro</h1>
@@ -51,8 +52,7 @@ function Home() {
 
             <HighlightImage
               imageUrl={ footerImage }
-              isHeroImage={ false }
-              isHomeHeroImage
+              imageType="homeHero"
             />
             <h2 className="highlight_phrase_home">{ highlightPhrase}</h2>
             <BlockContent blocks={ pageContent } />
