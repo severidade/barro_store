@@ -1,11 +1,41 @@
+import BlockContent from '@sanity/block-content-to-react';
+import useFetchPageData from '../customHooks/useFetchPageData';
+import HighlightImage from '../components/HighlightImage';
+import Footer from '../components/Footer';
+
 function Home() {
+  const page = 'home';
+
+  const pageData = useFetchPageData(page);
+
+  if (!pageData) {
+    return (
+      <div className="main">
+        <div className="loading">Loading...</div>
+        <Footer />
+      </div>
+    );
+  }
+
+  console.log(pageData);
+
+  const {
+    highlightPhrase,
+    pageContent,
+    highlightImageUrl,
+    footerImage,
+  } = pageData || {};
+
   return (
-    <>
+    <div className="main">
       <section className="hero">
-        <figure>FOTO IMAGEM DESTAQUE</figure>
+        <HighlightImage
+          imageUrl={ highlightImageUrl }
+          isHeroImage
+        />
+        <p>Vasos, Cerâmicas e Plantas</p>
+        <h1>Barro</h1>
         <div className="hero_container_logo">
-          <p>Vasos, Cerâmicas e Plantas</p>
-          <h1>BARRO</h1>
           <ul>
             <li>Localização</li>
             <li>WhatsApp</li>
@@ -13,10 +43,14 @@ function Home() {
           </ul>
         </div>
       </section>
-      <section className="second_section">
-        fdfdfdff
-      </section>
-    </>
+      <HighlightImage
+        imageUrl={ footerImage }
+        isHeroImage={ false }
+      />
+      <h1>{ highlightPhrase}</h1>
+      <BlockContent blocks={ pageContent } />
+      <Footer />
+    </div>
   );
 }
 
