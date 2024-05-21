@@ -88,11 +88,14 @@ function NavBar() {
 
   return (
     <nav className="container_menu">
-      <div
+      <button
         className={ `mascara ${windowWidth <= 1024 ? 'mobile' : ''} ${menuOpen ? 'open' : ''}` }
         onTouchStart={ handleTouchStart }
         onTouchMove={ handleTouchMove }
-      />
+        onClick={ toggleMenu }
+      >
+        Fechar Menu
+      </button>
 
       <div
         className={ `hamburger ${menuOpen ? 'open' : ''}` }
