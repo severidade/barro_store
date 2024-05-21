@@ -13,10 +13,17 @@
   padding: 0 30px;
   z-index: 3;
   justify-content: space-between;
+  z-index: 1;
 }
 
-.mascara.mobile {
- width: ;
+.container_menu::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary_color);
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 
 .container_menu a {
@@ -34,6 +41,7 @@
   font-size: 4.5rem !important;
   font-weight:500 !important;
   transform: translateY(-0.6rem);
+  z-index: 1;
 }
 
 .logo.active {
@@ -49,15 +57,12 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  /* background-color: tomato; */
+  z-index: 1;
 }
 
-/* .hamburger {
-  width: 30px;
-  height: 30px;
-  background: var(--bg-products);
-} */
-
+.menu_items_container {
+  z-index: 1;
+}
 
 .menu_items_container.mobile {
   position: absolute;
@@ -74,31 +79,6 @@
   z-index: 2;
 }
 
-.menu_items_container.mobile::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--primary_color);
-  z-index: -1;
-}
-
-.menu_items_container.mobile::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100%;
-  background-color: rgba(0, 0, 0);
-  opacity: 0.5;
-  z-index: -2;
-  transition: opacity 4s ease-in-out;
-}
-
-
 .menu_items_container.open {
   left: 0;
 }
@@ -109,17 +89,29 @@
   flex-direction: column;
 }
 
-
+.mascara {
+  display: none;
+}
 
 .mascara.mobile {
+  display: inherit;
   width: 100vw;
-  height: 100%;
-  background: tomato;
+  height: 100vh;
+  background: #000000a3;
   position: absolute;
   left: 0;
   top: 0;
   z-index: -1;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
 }
+
+.mascara.mobile.open {
+  opacity: 1;
+  visibility: visible;
+}
+
 /* Media query para desktop */
 @media only screen and (min-width: 1024px) {
 
@@ -139,7 +131,6 @@
     justify-content: center;
     align-items: center;
   }
-
   
   .level_two_menu_container {
     flex-direction: row;
