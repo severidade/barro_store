@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import NavBar from '../components/NavBar';
 
 function Error() {
   // const navigate = useNavigate();
@@ -6,10 +7,13 @@ function Error() {
   //   navigate(-1);
   // }
   return (
-    <div className="main">
-      <h1>Página de Erro</h1>
-      {/* <button onClick={ handleClick }>Voltar</button> */}
-    </div>
+    <>
+      <NavBar />
+      <div className="main">
+        <h1>Página de Erro</h1>
+        {/* <button onClick={ handleClick }>Voltar</button> */}
+      </div>
+    </>
   );
 }
 

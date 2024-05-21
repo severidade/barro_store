@@ -2,6 +2,7 @@ import BlockContent from '@sanity/block-content-to-react';
 import useFetchPageData from '../customHooks/useFetchPageData';
 import HighlightImage from '../components/HighlightImage';
 import Footer from '../components/Footer';
+import NavBar from '../components/NavBar';
 
 function Home() {
   const page = 'home';
@@ -27,30 +28,33 @@ function Home() {
   } = pageData || {};
 
   return (
-    <div className="main">
-      <section className="hero">
+    <>
+      <NavBar />
+      <div className="main">
+        <section className="hero">
+          <HighlightImage
+            imageUrl={ highlightImageUrl }
+            isHeroImage
+          />
+          <p>Vasos, Cerâmicas e Plantas</p>
+          <h1>Barro</h1>
+          <div className="hero_container_logo">
+            <ul>
+              <li>Localização</li>
+              <li>WhatsApp</li>
+              <li>Instagram</li>
+            </ul>
+          </div>
+        </section>
         <HighlightImage
-          imageUrl={ highlightImageUrl }
-          isHeroImage
+          imageUrl={ footerImage }
+          isHeroImage={ false }
         />
-        <p>Vasos, Cerâmicas e Plantas</p>
-        <h1>Barro</h1>
-        <div className="hero_container_logo">
-          <ul>
-            <li>Localização</li>
-            <li>WhatsApp</li>
-            <li>Instagram</li>
-          </ul>
-        </div>
-      </section>
-      <HighlightImage
-        imageUrl={ footerImage }
-        isHeroImage={ false }
-      />
-      <h1>{ highlightPhrase}</h1>
-      <BlockContent blocks={ pageContent } />
-      <Footer />
-    </div>
+        <h1>{ highlightPhrase}</h1>
+        <BlockContent blocks={ pageContent } />
+        <Footer />
+      </div>
+    </>
   );
 }
 
