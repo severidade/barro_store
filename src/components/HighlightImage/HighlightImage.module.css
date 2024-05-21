@@ -9,21 +9,26 @@
 }
 
 .hero_container_image > img,
-.footer_container_image > img{
+.footer_container_image > img,
+.home_hero_container_image > img {
   width: 100% ;
   height: 100%;
+}
+
+.hero_container_image > img,
+.footer_container_image > img{
   object-fit: cover;
+}
+
+.home_hero_container_image > img {
+  object-fit: contain;
 }
 
 .hero_container_image > img {
   object-position: bottom;
 }
 
-.home_hero_container_image > img {
-  width: 100% ;
-  height: 100%;
-  object-fit: contain;
-}
+
 
 @media only screen and (min-width: 1024px) {
   .hero_container_image{

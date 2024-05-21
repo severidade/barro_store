@@ -130,7 +130,7 @@ div[class^="container"]{
   line-height: 1;
   font-family: 'Dahlia', sans-serif !important;
   font-size: 5rem;
-  margin: calc( var(--default-gap) * 2) 0;
+  margin: var(--default-gap) 0 calc( var(--default-gap) * 2) 0;
 }
 
 /* Estilos Para páginas */

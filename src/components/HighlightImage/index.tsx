@@ -1,19 +1,29 @@
 import styles from './HighlightImage.module.css';
 import { urlFor } from '../../utils/buildSanityImageUrl';
 
+// interface HighlightImageProps {
+//   imageUrl: string;
+//   isHeroImage: boolean;
+//   isHomeHeroImage: boolean;
+// }
 interface HighlightImageProps {
   imageUrl: string;
-  isHeroImage: boolean;
-  isHomeHeroImage: boolean;
+  imageType: 'hero' | 'homeHero' | 'footer';
 }
 
-function HighlightImage({ imageUrl, isHeroImage, isHomeHeroImage }: HighlightImageProps) {
+function HighlightImage({ imageUrl, imageType }: HighlightImageProps) {
   let containerClass = styles.footer_container_image;
 
-  if (isHomeHeroImage) {
-    containerClass = styles.home_hero_container_image;
-  } else if (isHeroImage) {
+  // if (isHomeHeroImage) {
+  //   containerClass = styles.home_hero_container_image;
+  // } else if (isHeroImage) {
+  //   containerClass = styles.hero_container_image;
+  // }
+
+  if (imageType === 'hero') {
     containerClass = styles.hero_container_image;
+  } else if (imageType === 'homeHero') {
+    containerClass = styles.home_hero_container_image;
   }
 
   return (

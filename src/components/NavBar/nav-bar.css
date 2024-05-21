@@ -42,11 +42,11 @@
   font-weight:500 !important;
   transform: translateY(-0.6rem);
   z-index: 1;
+  text-transform: uppercase;
 }
 
 .logo.active {
   color: var(--light_color) !important;
-  text-transform: uppercase;
 }
 
 .shopping_cart {

@@ -35,8 +35,7 @@ function History() {
       <div className="main">
         <HighlightImage
           imageUrl={ highlightImageUrl }
-          isHeroImage
-          isHomeHeroImage={ false }
+          imageType="hero"
         />
         <div className="container_page">
           <MainTitle title={ pageTitle || '' } />
@@ -46,8 +45,7 @@ function History() {
         </div>
         <HighlightImage
           imageUrl={ footerImage }
-          isHeroImage={ false }
-          isHomeHeroImage={ false }
+          imageType="footer"
         />
       </div>
       <Footer />
