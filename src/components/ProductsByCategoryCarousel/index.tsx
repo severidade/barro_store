@@ -28,7 +28,7 @@ function ProductsByCategoryCarousel({ categoryId, categoryOfProduct, productId }
     infinite: true,
     speed: 400,
     slidesToShow: 3,
-    slidesToScroll: 2,
+    slidesToScroll: 1,
     arrows: false,
     swipe: true,
   };
