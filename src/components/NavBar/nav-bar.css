@@ -46,6 +46,7 @@
 
 .logo.active {
   color: var(--light_color) !important;
+  text-transform: uppercase;
 }
 
 .shopping_cart {
