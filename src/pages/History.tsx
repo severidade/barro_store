@@ -5,6 +5,7 @@ import Footer from '../components/Footer';
 import HighlightPhrase from '../components/HighlightPhrase';
 // import VideoPlayer from '../components/VideoPlayer';
 import MainTitle from '../components/MainTitle';
+import NavBar from '../components/NavBar';
 
 function History() {
   const page = 'historia'; // talvez isso possa vir dinamicamente com useParams
@@ -30,10 +31,12 @@ function History() {
 
   return (
     <>
+      <NavBar />
       <div className="main">
         <HighlightImage
           imageUrl={ highlightImageUrl }
           isHeroImage
+          isHomeHeroImage={ false }
         />
         <div className="container_page">
           <MainTitle title={ pageTitle || '' } />
@@ -44,6 +47,7 @@ function History() {
         <HighlightImage
           imageUrl={ footerImage }
           isHeroImage={ false }
+          isHomeHeroImage={ false }
         />
       </div>
       <Footer />

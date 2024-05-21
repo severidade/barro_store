@@ -12,7 +12,7 @@ import OrientationDetectorDevice from './components/OrientationDetectorDevice/in
 function App() {
   return (
     <>
-      <NavBar />
+      {/* <NavBar /> */}
       <Routes>
         <Route path="/" element={ <Home /> } />
         <Route path="/historia" element={ <History /> } />

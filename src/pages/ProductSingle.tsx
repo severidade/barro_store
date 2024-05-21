@@ -19,6 +19,7 @@ import ProductPrice from '../components/ProductPrice';
 import LabelPromotional from '../components/LabelPromotional';
 import CtaButton from '../components/CtaButton';
 import ProductsByCategoryCarousel from '../components/ProductsByCategoryCarousel';
+import NavBar from '../components/NavBar';
 
 function ProductSingle() {
   const navigate = useNavigate();
@@ -68,6 +69,7 @@ function ProductSingle() {
 
   return (
     <>
+      <NavBar />
       <div className="main">
         <div className="container_page">
           <MainTitle title={ title || '' } />

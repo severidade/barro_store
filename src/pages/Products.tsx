@@ -6,6 +6,7 @@ import useFetchCategoryDetails from '../customHooks/useFetchCategoryDetails';
 import useFetchProductsByCategory from '../customHooks/useFetchProductsByCategory';
 import ProductLinks from '../components/ProductLinks';
 import Footer from '../components/Footer';
+import NavBar from '../components/NavBar';
 
 function Products() {
   const { category } = useParams();
@@ -17,6 +18,7 @@ function Products() {
 
   return (
     <>
+      <NavBar />
       <div className="main">
         {/* <h1>
         Esta é a página de produtos da categoria
