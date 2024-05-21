@@ -102,6 +102,37 @@ div[class^="container"]{
   line-height: 1;
 }
 
+/* HOme estilos */
+.working_hours {
+  background: url(./textura.png);
+  background-repeat: repeat;
+  display: flex;
+  flex-direction: column;
+  padding: calc( var(--default-gap) * 2) 0;
+}
+
+.content_working_hours {
+  width: var(--mobile_container_width);
+  margin: auto;
+}
+
+.working_hours p {
+  text-align: center;
+  font-weight: 400;
+}
+
+.working_hours p strong {
+  font-weight: 900;
+  font-size: 1.3rem;
+}
+
+.highlight_phrase_home {
+  line-height: 1;
+  font-family: 'Dahlia', sans-serif !important;
+  font-size: 5rem;
+  margin: calc( var(--default-gap) * 2) 0;
+}
+
 /* Estilos Para páginas */
 /* Single de Produto */
 

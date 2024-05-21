@@ -46,12 +46,17 @@ function Home() {
             </ul>
           </div>
         </section>
-        <HighlightImage
-          imageUrl={ footerImage }
-          isHeroImage={ false }
-        />
-        <h1>{ highlightPhrase}</h1>
-        <BlockContent blocks={ pageContent } />
+        <section className="working_hours">
+          <div className="content_working_hours">
+
+            <HighlightImage
+              imageUrl={ footerImage }
+              isHeroImage={ false }
+            />
+            <h2 className="highlight_phrase_home">{ highlightPhrase}</h2>
+            <BlockContent blocks={ pageContent } />
+          </div>
+        </section>
         <Footer />
       </div>
     </>
