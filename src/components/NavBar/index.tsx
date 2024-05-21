@@ -88,17 +88,11 @@ function NavBar() {
 
   return (
     <nav className="container_menu">
-
-      {/* <div
-        className="hamburger"
-        onClick={ toggleMenu }
-        onKeyDown={ handleMenuKeyDown }
-        tabIndex={ 0 }
-        role="button"
-        aria-label="Toggle menu"
-      >
-        <div className=" dot" />
-      </div> */}
+      <div
+        className={ `mascara ${windowWidth <= 1024 ? 'mobile' : ''} ${menuOpen ? 'open' : ''}` }
+        onTouchStart={ handleTouchStart }
+        onTouchMove={ handleTouchMove }
+      />
 
       <div
         className={ `hamburger ${menuOpen ? 'open' : ''}` }
@@ -150,11 +144,6 @@ function NavBar() {
           ))
         }
         </div>
-        {/* <div
-          className={ `mascara ${windowWidth <= 1024 ? 'mobile' : ''}` }
-          onTouchStart={ handleTouchStart }
-          onTouchMove={ handleTouchMove }
-        /> */}
       </div>
 
       <NavLink className="level_one_menu_item shopping_cart" to="/*">Carrinho</NavLink>
@@ -164,10 +153,3 @@ function NavBar() {
 }
 
 export default NavBar;
-
-// gesto de deslizar só funciona em dispositivo mobile - feito
-// em mobile quado o menu estiver aberto nao pode ter scrcoll - feito
-// deslizar para a esquerda fecha menu e para a direita abre - nao vai ser implementado
-
-// toggleMenu inicia oculto porque menu open inicial false
-// 01 Desabilitar o elemento que dispara abertura e fechamento do hamburger
