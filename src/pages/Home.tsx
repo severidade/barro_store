@@ -52,6 +52,7 @@ function Home() {
             <HighlightImage
               imageUrl={ footerImage }
               isHeroImage={ false }
+              isHomeHeroImage
             />
             <h2 className="highlight_phrase_home">{ highlightPhrase}</h2>
             <BlockContent blocks={ pageContent } />
