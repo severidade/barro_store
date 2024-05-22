@@ -1,0 +1,8 @@
+.container_hero {
+  background-color: tomato;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}

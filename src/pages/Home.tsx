@@ -4,6 +4,7 @@ import HighlightImage from '../components/HighlightImage';
 import Footer from '../components/Footer';
 import NavBar from '../components/NavBar';
 import HomeBranding from '../components/HomeBranding';
+import Hero from '../components/Hero';
 
 function Home() {
   const page = 'home';
@@ -28,14 +29,8 @@ function Home() {
   return (
     <>
       <NavBar />
-      <div className="main">
-        <section className="hero">
-          <HighlightImage
-            imageUrl={ highlightImageUrl }
-            imageType="hero"
-          />
-          <HomeBranding />
-        </section>
+      <div className="main home">
+        <Hero url={ highlightImageUrl } />
         <section className="working_hours">
           <div className="content_working_hours">
 

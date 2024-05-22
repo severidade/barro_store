@@ -45,7 +45,10 @@ p { font-size: 1.6rem;}
   max-width: 100%;
   min-height: calc(100vh - var(--footer-height));
   padding-top: 8rem;
-  /* padding-bottom: 2rem; */
+}
+
+.main.home {
+  padding-top: 0;
 }
 
 .loading {
@@ -103,11 +106,6 @@ div[class^="container"]{
 }
 
 /* HOme estilos */
-.hero {
-  height: 100vh;
-  position: relative;
-}
-
 
 .working_hours {
   background: url(./textura.png);
