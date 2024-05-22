@@ -1,14 +1,9 @@
 import styles from './HighlightImage.module.css';
 import { urlFor } from '../../utils/buildSanityImageUrl';
 
-// interface HighlightImageProps {
-//   imageUrl: string;
-//   isHeroImage: boolean;
-//   isHomeHeroImage: boolean;
-// }
 interface HighlightImageProps {
   imageUrl: string;
-  imageType: 'hero' | 'homeHero' | 'footer';
+  imageType: 'hero' | 'homeHero' | 'working_hours_image' | 'footer';
 }
 
 function HighlightImage({ imageUrl, imageType }: HighlightImageProps) {
@@ -24,6 +19,8 @@ function HighlightImage({ imageUrl, imageType }: HighlightImageProps) {
     containerClass = styles.hero_container_image;
   } else if (imageType === 'homeHero') {
     containerClass = styles.home_hero_container_image;
+  } else if (imageType === 'working_hours_image') {
+    containerClass = styles.working_hours_image;
   }
 
   return (

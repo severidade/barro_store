@@ -36,7 +36,7 @@ function Home() {
 
             <HighlightImage
               imageUrl={ footerImage }
-              imageType="homeHero"
+              imageType="working_hours_image"
             />
             <h2 className="highlight_phrase_home">{ highlightPhrase}</h2>
             <BlockContent blocks={ pageContent } />
