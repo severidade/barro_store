@@ -1,0 +1,67 @@
+.container_home_branding {
+  --icon-size: 5rem;
+
+  background-color: var(--primary_color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--default-gap) 0;
+  color: var(--light_color);
+  height: 21.6rem;
+}
+
+.home_branding_social_slogan {
+  color: var(--light_color);
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  line-height: 1.6rem;
+}
+
+.home_branding_logo {
+  font-family: 'Dahlia', sans-serif;
+  font-size: 9rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  line-height: 9rem;
+  text-align: center;
+}
+
+.home_branding_social_links {
+  height: var(--icon-size);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--default-gap);
+  margin-top: var(--default-gap);
+}
+
+.location, .whats_app, .instagram {
+  display: block;
+  width: var(--icon-size);
+  height: var(--icon-size);
+  overflow: hidden;
+  text-indent: -1000%;
+  background-size: 80%;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* background-color: violet; */
+}
+
+.location {
+  background-image: url(./assets/location.svg);
+}
+
+.whats_app {
+  background-image: url(./assets/whatsapp.svg);
+}
+
+.instagram {
+  background-image: url(./assets/insta.svg);
+}
+
+/* .linkedin { background-image: url(../../img/icon/linkedin.svg);}
+.github { background-image: url(../../img/icon/GitHub-Mark-64px.png);}
+.codpen { background-image: url(../../img/icon/codpen.svg);}
+.behance { background-image: url(../../img/icon/behance.svg);} */

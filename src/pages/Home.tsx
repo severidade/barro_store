@@ -3,10 +3,10 @@ import useFetchPageData from '../customHooks/useFetchPageData';
 import HighlightImage from '../components/HighlightImage';
 import Footer from '../components/Footer';
 import NavBar from '../components/NavBar';
+import HomeBranding from '../components/HomeBranding';
 
 function Home() {
   const page = 'home';
-
   const pageData = useFetchPageData(page);
 
   if (!pageData) {
@@ -17,8 +17,6 @@ function Home() {
       </div>
     );
   }
-
-  console.log(pageData);
 
   const {
     highlightPhrase,
@@ -35,17 +33,8 @@ function Home() {
           <HighlightImage
             imageUrl={ highlightImageUrl }
             imageType="hero"
-            // isHeroImage
           />
-          <p>Vasos, Cerâmicas e Plantas</p>
-          <h1>Barro</h1>
-          <div className="hero_container_logo">
-            <ul>
-              <li>Localização</li>
-              <li>WhatsApp</li>
-              <li>Instagram</li>
-            </ul>
-          </div>
+          <HomeBranding />
         </section>
         <section className="working_hours">
           <div className="content_working_hours">

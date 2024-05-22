@@ -103,6 +103,12 @@ div[class^="container"]{
 }
 
 /* HOme estilos */
+.hero {
+  height: 100vh;
+  position: relative;
+}
+
+
 .working_hours {
   background: url(./textura.png);
   background-repeat: repeat;
