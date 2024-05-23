@@ -1,5 +1,5 @@
 import HighlightImage from '../HighlightImage';
-// import HomeBranding from '../HomeBranding';
+import HomeBranding from '../HomeBranding';
 import styles from './hero.module.css';
 
 interface HeroProps {
@@ -13,7 +13,7 @@ function Hero({ url }: HeroProps) {
         imageUrl={ url }
         imageType="homeHero"
       />
-      {/* <HomeBranding /> */}
+      <HomeBranding />
     </div>
   );
 }
