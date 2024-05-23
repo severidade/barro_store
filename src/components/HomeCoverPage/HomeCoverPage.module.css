@@ -6,7 +6,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: calc(var(--default-gap) * 2 )3rem;
+  padding: calc(var(--default-gap) * 3 ) 3rem;
   color: var(--light_color);
   height: 21.6rem;
 
@@ -14,7 +14,7 @@
   right: 0;
   width: 50vw;
   height: 100vh;
-  gap: 10vh;
+  /* gap: 10vh; */
 }
 
 .home_branding_social_slogan {
@@ -33,6 +33,7 @@
   line-height: 10rem;
   text-align: center;
   writing-mode: tb-rl;
+  flex-grow: 1;
 }
 
 .home_branding_social_links {
