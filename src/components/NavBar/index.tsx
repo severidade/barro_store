@@ -8,6 +8,7 @@ import './nav-bar.css';
 import './animacao_hamburger.css';
 
 import useFetchCategories from '../../customHooks/useFetchCategories';
+import scrollToTop from '../../utils/scrollToTop';
 
 interface NavBarProps {
   page: string;
@@ -15,6 +16,7 @@ interface NavBarProps {
 
 function NavBar({ page } :NavBarProps) {
   const categoryList = useFetchCategories();
+
   const MAX_WIDTH_MOBILE = 1024;
 
   const [menuOpen, setMenuOpen] = useState(false);
@@ -22,8 +24,13 @@ function NavBar({ page } :NavBarProps) {
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
   const [isFixed, setIsFixed] = useState(false);
 
+  const toggleMenuMobile = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
+    scrollToTop();
   };
 
   const toggleMenuHome = () => {
@@ -123,14 +130,14 @@ function NavBar({ page } :NavBarProps) {
         className={ `mascara ${windowWidth <= 1024 ? 'mobile' : ''} ${menuOpen ? 'open' : ''}` }
         onTouchStart={ handleTouchStart }
         onTouchMove={ handleTouchMove }
-        onClick={ toggleMenu }
+        onClick={ toggleMenuMobile }
       >
         Fechar Menu
       </button>
 
       <div
         className={ `hamburger ${menuOpen ? 'open' : ''}` }
-        onClick={ toggleMenu }
+        onClick={ toggleMenuMobile }
         onKeyDown={ handleMenuKeyDown }
         tabIndex={ 0 }
         role="button"
