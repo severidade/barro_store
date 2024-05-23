@@ -3,9 +3,9 @@ import styles from './home_branding.module.css';
 function HomeBranding() {
   return (
     <div className={ styles.container_home_branding }>
-      <p className={ styles.home_branding_social_slogan }>Vasos, Cerâmicas e Plantas</p>
       <h1 className={ styles.home_branding_logo }>Barro</h1>
-      <ul className={ styles.home_branding_social_links }>
+      <p className={ styles.home_branding_social_slogan }>Vasos, Cerâmicas e Plantas</p>
+      {/* <ul className={ styles.home_branding_social_links }>
         <li>
           <a
             className={ styles.location }
@@ -36,7 +36,7 @@ function HomeBranding() {
             instagram
           </a>
         </li>
-      </ul>
+      </ul> */}
     </div>
   );
 }

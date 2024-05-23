@@ -3,7 +3,7 @@ import useFetchPageData from '../customHooks/useFetchPageData';
 import HighlightImage from '../components/HighlightImage';
 import Footer from '../components/Footer';
 import NavBar from '../components/NavBar';
-import HomeBranding from '../components/HomeBranding';
+// import HomeBranding from '../components/HomeBranding';
 import Hero from '../components/Hero';
 
 function Home() {

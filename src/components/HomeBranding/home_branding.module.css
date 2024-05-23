@@ -6,9 +6,15 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: var(--default-gap) 0;
+  padding: var(--default-gap) 3rem;
   color: var(--light_color);
   height: 21.6rem;
+
+  position: absolute;
+  right: 0;
+  width: 50vw;
+  height: 100vh;
+  gap: 10vh;
 }
 
 .home_branding_social_slogan {
@@ -16,15 +22,17 @@
   text-transform: uppercase;
   font-size: 1.6rem;
   line-height: 1.6rem;
+  text-align: center;
 }
 
 .home_branding_logo {
   font-family: 'Dahlia', sans-serif;
-  font-size: 9rem;
+  font-size: 10rem;
   font-weight: 500;
   text-transform: uppercase;
-  line-height: 9rem;
+  line-height: 10rem;
   text-align: center;
+  writing-mode: tb-rl;
 }
 
 .home_branding_social_links {
