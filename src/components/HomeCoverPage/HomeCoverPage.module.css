@@ -6,7 +6,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: var(--default-gap) 3rem;
+  padding: calc(var(--default-gap) * 2 )3rem;
   color: var(--light_color);
   height: 21.6rem;
 
@@ -14,14 +14,14 @@
   right: 0;
   width: 50vw;
   height: 100vh;
-  gap: 10vh;
+  /* gap: 10vh; */
 }
 
 .home_branding_social_slogan {
   color: var(--light_color);
   text-transform: uppercase;
   font-size: 1.6rem;
-  line-height: 1.6rem;
+  line-height: 2.5rem;
   text-align: center;
 }
 
@@ -33,6 +33,7 @@
   line-height: 10rem;
   text-align: center;
   writing-mode: tb-rl;
+  flex-grow: 1;
 }
 
 .home_branding_social_links {
@@ -57,7 +58,26 @@
   /* background-color: violet; */
 }
 
-.location {
+.explore {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 5rem;
+  height: 8rem;
+  background-color: var(--color-cta);
+  border-radius: 10px;
+  transform: translate(-50%, -50%);
+  background-image: url(./assets/explorar.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 80%;
+  overflow: hidden;
+  text-indent: -300%;
+}
+
+
+
+/* .location {
   background-image: url(./assets/location.svg);
 }
 
@@ -67,7 +87,7 @@
 
 .instagram {
   background-image: url(./assets/insta.svg);
-}
+} */
 
 /* .linkedin { background-image: url(../../img/icon/linkedin.svg);}
 .github { background-image: url(../../img/icon/GitHub-Mark-64px.png);}
