@@ -107,7 +107,7 @@ div[class^="container"]{
 
 /* HOme estilos */
 
-.working_hours {
+/* .working_hours {
   background: url(./textura.png);
   background-repeat: repeat;
   display: flex;
@@ -135,7 +135,7 @@ div[class^="container"]{
   font-family: 'Dahlia', sans-serif !important;
   font-size: 5rem;
   margin: var(--default-gap) 0 calc( var(--default-gap) * 2) 0;
-}
+} */
 
 /* Estilos Para páginas */
 /* Single de Produto */

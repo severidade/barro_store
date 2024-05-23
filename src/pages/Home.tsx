@@ -1,10 +1,8 @@
-import BlockContent from '@sanity/block-content-to-react';
 import useFetchPageData from '../customHooks/useFetchPageData';
-import HighlightImage from '../components/HighlightImage';
 import Footer from '../components/Footer';
 import NavBar from '../components/NavBar';
-// import HomeBranding from '../components/HomeBranding';
 import Hero from '../components/Hero';
+import HomeWorkingHours from '../components/HomeWorkingHours';
 
 function Home() {
   const page = 'home';
@@ -31,17 +29,11 @@ function Home() {
       <NavBar />
       <div className="main home">
         <Hero url={ highlightImageUrl } />
-        <section className="working_hours">
-          <div className="content_working_hours">
-
-            <HighlightImage
-              imageUrl={ footerImage }
-              imageType="working_hours_image"
-            />
-            <h2 className="highlight_phrase_home">{ highlightPhrase}</h2>
-            <BlockContent blocks={ pageContent } />
-          </div>
-        </section>
+        <HomeWorkingHours
+          url={ footerImage }
+          phrase={ highlightPhrase }
+          content={ pageContent }
+        />
         <Footer />
       </div>
     </>
