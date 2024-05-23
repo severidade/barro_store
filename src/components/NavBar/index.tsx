@@ -9,13 +9,18 @@ import './animacao_hamburger.css';
 
 import useFetchCategories from '../../customHooks/useFetchCategories';
 
-function NavBar() {
+interface NavBarProps {
+  page: string;
+}
+
+function NavBar({ page } :NavBarProps) {
   const categoryList = useFetchCategories();
   const MAX_WIDTH_MOBILE = 1024;
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [isFixed, setIsFixed] = useState(false);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -86,8 +91,34 @@ function NavBar() {
     };
   }, [menuOpen]);
 
+  // Lógica específica para a página home
+  useEffect(() => {
+    if (page === 'home') {
+      const handleScroll = () => {
+        const alturaTela = window.innerHeight;
+        const disparo = alturaTela * (1 / 9);
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+        if (scrollTop > disparo) {
+          setIsFixed(true);
+        } else {
+          setIsFixed(false);
+        }
+      };
+
+      window.addEventListener('scroll', handleScroll);
+
+      // Limpa evento de scroll
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    }
+  }, [page]);
+
   return (
-    <nav className="container_menu">
+    <nav
+      className={ `container_menu ${windowWidth <= 1024 && page === 'home' ? 'menu_on_home' : ''} ${isFixed ? 'fixed' : ''}` }
+    >
       <button
         className={ `mascara ${windowWidth <= 1024 ? 'mobile' : ''} ${menuOpen ? 'open' : ''}` }
         onTouchStart={ handleTouchStart }

@@ -26,7 +26,7 @@ function Home() {
 
   return (
     <>
-      <NavBar />
+      <NavBar page={ page } />
       <div className="main home">
         <Hero url={ highlightImageUrl } />
         <HomeWorkingHours
