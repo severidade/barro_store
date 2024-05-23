@@ -1,5 +1,5 @@
 import HighlightImage from '../HighlightImage';
-import CoverPage from '../HomeBranding';
+import HomeCoverPage from '../HomeCoverPage';
 
 import styles from './hero.module.css';
 
@@ -14,7 +14,7 @@ function Hero({ url }: HeroProps) {
         imageUrl={ url }
         imageType="homeHero"
       />
-      <CoverPage />
+      <HomeCoverPage />
     </div>
   );
 }

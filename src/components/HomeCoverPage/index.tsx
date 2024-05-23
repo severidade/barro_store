@@ -1,6 +1,6 @@
-import styles from './CoverPage.module.css';
+import styles from './HomeCoverPage.module.css';
 
-function CoverPage() {
+function HomeCoverPage() {
   return (
     <div className={ styles.container_home_branding }>
       <h1 className={ styles.home_branding_logo }>Barro</h1>
@@ -9,4 +9,4 @@ function CoverPage() {
   );
 }
 
-export default CoverPage;
+export default HomeCoverPage;
