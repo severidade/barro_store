@@ -1,44 +1,12 @@
-import styles from './home_branding.module.css';
+import styles from './CoverPage.module.css';
 
-function HomeBranding() {
+function CoverPage() {
   return (
     <div className={ styles.container_home_branding }>
       <h1 className={ styles.home_branding_logo }>Barro</h1>
       <p className={ styles.home_branding_social_slogan }>Vasos, Cerâmicas e Plantas</p>
-      {/* <ul className={ styles.home_branding_social_links }>
-        <li>
-          <a
-            className={ styles.location }
-            target="_blank"
-            href=" #"
-            rel="noreferrer"
-          >
-            Localização
-          </a>
-        </li>
-        <li>
-          <a
-            className={ styles.whats_app }
-            target="_blank"
-            href=" #"
-            rel="noreferrer"
-          >
-            WhatsApp
-          </a>
-        </li>
-        <li>
-          <a
-            className={ styles.instagram }
-            target="_blank"
-            href=" #"
-            rel="noreferrer"
-          >
-            instagram
-          </a>
-        </li>
-      </ul> */}
     </div>
   );
 }
 
-export default HomeBranding;
+export default CoverPage;
