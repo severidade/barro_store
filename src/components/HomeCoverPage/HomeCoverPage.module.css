@@ -6,7 +6,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: calc(var(--default-gap) * 3 ) 3rem;
+  padding: calc(var(--default-gap) * 4 ) 3rem;
   color: var(--light_color);
   height: 21.6rem;
 
@@ -31,7 +31,6 @@
   font-weight: 500;
   text-transform: uppercase;
   line-height: 10rem;
-  text-align: center;
   writing-mode: tb-rl;
   flex-grow: 1;
 }
