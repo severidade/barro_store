@@ -14,6 +14,15 @@
   z-index: 3;
   justify-content: space-between;
   z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+.container_menu.menu_on_home {
+  transform: translateY(-100%);
+}
+
+.container_menu.menu_on_home.fixed  {
+  transform: translateY(0);
 }
 
 .container_menu::after {
