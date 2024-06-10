@@ -3,6 +3,7 @@
 /* eslint-disable no-underscore-dangle */
 import { useLocation, useNavigate, useParams, NavLink } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { fetchProductById } from '../utils/fetch';
 
 import { formatUrl } from '../utils/formatUrl';
@@ -69,6 +70,14 @@ function ProductSingle() {
 
   return (
     <>
+      <Helmet>
+        <title>{productName}</title>
+        {/* {firstImage && <meta property="og:image" content={ firstImage } />} */}
+        <meta property="og:title" content={ productName } />
+        <meta property="og:description" content={ description || productName } />
+        <meta property="og:type" content="product" />
+        <meta property="og:url" content={ window.location.href } />
+      </Helmet>
       <NavBar />
       <div className="main">
         <div className="container_page">
