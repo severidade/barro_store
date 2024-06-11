@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 /* eslint-disable no-underscore-dangle */
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { NavLink } from 'react-router-dom';
 import { isMobileDevice } from '../../utils/isMobileDevice';
 import { formatUrl } from '../../utils/formatUrl';
@@ -24,21 +24,12 @@ function NavBar({ page } :NavBarProps) {
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
   const [isFixed, setIsFixed] = useState(false);
 
-  const toggleMenuMobile = () => {
-    setMenuOpen(!menuOpen);
-  };
-
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-    scrollToTop();
-  };
-
-  const toggleMenuHome = () => {
-    if (menuOpen) {
-      setMenuOpen(false);
+  const toggleMenu = useCallback((shouldScrollToTop = false, closeIfOpen = false) => {
+    setMenuOpen((prevMenuOpen) => (closeIfOpen ? false : !prevMenuOpen));
+    if (shouldScrollToTop) {
+      scrollToTop();
     }
-    scrollToTop();
-  };
+  }, []);
 
   const handleMenuKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === 'Enter' || event.key === ' ') {
@@ -131,14 +122,16 @@ function NavBar({ page } :NavBarProps) {
         className={ `mascara ${windowWidth <= 1024 ? 'mobile' : ''} ${menuOpen ? 'open' : ''}` }
         onTouchStart={ handleTouchStart }
         onTouchMove={ handleTouchMove }
-        onClick={ toggleMenuMobile }
+        // onClick={ toggleMenuMobile }
+        onClick={ () => toggleMenu(false) }
       >
         Fechar Menu
       </button>
 
       <div
         className={ `hamburger ${menuOpen ? 'open' : ''}` }
-        onClick={ toggleMenuMobile }
+        // onClick={ toggleMenuMobile }
+        onClick={ () => toggleMenu(false) }
         onKeyDown={ handleMenuKeyDown }
         tabIndex={ 0 }
         role="button"
@@ -150,8 +143,9 @@ function NavBar({ page } :NavBarProps) {
       <NavLink
         to="/"
         className="logo"
-        onClick={ toggleMenuHome }
+        // onClick={ toggleMenuHome }
         // onClick={ scrollToTop }
+        onClick={ () => toggleMenu(true, true) }
       >
         Barro
       </NavLink>
@@ -167,7 +161,8 @@ function NavBar({ page } :NavBarProps) {
         <NavLink
           className="level_one_menu_item"
           to="/historia"
-          onClick={ toggleMenu }
+          // onClick={ toggleMenu }
+          onClick={ () => toggleMenu(true) }
         >
           História
         </NavLink>
@@ -179,7 +174,8 @@ function NavBar({ page } :NavBarProps) {
               className="level_two_menu_item"
               to={ `/produtos/${formatUrl(category.title)}` }
               key={ category._id }
-              onClick={ toggleMenu }
+              // onClick={ toggleMenu }
+              onClick={ () => toggleMenu(true) }
             >
               {category.title}
             </NavLink>
