@@ -11,7 +11,7 @@
   height: 21.6rem;
 
   position: absolute;
-  right: 0;
+  left: 0;
   width: 50vw;
   height: 100vh;
   /* gap: 10vh; */
@@ -70,8 +70,8 @@
   height: 8rem;
   position: absolute;
   top: 50%;
-  left: 0;
-  transform: translate(-50%, -50%);
+  right: 0;
+  transform: translate(50%, -50%);
 }
 
 .show_more_bg {
