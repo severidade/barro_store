@@ -37,6 +37,7 @@ function NavBar({ page } :NavBarProps) {
     if (menuOpen) {
       setMenuOpen(false);
     }
+    scrollToTop();
   };
 
   const handleMenuKeyDown = (event: React.KeyboardEvent) => {
