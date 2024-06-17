@@ -84,6 +84,12 @@
   transform: translate(-50%, -50%);
 }
 
+@media only screen and (min-width: 1024px) {
+  .container_home_branding {
+   display: none;
+  }
+}
+
 /* .location {
   background-image: url(./assets/location.svg);
 }
