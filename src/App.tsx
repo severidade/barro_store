@@ -9,6 +9,7 @@ import Error from './pages/Error.tsx';
 import ProductSingle from './pages/ProductSingle.tsx';
 import OrientationDetectorDevice from './components/OrientationDetectorDevice/index.tsx';
 import ShoppingCart from './pages/ShoppingCart.tsx';
+import FavoriteProducts from './pages/FavoriteProducts.tsx';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/produtos/:category" element={ <Products /> } />
         <Route path="/produtos/:category/:productSingle" element={ <ProductSingle /> } />
         <Route path="/shopping" element={ <ShoppingCart /> } />
+        <Route path="/favoritos" element={<FavoriteProducts />} />
         <Route path="*" element={ <Error /> } />
       </Routes>
       <OrientationDetectorDevice />
