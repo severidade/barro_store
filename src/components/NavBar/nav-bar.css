@@ -70,6 +70,18 @@
   z-index: 1;
 }
 
+.favorites_list {
+  width: 2.5rem;
+  height: 2.5rem;
+  text-indent: -999rem;
+  overflow: hidden;
+  background-image: url(./assets/heart.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  z-index: 1;
+}
+
 .menu_items_container {
   z-index: 1;
 }

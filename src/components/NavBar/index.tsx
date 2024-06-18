@@ -184,6 +184,7 @@ function NavBar({ page } :NavBarProps) {
         </div>
       </div>
 
+      <NavLink className="level_one_menu_item favorites_list" to="/favoritos">Favoritos</NavLink>
       <NavLink className="level_one_menu_item shopping_cart" to="/shopping">Carrinho</NavLink>
 
     </nav>
