@@ -1,3 +1,4 @@
+import Footer from '../components/Footer';
 import NavBar from '../components/NavBar';
 
 function FavoriteProducts() {
@@ -7,6 +8,7 @@ function FavoriteProducts() {
       <NavBar />
       <div className="main">
         <h1>Página de Produtos Favoritos</h1>
+        <Footer />
       </div>
     </>
   );
