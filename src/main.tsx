@@ -8,7 +8,7 @@ import './CSS/reset.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <Provider store={store}> {/* Envolvendo o App com o Provider */}
+    <Provider store={ store }>
       <BrowserRouter>
         <App />
       </BrowserRouter>
