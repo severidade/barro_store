@@ -11,6 +11,8 @@ function App() {
         <Route path="/" element={ <Home /> } />
         <Route path="/historia" element={ <History /> } />
         <Route path="/produtos" element={ <Error /> } />
+        {/* verificar porque fiz isso acima */}
+
         <Route path="/produtos/:category" element={ <Products /> } />
         <Route path="/produtos/:category/:productSingle" element={ <ProductSingle /> } />
         <Route path="/shopping" element={ <ShoppingCart /> } />

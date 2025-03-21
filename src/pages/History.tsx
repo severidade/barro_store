@@ -3,7 +3,7 @@ import useFetchPageData from '../customHooks/useFetchPageData';
 import HighlightImage from '../components/HighlightImage';
 import Footer from '../components/Footer';
 import HighlightPhrase from '../components/HighlightPhrase';
-// import VideoPlayer from '../components/VideoPlayer';
+import VideoPlayer from '../components/VideoPlayer';
 import MainTitle from '../components/MainTitle';
 import NavBar from '../components/NavBar';
 
@@ -20,7 +20,7 @@ function History() {
     );
   }
 
-  // const youtubeVideoId = pageData.video?.youtubeId;
+  const youtubeVideoId = pageData.video?.youtubeId;
   const {
     pageTitle,
     highlightPhrase,
@@ -31,7 +31,7 @@ function History() {
 
   return (
     <>
-      <NavBar />
+      <NavBar page={ page } />
       <div className="main">
         <HighlightImage
           imageUrl={ highlightImageUrl }
@@ -40,7 +40,7 @@ function History() {
         <div className="container_page">
           <MainTitle title={ pageTitle || '' } />
           <HighlightPhrase phrase={ highlightPhrase } />
-          {/* {youtubeVideoId && <VideoPlayer id={ youtubeVideoId } />} */}
+          {youtubeVideoId && <VideoPlayer id={ youtubeVideoId } />}
           <BlockContent blocks={ pageContent } />
         </div>
         <HighlightImage
