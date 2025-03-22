@@ -24,15 +24,17 @@ function Products() {
     <>
       <NavBar />
       <div className="main">
-        <MainTitle title={ categoryDetails?.title || '' } />
-
-        {category && (
-          <ProductLinks
-            category={ category }
-            products={ productsByCategory || [] }
-          />
-        )}
-
+        <div className="products_page">
+          <div className="container_title">
+            <MainTitle title={ categoryDetails?.title || '' } />
+          </div>
+          {category && (
+            <ProductLinks
+              category={ category }
+              products={ productsByCategory || [] }
+            />
+          )}
+        </div>
       </div>
       <Footer />
     </>

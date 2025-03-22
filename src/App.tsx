@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import './App.css';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { Home, History, Products, ProductSingle, Error, ShoppingCart, FavoriteProducts } from './pages/index.tsx';
 import OrientationDetectorDevice from './components/OrientationDetectorDevice/index.tsx';
 
@@ -10,9 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={ <Home /> } />
         <Route path="/historia" element={ <History /> } />
-        <Route path="/produtos" element={ <Error /> } />
-        {/* verificar porque fiz isso acima */}
-
+        <Route path="/produtos" element={ <Navigate to="/" /> } />
         <Route path="/produtos/:category" element={ <Products /> } />
         <Route path="/produtos/:category/:productSingle" element={ <ProductSingle /> } />
         <Route path="/shopping" element={ <ShoppingCart /> } />
