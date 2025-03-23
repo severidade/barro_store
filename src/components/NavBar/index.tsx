@@ -11,10 +11,10 @@ import useFetchCategories from '../../customHooks/useFetchCategories';
 import scrollToTop from '../../utils/scrollToTop';
 
 interface NavBarProps {
-  page: string;
+  page?: string;
 }
 
-function NavBar({ page } :NavBarProps) {
+function NavBar({ page = '' } :NavBarProps) {
   const categoryList = useFetchCategories();
 
   const MAX_WIDTH_MOBILE = 1024;
@@ -183,8 +183,10 @@ function NavBar({ page } :NavBarProps) {
         }
         </div>
       </div>
-
-      <NavLink className="level_one_menu_item shopping_cart" to="/shopping">Carrinho</NavLink>
+      <div className="user_shopping">
+        <NavLink className="level_one_menu_item favorites_list" to="/favoritos">Favoritos</NavLink>
+        <NavLink className="level_one_menu_item shopping_cart" to="/shopping">Carrinho</NavLink>
+      </div>
 
     </nav>
   );

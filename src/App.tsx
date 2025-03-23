@@ -1,26 +1,20 @@
+/* eslint-disable max-len */
 import './App.css';
-import { Routes, Route } from 'react-router-dom';
-
-// import NavBar from './components/NavBar/index.tsx';
-import Home from './pages/Home.tsx';
-import History from './pages/History.tsx';
-import Products from './pages/Products.tsx';
-import Error from './pages/Error.tsx';
-import ProductSingle from './pages/ProductSingle.tsx';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { Home, History, Products, ProductSingle, Error, ShoppingCart, FavoriteProducts } from './pages/index.tsx';
 import OrientationDetectorDevice from './components/OrientationDetectorDevice/index.tsx';
-import ShoppingCart from './pages/ShoppingCart.tsx';
 
 function App() {
   return (
     <>
-      {/* <NavBar /> */}
       <Routes>
         <Route path="/" element={ <Home /> } />
         <Route path="/historia" element={ <History /> } />
-        <Route path="/produtos" element={ <Error /> } />
+        <Route path="/produtos" element={ <Navigate to="/" /> } />
         <Route path="/produtos/:category" element={ <Products /> } />
         <Route path="/produtos/:category/:productSingle" element={ <ProductSingle /> } />
         <Route path="/shopping" element={ <ShoppingCart /> } />
+        <Route path="/favoritos" element={ <FavoriteProducts /> } />
         <Route path="*" element={ <Error /> } />
       </Routes>
       <OrientationDetectorDevice />

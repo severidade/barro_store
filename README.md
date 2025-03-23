@@ -101,7 +101,10 @@ Dentro da pasta do seu projeto Sanity (onde está localizado o Sanity Studio), e
 
 </details>
 
+### Estado Glogal com Redux
+Para gerenciar a lista de produtos favoritados e os itens adicionados ao carrinho de compras optei pelo uso do Redux. O Redux proporciona uma forma previsível de atualizar e acessar o estado da aplicação, garantindo que componentes em diferentes partes da árvore de componentes possam interagir de maneira eficiente e sem a necessidade de prop drilling.
 
 ### Dependências
 
-- mobile-detect  Biblioteca javascript que permite identificar o dispositivo 
+- mobile-detect  Biblioteca javascript que permite identificar o dispositivo.
+- Redux.

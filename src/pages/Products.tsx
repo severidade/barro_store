@@ -4,9 +4,11 @@ import { useParams } from 'react-router-dom';
 import useFetchCategories from '../customHooks/useFetchCategories';
 import useFetchCategoryDetails from '../customHooks/useFetchCategoryDetails';
 import useFetchProductsByCategory from '../customHooks/useFetchProductsByCategory';
+
 import ProductLinks from '../components/ProductLinks';
 import Footer from '../components/Footer';
 import NavBar from '../components/NavBar';
+import MainTitle from '../components/MainTitle';
 
 function Products() {
   const { category } = useParams();
@@ -16,23 +18,23 @@ function Products() {
   // const productsByCategory = useFetchProductsByCategory(categoryDetails);
   const productsByCategory = useFetchProductsByCategory(categoryDetails ? categoryDetails._id : null);
 
+  console.log(categoryDetails);
+
   return (
     <>
       <NavBar />
       <div className="main">
-        {/* <h1>
-        Esta é a página de produtos da categoria
-        {' '}
-        {category}
-      </h1>
-      <h1>Produtos por Categoria</h1> */}
-
-        {category && (
-          <ProductLinks
-            category={ category }
-            products={ productsByCategory || [] }
-          />
-        )}
+        <div className="products_page">
+          <div className="container_title">
+            <MainTitle title={ categoryDetails?.title || '' } />
+          </div>
+          {category && (
+            <ProductLinks
+              category={ category }
+              products={ productsByCategory || [] }
+            />
+          )}
+        </div>
       </div>
       <Footer />
     </>

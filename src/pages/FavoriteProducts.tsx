@@ -1,17 +1,16 @@
 import Footer from '../components/Footer';
 import NavBar from '../components/NavBar';
 
-function ShoppingCart() {
+function FavoriteProducts() {
   return (
     <>
       <NavBar />
       <div className="main">
-        <h1>carrinho</h1>
-        {/* <button onClick={ handleClick }>Voltar</button> */}
+        <h1>Página de Produtos Favoritos</h1>
         <Footer />
       </div>
     </>
   );
 }
 
-export default ShoppingCart;
+export default FavoriteProducts;
