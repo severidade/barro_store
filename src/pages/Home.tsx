@@ -12,7 +12,6 @@ function Home() {
     return (
       <div className="main">
         <div className="loading">Loading...</div>
-        <Footer />
       </div>
     );
   }
