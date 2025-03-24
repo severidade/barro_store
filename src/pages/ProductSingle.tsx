@@ -80,7 +80,7 @@ function ProductSingle() {
       </Helmet>
       <NavBar />
       <div className="main">
-        <div className="container_page">
+        <div className="container_page single">
           <MainTitle title={ title || '' } />
 
           <ProductTitle productName={ productName || '' } />
