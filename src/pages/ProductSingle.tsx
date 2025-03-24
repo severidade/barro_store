@@ -68,6 +68,8 @@ function ProductSingle() {
   const { title, description, _id } = categoryDetails || {};
   const { productName } = product || {};
 
+  // console.log(product.images[0]);
+
   return (
     <>
       <Helmet>
@@ -98,8 +100,8 @@ function ProductSingle() {
             payments={ product.installmentPayments || 0 }
           />
           <div className="container_cta">
-            <CtaButton typeOfButton="addToCart" title="Comprar" />
-            <CtaButton typeOfButton="addToFavorite" title="Favorito" />
+            <CtaButton typeOfButton="addToCart" title="Comprar" p={ product } />
+            <CtaButton typeOfButton="addToFavorite" title="Favorito" p={ product } />
           </div>
           <p>{ description }</p>
           {category && (

@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 // src/redux/reducers/favoriteProductsReducer.ts
 import { FavoriteProduct } from '../types/Product';
 
@@ -29,11 +30,13 @@ export const removeFavorite = (id: string): RemoveFavoriteAction => ({
 });
 
 const favoriteProductsReducer = (state = initialState, action: FavoriteProductsActionTypes): FavoriteProduct[] => {
+  console.log('Reducer Action:', action);
   switch (action.type) {
     case ADD_FAVORITE:
+      console.log('Adding to favorites:', action.payload);
       return [...state, action.payload];
     case REMOVE_FAVORITE:
-      return state.filter(product => product.id !== action.payload);
+      return state.filter((product) => product.id !== action.payload);
     default:
       return state;
   }

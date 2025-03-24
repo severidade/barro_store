@@ -12,11 +12,6 @@ function OrientationDetectorDevice() {
 
   useEffect(() => {
     function checkHorizontalOrientation() {
-      console.log(`
-        a largura do meu navegador é ${windowWidth} e a altura é ${windowHeight}
-        defini que isMobile é todo tela menor que 1024px. Esta tela é menor? ${isMobile}
-      `);
-
       if (isMobile && windowWidth > windowHeight && !isBrowser) {
         setMobileHorizontal(true);
         document.body.style.overflow = 'hidden'; // Evita o scroll
