@@ -135,11 +135,17 @@ div[class^="container"]{
     transform: translateX(0) !important;
   }
 
+  .container_page.single {
+    left: 50vw !important;
+    transform: translateX(-50%) !important;
+  }
+
   /* .products_page {
     background-color: tomato;
     width: var(--desktop_container_width);
   } */
   .main {
     padding-bottom: calc(var(--footer-height) * 2);
+    overflow-y: hidden;
   }
 }

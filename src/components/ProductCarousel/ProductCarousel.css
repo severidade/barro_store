@@ -104,18 +104,8 @@
   object-fit: contain;
 }
 
-/* @media only screen and (min-width: 500px) {
-  .slick-list {
-    background: rgba(30, 255, 71, 0.6);
-    position: absolute;
-    width: calc(100% + 30vw); 
-    top: 0;
-    left: -15vw;
-  }
-}*/
-
 @media only screen and (min-width: 1024px) {
   .slick-list {
-    width: calc(100% + (50vw - var(--desktop_container_width)));
+    width: 100vw;
   }
 }
