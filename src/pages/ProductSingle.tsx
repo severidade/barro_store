@@ -25,14 +25,11 @@ import NavBar from '../components/NavBar';
 function ProductSingle() {
   const navigate = useNavigate();
   const location = useLocation();
-
   const searchParams = new URLSearchParams(location.search);
   const productIdFromQuery = searchParams.get('productId');
   const { category } = useParams();
-
   const [product, setProduct] = useState<Product | null>(null);
   const categoryList = useFetchCategories();
-
   const [categoryDetails, setCategoryDetails] = useState<Category | null>(null);
 
   useEffect(() => {
@@ -67,8 +64,7 @@ function ProductSingle() {
 
   const { title, description, _id } = categoryDetails || {};
   const { productName } = product || {};
-
-  // console.log(product.images[0]);
+  const currentUrl = window.location.href;
 
   return (
     <>
@@ -100,8 +96,8 @@ function ProductSingle() {
             payments={ product.installmentPayments || 0 }
           />
           <div className="container_cta">
-            <CtaButton typeOfButton="addToCart" title="Comprar" p={ product } />
-            <CtaButton typeOfButton="addToFavorite" title="Favorito" p={ product } />
+            <CtaButton typeOfButton="addToCart" title="Comprar" selectedProduct={ product } selectedProductUrl={ currentUrl } />
+            <CtaButton typeOfButton="addToFavorite" title="Favorito" selectedProduct={ product } selectedProductUrl={ currentUrl } />
           </div>
           <p>{ description }</p>
           {category && (
