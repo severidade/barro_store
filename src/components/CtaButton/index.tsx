@@ -1,53 +1,50 @@
+/* eslint-disable no-underscore-dangle */
 import { useDispatch } from 'react-redux';
 import { addFavorite } from '../../redux/reducers/favoriteProductsReducer.ts';
+import { AppDispatch } from '../../redux/store';
 import styles from './CtaButton.module.css';
 import { Product } from '../../types/Product.ts';
 
 interface MainCtaButton {
   typeOfButton: string;
   title: string;
-  p?: Product;
+  selectedProduct: Product;
 }
 
 const buildImageUrl = (imageRef: string) => {
-  // Extrai o ID da imagem e sua extensão
-  const match = imageRef.match(/image-([^-]+)-(\d+x\d+)-(\w+)/);
+  const parts = imageRef.split('-');
 
-  if (match) {
-    const [, imageId, dimensions, format] = match;
+  if (parts.length === 4) {
+    const imageId = parts[1];
+    const dimensions = parts[2];
+    const format = parts[3];
     return `https://cdn.sanity.io/images/knnk47g7/production/${imageId}-${dimensions}.${format}`;
   }
-
-  return ''; // Retorna string vazia se não conseguir parsear
+  return '';
 };
 
-function CtaButton({ typeOfButton, title, p }: MainCtaButton) {
-  const dispatch = useDispatch();
-
-  // Log detalhado do produto
-  // console.log('Produto recebido:', JSON.stringify(p, null, 2));
-
-  console.log(p.images?.[0]);
+function CtaButton({ typeOfButton, title, selectedProduct }: MainCtaButton) {
+  const dispatch = useDispatch<AppDispatch>();
 
   const handleClick = () => {
     console.log('Botão clicado', {
       typeOfButton,
-      productId: p?._id,
-      productName: p?.productName,
+      productId: selectedProduct?._id,
+      productName: selectedProduct?.productName,
     });
 
     if (typeOfButton === 'addToCart') {
       console.log('Produto adicionado ao carrinho');
     } else if (typeOfButton === 'addToFavorite') {
-      if (p) {
-        // Construa a URL da imagem
-        const imageUrl = buildImageUrl(p.images?.[0]?.asset?._ref || '');
+      if (selectedProduct) {
+        // Constrói a URL da imagem pegando a primeira imagem do produto
+        const imageUrl = buildImageUrl(selectedProduct.images?.[0]?.asset?._ref || '');
 
         dispatch(addFavorite({
-          id: p._id,
-          name: p.productName,
-          imageUrl, // URL completa da imagem
-          // price: p.price,
+          id: selectedProduct._id,
+          name: selectedProduct.productName,
+          imageUrl,
+          // price: selectedProduct.price,
         }));
       } else {
         console.warn('Produto não definido ao tentar adicionar aos favoritos');

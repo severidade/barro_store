@@ -100,8 +100,8 @@ function ProductSingle() {
             payments={ product.installmentPayments || 0 }
           />
           <div className="container_cta">
-            <CtaButton typeOfButton="addToCart" title="Comprar" p={ product } />
-            <CtaButton typeOfButton="addToFavorite" title="Favorito" p={ product } />
+            <CtaButton typeOfButton="addToCart" title="Comprar" selectedProduct={ product } />
+            <CtaButton typeOfButton="addToFavorite" title="Favorito" selectedProduct={ product } />
           </div>
           <p>{ description }</p>
           {category && (

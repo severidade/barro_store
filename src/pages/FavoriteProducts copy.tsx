@@ -25,10 +25,7 @@ function FavoriteProducts() {
               <li key={ product.id }>
                 <img src={ product.imageUrl } alt={ product.name } width="150" />
                 <p>{product.name}</p>
-                {/* <p>
-                  Preço: R$
-                  {product.price.toFixed(2)}
-                </p> */}
+                ver Produto
               </li>
             ))}
           </ul>
