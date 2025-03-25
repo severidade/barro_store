@@ -33,7 +33,7 @@ function NavBar({ page = '' } :NavBarProps) {
 
   const handleMenuKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === 'Enter' || event.key === ' ') {
-      toggleMenu();
+      toggleMenu(); // console.log('passei aqui');
     }
   };
 
