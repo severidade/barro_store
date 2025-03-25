@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-underscore-dangle */
 import { useDispatch } from 'react-redux';
 import { addFavorite } from '../../redux/reducers/favoriteProductsReducer.ts';
@@ -9,6 +10,7 @@ interface MainCtaButton {
   typeOfButton: string;
   title: string;
   selectedProduct: Product;
+  selectedProductUrl: string;
 }
 
 const buildImageUrl = (imageRef: string) => {
@@ -23,7 +25,7 @@ const buildImageUrl = (imageRef: string) => {
   return '';
 };
 
-function CtaButton({ typeOfButton, title, selectedProduct }: MainCtaButton) {
+function CtaButton({ typeOfButton, title, selectedProduct, selectedProductUrl }: MainCtaButton) {
   const dispatch = useDispatch<AppDispatch>();
 
   const handleClick = () => {
@@ -44,6 +46,7 @@ function CtaButton({ typeOfButton, title, selectedProduct }: MainCtaButton) {
           id: selectedProduct._id,
           name: selectedProduct.productName,
           imageUrl,
+          productUrl: selectedProductUrl,
           // price: selectedProduct.price,
         }));
       } else {

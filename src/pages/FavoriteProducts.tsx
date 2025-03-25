@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { RootState } from '../redux/store';
 import Footer from '../components/Footer';
 import NavBar from '../components/NavBar';
@@ -23,12 +24,10 @@ function FavoriteProducts() {
           <ul>
             {favoriteProducts.map((product) => (
               <li key={ product.id }>
-                <img src={ product.imageUrl } alt={ product.name } width="150" />
+                <img src={ product.imageUrl } alt={ product.name } width="100" />
                 <p>{product.name}</p>
-                {/* <p>
-                  Preço: R$
-                  {product.price.toFixed(2)}
-                </p> */}
+                <Link to={ product.productUrl }>Ver Produto</Link>
+
               </li>
             ))}
           </ul>

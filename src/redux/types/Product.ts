@@ -3,6 +3,7 @@ export interface FavoriteProduct {
   name: string;
   imageUrl: string;
   // price: number;
+  productUrl:string;
 }
 
 // const ADD_FAVORITE = 'ADD_FAVORITE';
