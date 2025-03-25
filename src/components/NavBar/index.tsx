@@ -2,6 +2,8 @@
 /* eslint-disable no-underscore-dangle */
 import { useState, useEffect, useCallback } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
 import { isMobileDevice } from '../../utils/isMobileDevice';
 import { formatUrl } from '../../utils/formatUrl';
 import './nav-bar.css';
@@ -23,6 +25,10 @@ function NavBar({ page = '' } :NavBarProps) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
   const [isFixed, setIsFixed] = useState(false);
+
+  const favoriteProducts = useSelector((state: RootState) => {
+    return state.favoriteProducts;
+  });
 
   const toggleMenu = useCallback((shouldScrollToTop = false, closeIfOpen = false) => {
     setMenuOpen((prevMenuOpen) => (closeIfOpen ? false : !prevMenuOpen));
@@ -184,8 +190,14 @@ function NavBar({ page = '' } :NavBarProps) {
         </div>
       </div>
       <div className="user_shopping">
-        <NavLink className="level_one_menu_item favorites_list" to="/favoritos">Favoritos</NavLink>
-        <NavLink className="level_one_menu_item shopping_cart" to="/shopping">Carrinho</NavLink>
+        <NavLink className="level_one_menu_item favorites_list" to="/favoritos">
+          <span className="menu_label">Favoritos</span>
+          <span className="favorites_count">{favoriteProducts.length}</span>
+        </NavLink>
+        <NavLink className="level_one_menu_item shopping_cart" to="/shopping">
+          <span className="menu_label">Carrinho</span>
+          {/* <span className="porducts_count">0</span> */}
+        </NavLink>
       </div>
 
     </nav>
