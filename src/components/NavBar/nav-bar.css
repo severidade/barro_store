@@ -2,7 +2,7 @@
   --menu_height: 8rem;
 
   display: flex;
-  gap: 30px;
+  gap: 5px;
   position: fixed;
   width: 100%;
   height: var(--menu_height);
@@ -10,7 +10,7 @@
   top: 0;
   left: 0;
   align-items: center;
-  padding: 0 30px;
+  padding: 0 20px;
   z-index: 3;
   justify-content: space-between;
   z-index: 1;
@@ -62,7 +62,7 @@
   z-index: 1;
   display: flex;
   flex-direction: row;
-  gap: 20px;
+  gap: 5px;
 }
 
 .shopping_cart, .favorites_list {
@@ -70,27 +70,29 @@
 }
 
 .shopping_cart {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 5rem;
+  height: 8rem;
   /* text-indent: -999rem; */
   overflow: hidden;
   background-image: url(./assets/carrinho_claro.svg);
   background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
+  background-position: center left;
+  background-size: 2.3rem;
   z-index: 1;
+  /* border: solid 1px white; */
 }
 
 .favorites_list {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 5rem;
+  height: 8rem;
   /* text-indent: -999rem; */
   /* overflow: hidden; */
   background-image: url(./assets/heart.svg);
   background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
+  background-position: center left;
+  background-size: 2.3rem;
   z-index: 1;
+  /* border: solid 1px white; */
 }
 
 .favorites_count {
@@ -103,13 +105,12 @@
   align-items: center;
   border-radius: 50%;
   position: absolute;
-  left: 50%;
-  top: -50%;
+  right: 5px;
+  top: 1rem;
 }
 
 .menu_label {
   text-indent: -999rem;
-  background-color: violet;
   overflow: hidden;
   position: absolute;
 }

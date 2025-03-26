@@ -4,6 +4,7 @@ import { removeFavorite } from '../redux/reducers/favoriteProductsReducer.ts';
 import { RootState } from '../redux/store';
 import Footer from '../components/Footer';
 import NavBar from '../components/NavBar';
+import MainTitle from '../components/MainTitle/index.tsx';
 
 function FavoriteProducts() {
   const dispatch = useDispatch();
@@ -17,31 +18,39 @@ function FavoriteProducts() {
     <>
       <NavBar />
       <div className="main">
-        <h1>Página de Produtos Favoritos</h1>
-        <p>
-          Número de produtos favoritos:
-          {favoriteProducts.length}
-        </p>
-        {favoriteProducts.length > 0 ? (
-          <ul>
-            {favoriteProducts.map((product) => (
-              <li key={ product.id }>
-                <img src={ product.imageUrl } alt={ product.name } width="100" />
-                <p>{product.name}</p>
-                <Link to={ product.productUrl }>Ver Produto</Link>
-                <button
-                  onClick={ () => dispatch(removeFavorite(product.id)) }
-                  type="button"
-                >
-                  Remover produto
-                </button>
+        <div className="container_page single">
+          <MainTitle title="Produtos Favoritos" />
+          {/* <p>
+            Número de produtos favoritos:
+            {favoriteProducts.length}
+          </p> */}
+          {favoriteProducts.length > 0 ? (
+            <ul>
+              {favoriteProducts.map((product) => (
+                <li key={ product.id }>
+                  <img src={ product.imageUrl } alt={ product.name } width="100" />
+                  <p>{product.name}</p>
+                  <Link
+                    to={ product.productUrl }
+                    className="see_product"
+                  >
+                    Ver Produto
+                  </Link>
+                  <button
+                    onClick={ () => dispatch(removeFavorite(product.id)) }
+                    type="button"
+                    className="remove_product"
+                  >
+                    Remover produto
+                  </button>
 
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p>Você ainda não tem produtos favoritos.</p>
-        )}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>Você ainda não adicionou produtos à sua lista de favoritos.</p>
+          )}
+        </div>
       </div>
       <Footer />
     </>
