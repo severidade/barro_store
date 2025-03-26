@@ -133,10 +133,69 @@ div[class^="container"]{
   text-indent: -900px;
 }
 
-.see_product, .remove_product {
-  cursor: pointer;
+.favorite-products-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--default-gap);
 }
 
+.favorite-product-card {
+  background-color: white;
+  border-radius: var(--default-radius);
+  display: flex;
+  /* gap: calc(var(--default-gap)/2); */
+  width: 100%;
+  height: 100px;
+  align-items: center;
+  position: relative;
+  padding-right: 50px;
+}
+
+.favorite-product-image {
+  width: 70px;
+  /* background-color: #da8324; */
+}
+.favorite-product-name {
+  display: block;
+  height: max-content;
+  line-height: 1.4;
+}
+
+.favorite-product-actions {
+  width: 40px !important;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 2px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.see_product, .remove_product {
+  cursor: pointer;
+  overflow: hidden;
+  text-indent: -900px;
+  display: block;
+  background-color: var(--primary_color);
+  flex-grow: 1;
+}
+
+.see_product {
+  background-image: url(./assets/img/Eye.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 0 var(--default-radius) 0 0 ;
+  background-size: 50%;
+}
+
+.remove_product {
+  background-image: url(./assets/img/Trash.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 50%;
+  border-radius: 0 0 var(--default-radius) 0 ;
+}
 
 /* Media query para tablet */
 @media only screen and (min-width: 500px) {
