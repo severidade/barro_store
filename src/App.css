@@ -113,6 +113,20 @@ div[class^="container"]{
 
 /* Produtos favoritos */
 
+.favorite-label {
+  background-color: tomato;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  position: absolute;
+  top: 10px;
+  left:10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
 .see_product, .remove_product {
   cursor: pointer;
 }

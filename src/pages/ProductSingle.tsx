@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable max-len */
 /* eslint-disable no-underscore-dangle */
+import { useSelector } from 'react-redux';
 import { useLocation, useNavigate, useParams, NavLink } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
@@ -31,6 +32,11 @@ function ProductSingle() {
   const [product, setProduct] = useState<Product | null>(null);
   const categoryList = useFetchCategories();
   const [categoryDetails, setCategoryDetails] = useState<Category | null>(null);
+
+  const favoriteProducts = useSelector((state: RootState) => {
+    console.log('Redux State:', state);
+    return state.favoriteProducts;
+  });
 
   useEffect(() => {
     async function fetchProduct() {
@@ -66,6 +72,9 @@ function ProductSingle() {
   const { productName } = product || {};
   const currentUrl = window.location.href;
 
+  const isFavorite = favoriteProducts.some((favProduct: { id: string }) => favProduct.id === product._id);
+
+  console.log(isFavorite);
   return (
     <>
       <Helmet>
@@ -83,6 +92,7 @@ function ProductSingle() {
 
           <ProductTitle productName={ productName || '' } />
           <div className="container_product_image">
+            {isFavorite && <div className="favorite-label">Favorito</div>}
             <ProductCarousel images={ product.images } name={ productName } />
             { product.promotion && product.promotion.isPromotional && (
               <LabelPromotional off={ product.promotion.discount || 0 } />
