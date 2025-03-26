@@ -114,17 +114,17 @@ div[class^="container"]{
 /* Produtos favoritos */
 
 .favorite-label {
-  background-color: white;
-  background-image: url(./assets/img/icone_favorito.svg);
+  /* background-color: white; */
+  background-image: url(./assets/img/label_fav.svg);
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 60%;
+  background-size: 100%;
   width: 5rem;
   height: 5rem;
   border-radius: 50%;
   position: absolute;
-  top: 10px;
-  left:10px;
+  top: 15px;
+  left:15px;
   display: flex;
   justify-content: center;
   align-items: center;
