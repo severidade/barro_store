@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { removeFavorite } from '../redux/reducers/favoriteProductsReducer.ts';
@@ -25,25 +26,21 @@ function FavoriteProducts() {
             {favoriteProducts.length}
           </p> */}
           {favoriteProducts.length > 0 ? (
-            <ul>
+            <ul className="favorite-products-list">
               {favoriteProducts.map((product) => (
-                <li key={ product.id }>
-                  <img src={ product.imageUrl } alt={ product.name } width="100" />
-                  <p>{product.name}</p>
-                  <Link
-                    to={ product.productUrl }
-                    className="see_product"
-                  >
-                    Ver Produto
-                  </Link>
-                  <button
-                    onClick={ () => dispatch(removeFavorite(product.id)) }
-                    type="button"
-                    className="remove_product"
-                  >
-                    Remover produto
-                  </button>
-
+                <li className="favorite-product-card" key={ product.id }>
+                  <img className="favorite-product-image" src={ product.imageUrl } alt={ product.name } />
+                  <p className="favorite-product-name">{product.name}</p>
+                  <div className="favorite-product-actions">
+                    <Link to={ product.productUrl } className="see_product"> Ver Produto </Link>
+                    <button
+                      onClick={ () => dispatch(removeFavorite(product.id)) }
+                      type="button"
+                      className="remove_product"
+                    >
+                      Remover produto
+                    </button>
+                  </div>
                 </li>
               ))}
             </ul>
