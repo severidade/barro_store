@@ -114,7 +114,11 @@ div[class^="container"]{
 /* Produtos favoritos */
 
 .favorite-label {
-  background-color: tomato;
+  background-color: white;
+  background-image: url(./assets/img/icone_favorito.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 60%;
   width: 5rem;
   height: 5rem;
   border-radius: 50%;
@@ -125,6 +129,8 @@ div[class^="container"]{
   justify-content: center;
   align-items: center;
   z-index: 1;
+  overflow: hidden;
+  text-indent: -900px;
 }
 
 .see_product, .remove_product {
