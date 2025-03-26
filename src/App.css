@@ -111,6 +111,12 @@ div[class^="container"]{
   line-height: 1;
 }
 
+/* Produtos favoritos */
+
+.see_product, .remove_product {
+  cursor: pointer;
+}
+
 
 /* Media query para tablet */
 @media only screen and (min-width: 500px) {
