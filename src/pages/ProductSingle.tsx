@@ -74,7 +74,7 @@ function ProductSingle() {
 
   const isFavorite = favoriteProducts.some((favProduct: { id: string }) => favProduct.id === product._id);
 
-  console.log(isFavorite);
+  // console.log(isFavorite);
   return (
     <>
       <Helmet>

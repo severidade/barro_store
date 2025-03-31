@@ -192,7 +192,9 @@ function NavBar({ page = '' } :NavBarProps) {
       <div className="user_shopping">
         <NavLink className="level_one_menu_item favorites_list" to="/favoritos">
           <span className="menu_label">Favoritos</span>
-          <span className="favorites_count">{favoriteProducts.length}</span>
+          <span className={ `favorites_count ${favoriteProducts.length > 0 ? 'has_favorite' : ' '} `.trim() }>
+            {favoriteProducts.length}
+          </span>
         </NavLink>
         <NavLink className="level_one_menu_item shopping_cart" to="/shopping">
           <span className="menu_label">Carrinho</span>
