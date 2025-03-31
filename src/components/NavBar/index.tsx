@@ -26,9 +26,7 @@ function NavBar({ page = '' } :NavBarProps) {
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
   const [isFixed, setIsFixed] = useState(false);
 
-  const favoriteProducts = useSelector((state: RootState) => {
-    return state.favoriteProducts;
-  });
+  const favoriteProducts = useSelector((state: RootState) => state.favoriteProducts ?? []);
 
   const toggleMenu = useCallback((shouldScrollToTop = false, closeIfOpen = false) => {
     setMenuOpen((prevMenuOpen) => (closeIfOpen ? false : !prevMenuOpen));
