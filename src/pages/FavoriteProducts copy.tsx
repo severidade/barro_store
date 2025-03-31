@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store';
 import Footer from '../components/Footer';
@@ -9,6 +10,8 @@ function FavoriteProducts() {
     console.log('Favorite Products State:', state.favoriteProducts);
     return state.favoriteProducts;
   });
+
+  // const favoriteProducts = useSelector((state: RootState) => state.favoriteProducts ?? []);
 
   return (
     <>

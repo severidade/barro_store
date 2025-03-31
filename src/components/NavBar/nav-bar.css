@@ -96,7 +96,7 @@
 }
 
 .favorites_count {
-  background: tomato;
+  background: var(--color-cta);
   display: flex;
   padding: 2px;
   width: 30px;
@@ -107,6 +107,12 @@
   position: absolute;
   right: 5px;
   top: 1rem;
+  opacity: 0;
+  color: var(--primary_color);
+}
+
+.has_favorite{
+  opacity: 1;
 }
 
 .menu_label {

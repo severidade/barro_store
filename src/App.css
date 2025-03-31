@@ -133,12 +133,6 @@ div[class^="container"]{
   text-indent: -900px;
 }
 
-.favorite-products-list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--default-gap);
-}
-
 
 /* Media query para tablet */
 @media only screen and (min-width: 500px) {

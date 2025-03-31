@@ -2,9 +2,10 @@
 /* eslint-disable max-len */
 /* eslint-disable no-underscore-dangle */
 import { useSelector } from 'react-redux';
-import { useLocation, useNavigate, useParams, NavLink } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
+import { RootState } from '../redux/store';
 import { fetchProductById } from '../utils/fetch';
 
 import { formatUrl } from '../utils/formatUrl';
@@ -33,10 +34,7 @@ function ProductSingle() {
   const categoryList = useFetchCategories();
   const [categoryDetails, setCategoryDetails] = useState<Category | null>(null);
 
-  const favoriteProducts = useSelector((state: RootState) => {
-    console.log('Redux State:', state);
-    return state.favoriteProducts;
-  });
+  const favoriteProducts = useSelector((state: RootState) => state.favoriteProducts ?? []);
 
   useEffect(() => {
     async function fetchProduct() {
@@ -74,7 +72,7 @@ function ProductSingle() {
 
   const isFavorite = favoriteProducts.some((favProduct: { id: string }) => favProduct.id === product._id);
 
-  console.log(isFavorite);
+  // console.log(isFavorite);
   return (
     <>
       <Helmet>
