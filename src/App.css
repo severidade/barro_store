@@ -134,6 +134,38 @@ div[class^="container"]{
 }
 
 
+/* SweetAlert2 Personalização */
+
+.swal_button {
+  background-color: var(--primary_color) !important;
+  color: var(--light_color) !important;
+  /* padding: 10px 20px; */
+  height: 5rem;
+  border-radius: 0.5rem;
+  text-transform: uppercase;
+  font-size: 1.6rem;
+}
+
+.swal_popup {
+  background-color: var(--light_color) !important;
+  background-image: url(./assets/noise.webp);
+  border-radius: 0.5rem;
+}
+
+.swal_title {
+  font-family: "Work Sans", sans-serif;
+  font-weight: 900;
+  font-size: 2.5rem !important;
+  font-weight: bold;
+  color: var(--primary_color);
+}
+
+.swal_text {
+  font-size: 1.6rem;
+  /* font-weight: 400; */
+  color: var(--primary_color);
+}
+
 /* Media query para tablet */
 @media only screen and (min-width: 500px) {
   /* div[class^="container"]{
