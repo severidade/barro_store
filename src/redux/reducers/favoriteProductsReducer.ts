@@ -1,4 +1,5 @@
 /* eslint-disable max-len */
+import Swal from 'sweetalert2';
 import { FavoriteProduct } from '../types/Product';
 
 const ADD_FAVORITE = 'ADD_FAVORITE';
@@ -38,9 +39,21 @@ const favoriteProductsReducer = (state = initialState, action: FavoriteProductsA
     case ADD_FAVORITE:
       // Verifica se o produto já está nos favoritos
       const isProductAlreadyFavorite = state.some((product) => product.id === action.payload.id);
+
       if (isProductAlreadyFavorite) {
-        window.alert('Este produto já está na sua lista de favoritos!');
-        return state; // Retorna o estado atual sem modificar nada
+        Swal.fire({
+          title: 'Oops!',
+          text: 'Esse produto já está na sua lista de favoritos!',
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'Entendi',
+          customClass: {
+            confirmButton: 'swal_button',
+            popup: 'swal_popup',
+            htmlContainer: 'swal_text',
+            title: 'swal_title',
+          },
+        });
+        return state;
       }
 
       console.log('Adding to favorites:', action.payload);

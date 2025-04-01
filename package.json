@@ -27,7 +27,8 @@
     "react-router-dom": "^6.24.0",
     "react-slick": "^0.30.2",
     "redux": "^5.0.1",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "sweetalert2": "^11.17.2"
   },
   "devDependencies": {
     "@trybe/eslint-config-frontend": "^1.11.4",
