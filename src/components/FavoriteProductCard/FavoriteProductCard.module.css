@@ -1,0 +1,108 @@
+
+.favorite_product_card{
+  border-radius: var(--default-radius);
+  display: flex;
+  border: solid 1px var(--primary_color);
+  width: 100%;
+  height: 100px;
+  align-items: center;
+  position: relative;
+  padding-right: 50px;
+}
+
+.favorite_product_image {
+  width: 70px;
+  /* background-color: #da8324; */
+}
+
+.favorite_product_name {
+  display: block;
+  height: max-content;
+  line-height: 1.4;
+}
+
+.favorite_product_actions {
+  width: 40px !important;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.see_product, .remove_product {
+  cursor: pointer;
+  overflow: hidden;
+  text-indent: -900px;
+  display: block;
+  /* background-color: var(--primary_color); */
+  flex-grow: 1;
+}
+
+.see_product {
+  background-image: url(./assets/Eye.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 0 var(--default-radius) 0 0 ;
+  background-size: 50%;
+  border-left: 1px solid var(--primary_color);
+  border-bottom: 1px solid var(--primary_color);
+}
+
+.remove_product {
+  background-image: url(./assets/Trash.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 50%;
+  border-radius: 0 0 var(--default-radius) 0 ;
+  border-left: 1px solid var(--primary_color);
+}
+
+@media only screen and (min-width: 1024px) {
+  .favorite_product_card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px 40px 20px;
+    height: 190px;
+  }
+
+  .favorite_product_image {
+    width: 90px;
+  }
+
+  .favorite_product_name {
+    /* background-color: tomato; */
+    flex-grow: 1;
+    text-align: center;
+    line-height: 1;
+  }
+
+  .favorite_product_actions{
+    height: 40px;
+    width: 100% !important;
+    flex-direction: row;
+  }
+
+  .see_product {
+    /* background-image: url(./assets/Eye.png);
+    background-repeat: no-repeat;
+    background-position: center; */
+    border-radius: 0 ;
+    background-size: 30%;
+    border-left: 0;
+    border-bottom: 0;
+    border-Top: 1px solid var(--primary_color);
+  }
+  .remove_product {
+    /* background-image: url(./assets/Trash.png);
+    background-repeat: no-repeat;
+    background-position: center; */
+    background-size: 30%;
+    border-radius: 0 ;
+    border-left: 1px solid var(--primary_color);
+    border-top: 1px solid var(--primary_color);
+  }
+}

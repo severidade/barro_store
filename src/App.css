@@ -64,13 +64,9 @@ div[class^="container"]{
 }
 
 .products_page {
-  /* background-color: tomato; */
-  /* border: solid 1px tomato; */
   display: flex;
   flex-direction: column;
   grid-gap: 3em;
-  /* margin-top: 2rem; */
-  /* width: var(--mobile_container_width); */
 }
 
 .container_products {
@@ -86,7 +82,6 @@ div[class^="container"]{
   flex-direction: column;
   gap: var(--default-gap);
   padding-bottom: calc(var(--default-gap));
-  /* padding-bottom: 0 !important; */
 }
 
 /* css para componentes */
@@ -99,7 +94,6 @@ div[class^="container"]{
 .product_container {
   display: flex;
   width: 100;
-  /* background-color: thistle; */
   justify-content: center;
   align-items: center;
 }
@@ -107,18 +101,60 @@ div[class^="container"]{
 .product_link{
   height: 50px;
   text-align: center;
-  /* background-color: violet; */
   line-height: 1;
 }
 
+/* Produtos favoritos */
+.favorite-label {
+  background-image: url(./assets/img/label_fav.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  position: absolute;
+  top: 15px;
+  left:15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  overflow: hidden;
+  text-indent: -900px;
+}
+
+/* SweetAlert2 Personalização */
+.swal_button {
+  background-color: var(--primary_color) !important;
+  color: var(--light_color) !important;
+  height: 5rem;
+  border-radius: 0.5rem;
+  text-transform: uppercase;
+  font-size: 1.6rem;
+}
+
+.swal_popup {
+  background-color: var(--light_color) !important;
+  background-image: url(./assets/noise.webp);
+  border-radius: 0.5rem;
+}
+
+.swal_title {
+  font-family: "Work Sans", sans-serif;
+  font-weight: 900;
+  font-size: 2.5rem !important;
+  font-weight: bold;
+  color: var(--primary_color);
+}
+
+.swal_text {
+  font-size: 1.6rem;
+  color: var(--primary_color);
+}
 
 /* Media query para tablet */
 @media only screen and (min-width: 500px) {
-  /* div[class^="container"]{
-    width: 70vw;
-    background-color: #f7c130;
-  } */
-
   .container_products {
     padding-bottom: 0;
   }
@@ -140,10 +176,6 @@ div[class^="container"]{
     transform: translateX(-50%) !important;
   }
 
-  /* .products_page {
-    background-color: tomato;
-    width: var(--desktop_container_width);
-  } */
   .main {
     padding-bottom: calc(var(--footer-height) * 2);
     overflow-y: hidden;

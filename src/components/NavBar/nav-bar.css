@@ -2,7 +2,7 @@
   --menu_height: 8rem;
 
   display: flex;
-  gap: 30px;
+  gap: 5px;
   position: fixed;
   width: 100%;
   height: var(--menu_height);
@@ -10,7 +10,7 @@
   top: 0;
   left: 0;
   align-items: center;
-  padding: 0 30px;
+  padding: 0 20px;
   z-index: 3;
   justify-content: space-between;
   z-index: 1;
@@ -58,30 +58,68 @@
   color: var(--light_color) !important;
 }
 
+.user_shopping {
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.shopping_cart, .favorites_list {
+  position: relative;
+}
+
 .shopping_cart {
-  width: 2.5rem;
-  height: 2.5rem;
-  text-indent: -999rem;
+  width: 5rem;
+  height: 8rem;
+  /* text-indent: -999rem; */
   overflow: hidden;
   background-image: url(./assets/carrinho_claro.svg);
   background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
+  background-position: center left;
+  background-size: 2.3rem;
   z-index: 1;
+  /* border: solid 1px white; */
 }
 
 .favorites_list {
-  width: 2.5rem;
-  height: 2.5rem;
-  text-indent: -999rem;
-  overflow: hidden;
+  width: 5rem;
+  height: 8rem;
+  /* text-indent: -999rem; */
+  /* overflow: hidden; */
   background-image: url(./assets/heart.svg);
   background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
+  background-position: center left;
+  background-size: 2.3rem;
   z-index: 1;
+  /* border: solid 1px white; */
 }
 
+.favorites_count {
+  background: var(--color-cta);
+  display: flex;
+  padding: 2px;
+  width: 30px;
+  height: 30px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  position: absolute;
+  right: 5px;
+  top: 1rem;
+  opacity: 0;
+  color: var(--primary_color);
+}
+
+.has_favorite{
+  opacity: 1;
+}
+
+.menu_label {
+  text-indent: -999rem;
+  overflow: hidden;
+  position: absolute;
+}
 .menu_items_container {
   z-index: 1;
 }
@@ -136,12 +174,7 @@
   visibility: visible;
 }
 
-.user_shopping {
-  z-index: 1;
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-}
+
 
 /* Media query para desktop */
 @media only screen and (min-width: 1024px) {

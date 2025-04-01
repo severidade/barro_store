@@ -2,6 +2,8 @@
 /* eslint-disable no-underscore-dangle */
 import { useState, useEffect, useCallback } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
 import { isMobileDevice } from '../../utils/isMobileDevice';
 import { formatUrl } from '../../utils/formatUrl';
 import './nav-bar.css';
@@ -24,6 +26,8 @@ function NavBar({ page = '' } :NavBarProps) {
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
   const [isFixed, setIsFixed] = useState(false);
 
+  const favoriteProducts = useSelector((state: RootState) => state.favoriteProducts ?? []);
+
   const toggleMenu = useCallback((shouldScrollToTop = false, closeIfOpen = false) => {
     setMenuOpen((prevMenuOpen) => (closeIfOpen ? false : !prevMenuOpen));
     if (shouldScrollToTop) {
@@ -33,7 +37,7 @@ function NavBar({ page = '' } :NavBarProps) {
 
   const handleMenuKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === 'Enter' || event.key === ' ') {
-      toggleMenu();
+      toggleMenu(); // console.log('passei aqui');
     }
   };
 
@@ -184,8 +188,16 @@ function NavBar({ page = '' } :NavBarProps) {
         </div>
       </div>
       <div className="user_shopping">
-        <NavLink className="level_one_menu_item favorites_list" to="/favoritos">Favoritos</NavLink>
-        <NavLink className="level_one_menu_item shopping_cart" to="/shopping">Carrinho</NavLink>
+        <NavLink className="level_one_menu_item favorites_list" to="/favoritos">
+          <span className="menu_label">Favoritos</span>
+          <span className={ `favorites_count ${favoriteProducts.length > 0 ? 'has_favorite' : ' '} `.trim() }>
+            {favoriteProducts.length}
+          </span>
+        </NavLink>
+        <NavLink className="level_one_menu_item shopping_cart" to="/shopping">
+          <span className="menu_label">Carrinho</span>
+          {/* <span className="porducts_count">0</span> */}
+        </NavLink>
       </div>
 
     </nav>

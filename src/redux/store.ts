@@ -1,11 +1,17 @@
-import { legacy_createStore as createStore, combineReducers } from 'redux';
+import { configureStore } from '@reduxjs/toolkit';
 import favoriteProductsReducer from './reducers/favoriteProductsReducer';
 
-const rootReducer = combineReducers({
-  favoriteProducts: favoriteProductsReducer,
+export const store = configureStore({
+  reducer: {
+    favoriteProducts: favoriteProductsReducer, // Cria o reducer
+  },
 });
 
-export const store = createStore(rootReducer);
+// Monitorar mudanças no estado global
+store.subscribe(() => {
+  console.log('Current Redux State:', store.getState());
+});
 
-export type RootState = ReturnType<typeof rootReducer>;
+// Tipos auxiliares para Redux
+export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

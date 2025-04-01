@@ -1,9 +1,11 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable max-len */
 /* eslint-disable no-underscore-dangle */
-import { useLocation, useNavigate, useParams, NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
+import { RootState } from '../redux/store';
 import { fetchProductById } from '../utils/fetch';
 
 import { formatUrl } from '../utils/formatUrl';
@@ -25,15 +27,14 @@ import NavBar from '../components/NavBar';
 function ProductSingle() {
   const navigate = useNavigate();
   const location = useLocation();
-
   const searchParams = new URLSearchParams(location.search);
   const productIdFromQuery = searchParams.get('productId');
   const { category } = useParams();
-
   const [product, setProduct] = useState<Product | null>(null);
   const categoryList = useFetchCategories();
-
   const [categoryDetails, setCategoryDetails] = useState<Category | null>(null);
+
+  const favoriteProducts = useSelector((state: RootState) => state.favoriteProducts ?? []);
 
   useEffect(() => {
     async function fetchProduct() {
@@ -67,7 +68,11 @@ function ProductSingle() {
 
   const { title, description, _id } = categoryDetails || {};
   const { productName } = product || {};
+  const currentUrl = window.location.href;
 
+  const isFavorite = favoriteProducts.some((favProduct: { id: string }) => favProduct.id === product._id);
+
+  // console.log(isFavorite);
   return (
     <>
       <Helmet>
@@ -85,6 +90,7 @@ function ProductSingle() {
 
           <ProductTitle productName={ productName || '' } />
           <div className="container_product_image">
+            {isFavorite && <div className="favorite-label">Favorito</div>}
             <ProductCarousel images={ product.images } name={ productName } />
             { product.promotion && product.promotion.isPromotional && (
               <LabelPromotional off={ product.promotion.discount || 0 } />
@@ -98,8 +104,8 @@ function ProductSingle() {
             payments={ product.installmentPayments || 0 }
           />
           <div className="container_cta">
-            <CtaButton typeOfButton="addToCart" title="Comprar" />
-            <CtaButton typeOfButton="addToFavorite" title="Favorito" />
+            <CtaButton typeOfButton="addToCart" title="Comprar" selectedProduct={ product } selectedProductUrl={ currentUrl } />
+            <CtaButton typeOfButton="addToFavorite" title="Favorito" selectedProduct={ product } selectedProductUrl={ currentUrl } />
           </div>
           <p>{ description }</p>
           {category && (

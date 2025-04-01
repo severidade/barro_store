@@ -1,33 +1,63 @@
+/* eslint-disable max-len */
+/* eslint-disable no-underscore-dangle */
+import { useDispatch } from 'react-redux';
+import { addFavorite } from '../../redux/reducers/favoriteProductsReducer.ts';
+import { AppDispatch } from '../../redux/store';
 import styles from './CtaButton.module.css';
+import { Product } from '../../types/Product.ts';
 
 interface MainCtaButton {
   typeOfButton: string;
-  title: string
+  title: string;
+  selectedProduct: Product;
+  selectedProductUrl: string;
 }
 
-const handleAddToCart = () => {
-  console.log('Produto adicionado ao carrinho:');
+const buildImageUrl = (imageRef: string) => {
+  const parts = imageRef.split('-');
+
+  if (parts.length === 4) {
+    const imageId = parts[1];
+    const dimensions = parts[2];
+    const format = parts[3];
+    return `https://cdn.sanity.io/images/knnk47g7/production/${imageId}-${dimensions}.${format}`;
+  }
+  return '';
 };
 
-const handleAddToFavorite = () => {
-  console.log('Produto adicionado aos favoritos:');
-};
+function CtaButton({ typeOfButton, title, selectedProduct, selectedProductUrl }: MainCtaButton) {
+  const dispatch = useDispatch<AppDispatch>();
 
-function CtaButton({ typeOfButton, title }: MainCtaButton) {
-  // eslint-disable-next-line max-len
-  const buttonStyle = typeOfButton === 'addToCart' ? styles.addToCart : styles.addToFavorite;
   const handleClick = () => {
+    console.log('Botão clicado', {
+      typeOfButton,
+      productId: selectedProduct?._id,
+      productName: selectedProduct?.productName,
+    });
+
     if (typeOfButton === 'addToCart') {
-      handleAddToCart(); // Chama a função para adicionar ao carrinho
+      console.log('Produto adicionado ao carrinho');
     } else if (typeOfButton === 'addToFavorite') {
-      handleAddToFavorite(); // Chama a função para adicionar aos favoritos
+      if (selectedProduct) {
+        // Constrói a URL da imagem pegando a primeira imagem do produto
+        const imageUrl = buildImageUrl(selectedProduct.images?.[0]?.asset?._ref || '');
+
+        dispatch(addFavorite({
+          id: selectedProduct._id,
+          name: selectedProduct.productName,
+          imageUrl,
+          productUrl: selectedProductUrl,
+          // price: selectedProduct.price,
+        }));
+      } else {
+        console.warn('Produto não definido ao tentar adicionar aos favoritos');
+      }
     }
   };
+
   return (
-    <button onClick={ handleClick } className={ buttonStyle }>
-      <span>
-        {title}
-      </span>
+    <button onClick={ handleClick } className={ styles[typeOfButton] }>
+      <span>{title}</span>
     </button>
   );
 }

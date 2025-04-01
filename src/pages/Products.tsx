@@ -18,8 +18,6 @@ function Products() {
   // const productsByCategory = useFetchProductsByCategory(categoryDetails);
   const productsByCategory = useFetchProductsByCategory(categoryDetails ? categoryDetails._id : null);
 
-  console.log(categoryDetails);
-
   return (
     <>
       <NavBar />
