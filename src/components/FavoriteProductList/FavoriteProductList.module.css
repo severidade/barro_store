@@ -6,7 +6,7 @@
 
 @media only screen and (min-width: 1024px) {
   .favorite_products_list {
-    background-color: rgb(148, 238, 130);
+    /* background-color: rgb(148, 238, 130); */
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
     grid-auto-rows: auto;
