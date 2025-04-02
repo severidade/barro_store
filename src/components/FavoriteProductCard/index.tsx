@@ -23,8 +23,12 @@ function FavoriteProductCard({ product }: FavoriteProductCardProps) {
 
   return (
     <li className={ styles.favorite_product_card }>
-      <img className={ styles.favorite_product_image } src={ product.imageUrl } alt={ product.name } />
-      <p className={ styles.favorite_product_name }>{product.name}</p>
+      <Link to={ product.productUrl }>
+        <img className={ styles.favorite_product_image } src={ product.imageUrl } alt={ product.name } />
+      </Link>
+      <Link to={ product.productUrl }>
+        <span className={ styles.favorite_product_name }>{product.name}</span>
+      </Link>
       <div className={ styles.favorite_product_actions }>
         <Link to={ product.productUrl } className={ styles.see_product }> Ver Produto </Link>
         <button

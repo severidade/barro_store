@@ -19,6 +19,13 @@
   display: block;
   height: max-content;
   line-height: 1.4;
+  font-weight: 500;
+  font-size: 15px;
+  /* background-color: var(--bg-products); */
+}
+
+.favorite_product_name:hover{
+  color: var(--bg-products);
 }
 
 .favorite_product_actions {
@@ -36,7 +43,6 @@
   overflow: hidden;
   text-indent: -900px;
   display: block;
-  /* background-color: var(--primary_color); */
   flex-grow: 1;
 }
 
@@ -50,6 +56,11 @@
   border-bottom: 1px solid var(--primary_color);
 }
 
+.see_product:hover {
+  background-image: url(./assets/Eye_hover_02.png);
+  background-color: var(--primary_color);
+}
+
 .remove_product {
   background-image: url(./assets/Trash.png);
   background-repeat: no-repeat;
@@ -57,6 +68,11 @@
   background-size: 50%;
   border-radius: 0 0 var(--default-radius) 0 ;
   border-left: 1px solid var(--primary_color);
+}
+
+.remove_product:hover {
+  background-image: url(./assets/Trash_hover_02.png);
+  background-color: var(--primary_color);
 }
 
 @media only screen and (min-width: 1024px) {
