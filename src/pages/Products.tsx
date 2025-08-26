@@ -24,6 +24,7 @@ function Products() {
       <div className="main">
         <div className="products_page">
           <div className="container_title">
+            <p>⭐</p>
             <MainTitle title={ categoryDetails?.title || '' } />
           </div>
           {category && (
