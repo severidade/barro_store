@@ -24,13 +24,14 @@
 
 .related_carousel .item {
   /* background-color: violet; */
+  position: relative;
   height: var(--height_related_carousel);
   overflow: hidden;
   width: 80px;
   /* margin: 0 -10px;  */
 }
 
-.product_related_link {
+.product_related {
   /* background-color: #da8324; */
   height: 100%;
   display: block;
@@ -38,12 +39,12 @@
   position: relative;
 }
 
-.product_related_link.disabled {
+.product_related.disabled {
   background-color: tomato;
   pointer-events: none;
 }
 
-.product_related_link::before{
+.product_related::before{
   content: "";
   position: absolute;
   height: 50%;
@@ -63,6 +64,36 @@
 .related_carousel .slick-dots {
   position: absolute;
   top: var(--height_related_carousel);
+}
+
+.btn-desktop-only  {
+  opacity: 0;
+  pointer-events: none; /* impede que clique quando invisível */
+  transition: opacity 0.3s ease; /* animação suave */
+  position: absolute;
+  /* left: 50%; */
+  bottom: 0;
+  height: 50px;
+  width: 50px;
+  left: 50%;
+  top: 50%;
+  background: var(--color-cta);
+  background-image: url(../../assets/img/Eye.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 55%;
+  z-index: 3;
+  transform: translate(-50%, -50%);
+  border-radius: 100%;
+  overflow: hidden;
+  text-indent: -100px;
+}
+
+.product_related:hover .btn-desktop-only {
+  opacity: 1;
+  pointer-events: auto; /* ativa clique */
+  cursor: pointer;
 }
 /* 
 .related_carousel .slick-dots li {
