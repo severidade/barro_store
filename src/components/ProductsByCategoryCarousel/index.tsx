@@ -8,7 +8,7 @@ import Slider from 'react-slick';
 import { useEffect, useState } from 'react';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { isBrowser } from 'react-device-detect';
 import { urlFor } from '../../utils/buildSanityImageUrl';
 import { formatUrl } from '../../utils/formatUrl';
@@ -33,6 +33,12 @@ function ProductsByCategoryCarousel({ categoryId, categoryOfProduct, productId }
     slidesToScroll: 3,
     arrows: false,
     swipe: true,
+  };
+
+  const navigate = useNavigate();
+
+  const handleNavigate = (productName: string, id: string) => {
+    navigate(`/produtos/${categoryOfProduct}/${formatUrl(productName)}?productId=${id}`);
   };
 
   const productsByCategory = useFetchProductsByCategory(categoryId || '');
@@ -66,13 +72,16 @@ function ProductsByCategoryCarousel({ categoryId, categoryOfProduct, productId }
                   <figure className="container_product_image">
                     <img
                       src={ urlFor(product.images[0].asset._ref).url() }
-                      alt={ product.productName }
+                      alt={ product.productName || 'Produto sem nome' }
                     />
                   </figure>
                   <p className="produto">{product.productName}</p>
                   <button
                     className="btn-desktop-only"
-                    onClick={ () => window.location.href = `/produtos/${categoryOfProduct}/${formatUrl(product.productName)}?productId=${product._id}` }
+                    onClick={ () => {
+                      handleNavigate(product.productName, product._id);
+                      scrollToTop();
+                    } }
                   >
                     Ver produto
                   </button>
@@ -87,7 +96,7 @@ function ProductsByCategoryCarousel({ categoryId, categoryOfProduct, productId }
                   <figure className="container_product_image">
                     <img
                       src={ urlFor(product.images[0].asset._ref).url() }
-                      alt={ product.productName }
+                      alt={ product.productName || 'Produto sem nome' }
                     />
                   </figure>
                   <p className="produto">{product.productName}</p>
